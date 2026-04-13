@@ -1,0 +1,1 @@
+import{k as e,n as t,r as n}from"./Container-AtTEkwmp.js";var r=e();function i({children:e,className:i,hover:a=!0,...o}){return(0,r.jsx)(n.div,{className:t(`rounded-xl bg-surface-100 p-6 shadow-soft border border-surface-200`,i),...a&&{whileHover:{y:-4,transition:{duration:.2}}},...o,children:e})}export{i as t};

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="grad-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background rounded square - dark with emerald border -->
+  <rect x="10" y="10" width="180" height="180" rx="40" ry="40" fill="#0A0F1C"/>
+  <rect x="10" y="10" width="180" height="180" rx="40" ry="40" fill="none" stroke="url(#grad-dark)" stroke-width="3.5"/>
+  <!-- Document shape -->
+  <path d="M68 45h40l24 24v72a8 8 0 01-8 8H68a8 8 0 01-8-8V53a8 8 0 018-8z" fill="rgba(255,255,255,0.1)"/>
+  <path d="M108 45v16a8 8 0 008 8h16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Checkmark circle -->
+  <circle cx="118" cy="118" r="32" fill="white" opacity="0.9"/>
+  <!-- Checkmark -->
+  <path d="M102 118l10.5 10.5L130 108" fill="none" stroke="#10B981" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

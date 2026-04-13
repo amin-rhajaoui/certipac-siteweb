@@ -1,0 +1,22 @@
+import { cn } from '@/lib/utils'
+
+export default function Textarea({ label, id, className, ...props }) {
+  return (
+    <div className="space-y-1.5">
+      {label && (
+        <label htmlFor={id} className="block text-sm font-medium text-surface-700">
+          {label}
+        </label>
+      )}
+      <textarea
+        id={id}
+        rows={4}
+        className={cn(
+          'w-full rounded-lg border border-surface-200 bg-surface-50 px-4 py-3 text-surface-900 placeholder:text-surface-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 resize-y',
+          className
+        )}
+        {...props}
+      />
+    </div>
+  )
+}
