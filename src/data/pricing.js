@@ -16,7 +16,7 @@ export const plans = [
       'Calcul des aides',
       'Support email',
     ],
-    cta: { label: 'Essayer gratuitement', to: '/contact' },
+    cta: { label: 'Essayer gratuitement', href: 'https://app.certipac.fr' },
   },
   {
     name: 'Équipe',
@@ -35,7 +35,7 @@ export const plans = [
       'Support prioritaire',
       'Webinaires de formation',
     ],
-    cta: { label: 'Essayer gratuitement', to: '/contact' },
+    cta: { label: 'Essayer gratuitement', href: 'https://app.certipac.fr' },
   },
   {
     name: 'Entreprise',

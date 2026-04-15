@@ -37,8 +37,12 @@ export const COMPANY_INFO = {
   address: 'Paris, France',
 }
 
+export const APP_URL = 'https://app.certipac.fr'
+
 export const CTA_TEXT = {
   primary: 'Essayer gratuitement',
   secondary: 'Voir une démo',
   pricing: 'Voir les tarifs',
+  login: 'Se connecter',
+  signup: 'S\'inscrire',
 }

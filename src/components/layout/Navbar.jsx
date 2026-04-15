@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react'
 import Logo from '@/components/shared/Logo'
 import Button from '@/components/ui/Button'
 import Container from '@/components/ui/Container'
-import { NAV_LINKS, CTA_TEXT } from '@/lib/constants'
+import { NAV_LINKS, CTA_TEXT, APP_URL } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 export default function Navbar() {
@@ -57,10 +57,10 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="outline" size="sm" to="/contact">
-              {CTA_TEXT.secondary}
+            <Button variant="ghost" size="sm" href={APP_URL}>
+              {CTA_TEXT.login}
             </Button>
-            <Button size="sm" to="/tarifs">
+            <Button size="sm" href={APP_URL}>
               {CTA_TEXT.primary}
             </Button>
           </div>
@@ -108,10 +108,10 @@ export default function Navbar() {
                 </motion.div>
               ))}
               <div className="pt-4 space-y-2 mt-2">
-                <Button variant="outline" size="md" to="/contact" className="w-full">
-                  {CTA_TEXT.secondary}
+                <Button variant="ghost" size="md" href={APP_URL} className="w-full">
+                  {CTA_TEXT.login}
                 </Button>
-                <Button size="md" to="/tarifs" className="w-full">
+                <Button size="md" href={APP_URL} className="w-full">
                   {CTA_TEXT.primary}
                 </Button>
               </div>

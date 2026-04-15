@@ -55,7 +55,7 @@ export default function Conformite() {
         title="Zéro stress sur la"
         highlight="conformité."
         description="Dimensionnement validé, barèmes à jour, dossiers complets : Certipac vous guide pour que chaque dossier passe du premier coup."
-        primaryCTA={{ label: 'Essayer gratuitement', to: '/tarifs' }}
+        primaryCTA={{ label: 'Essayer gratuitement', href: 'https://app.certipac.fr' }}
       />
 
       <SectionWrapper>

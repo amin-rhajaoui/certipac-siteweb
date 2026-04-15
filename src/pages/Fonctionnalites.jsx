@@ -45,7 +45,7 @@ export default function Fonctionnalites() {
         title="Chaque étape de votre métier,"
         highlight="guidée."
         description="De la visite technique au versement des primes, Certipac vous accompagne avec un logiciel + app mobile pensés pour le terrain."
-        primaryCTA={{ label: 'Essayer gratuitement', to: '/tarifs' }}
+        primaryCTA={{ label: 'Essayer gratuitement', href: 'https://app.certipac.fr' }}
         secondaryCTA={{ label: 'Voir les tarifs', to: '/tarifs' }}
       />
 

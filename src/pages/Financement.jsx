@@ -61,7 +61,7 @@ export default function Financement() {
         title="Maximisez les primes,"
         highlight="on gère les dossiers."
         description="MaPrimeRénov', CEE, éco-PTZ, aides locales... Certipac calcule toutes les aides, affiche le reste à charge et génère les dossiers conformes."
-        primaryCTA={{ label: 'Essayer gratuitement', to: '/tarifs' }}
+        primaryCTA={{ label: 'Essayer gratuitement', href: 'https://app.certipac.fr' }}
         secondaryCTA={{ label: 'Nous contacter', to: '/contact' }}
       />
 

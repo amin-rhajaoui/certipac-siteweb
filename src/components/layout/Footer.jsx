@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import Logo from '@/components/shared/Logo'
 import Container from '@/components/ui/Container'
-import { FOOTER_LINKS, COMPANY_INFO } from '@/lib/constants'
+import { FOOTER_LINKS, COMPANY_INFO, APP_URL, CTA_TEXT } from '@/lib/constants'
 
 export default function Footer() {
   return (
@@ -69,6 +69,20 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+
+            <h3 className="text-white font-semibold text-xs uppercase tracking-wider mb-4 mt-8">Espace client</h3>
+            <ul className="space-y-2.5">
+              <li>
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-[#43AA43] transition-colors">
+                  {CTA_TEXT.login}
+                </a>
+              </li>
+              <li>
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-[#43AA43] transition-colors">
+                  {CTA_TEXT.signup}
+                </a>
+              </li>
             </ul>
           </div>
         </div>

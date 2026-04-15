@@ -53,7 +53,7 @@ export default function Accueil() {
         title="Posez vos PAC"
         highlight="en toute sérénité."
         description="Certipac vous guide de A à Z : visite technique, dimensionnement, devis, signature électronique et dossiers conformes. Zéro stress, zéro erreur."
-        primaryCTA={{ label: 'Essayer gratuitement', to: '/tarifs' }}
+        primaryCTA={{ label: 'Essayer gratuitement', href: 'https://app.certipac.fr' }}
         secondaryCTA={{ label: 'Voir une démo', to: '/comment-ca-marche' }}
         footer={
           <motion.div

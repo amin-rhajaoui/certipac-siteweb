@@ -5,7 +5,7 @@ import Button from '@/components/ui/Button'
 export default function CTASection({
   title = 'Prêt à poser vos PAC en toute sérénité ?',
   description = 'Essayez Certipac gratuitement pendant 1 mois. Guidage complet, dossiers conformes, zéro stress.',
-  primaryCTA = { label: 'Essayer gratuitement', to: '/tarifs' },
+  primaryCTA = { label: 'Essayer gratuitement', href: 'https://app.certipac.fr' },
   secondaryCTA = { label: 'Voir une démo', to: '/contact' },
 }) {
   return (
@@ -29,10 +29,10 @@ export default function CTASection({
           </h2>
           <p className="mt-4 text-lg text-surface-600">{description}</p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button size="lg" to={primaryCTA.to}>
+            <Button size="lg" to={primaryCTA.to} href={primaryCTA.href}>
               {primaryCTA.label}
             </Button>
-            <Button variant="outline" size="lg" to={secondaryCTA.to}>
+            <Button variant="outline" size="lg" to={secondaryCTA.to} href={secondaryCTA.href}>
               {secondaryCTA.label}
             </Button>
           </div>

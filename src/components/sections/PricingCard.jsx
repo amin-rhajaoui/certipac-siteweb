@@ -61,6 +61,7 @@ export default function PricingCard({
 
       <Button
         to={cta.to}
+        href={cta.href}
         variant={highlighted ? 'secondary' : 'outline'}
         className="w-full"
       >
