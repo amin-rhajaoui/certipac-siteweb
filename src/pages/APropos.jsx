@@ -17,14 +17,14 @@ export default function APropos() {
     <PageWrapper>
       <SEOHead
         title="À propos"
-        description="Découvrez l'équipe et la mission de PACIZZY : simplifier le quotidien des artisans RGE avec des outils numériques performants."
+        description="Découvrez l'équipe et la mission de Certipac : guider chaque artisan RGE de A à Z pour poser des PAC sereinement."
       />
 
       <HeroSection
         badge="Notre histoire"
-        title="Simplifier le métier"
-        highlight="d'artisan RGE"
-        description="PACIZZY est né d'un constat simple : les artisans RGE passent trop de temps sur la paperasse et pas assez sur le terrain. Notre mission : changer ça."
+        title="Guider les artisans,"
+        highlight="pas à pas."
+        description="Certipac est né d'un constat : les artisans RGE passent trop de temps à stresser sur la paperasse et pas assez sur le terrain. Notre mission : leur donner un outil qui les guide sereinement."
       />
 
       {/* Mission */}
@@ -32,13 +32,12 @@ export default function APropos() {
         <motion.div variants={fadeUp} className="max-w-3xl mx-auto text-center">
           <Badge className="mb-4">Notre mission</Badge>
           <h2 className="text-3xl font-bold text-surface-900 sm:text-4xl mb-6">
-            Accélérer la transition énergétique
+            Permettre à chaque artisan de poser sereinement
           </h2>
           <p className="text-lg text-surface-600 leading-relaxed">
-            Chaque minute qu'un artisan passe à remplir de la paperasse est une minute
-            de moins consacrée à installer des pompes à chaleur. En automatisant les
-            tâches administratives, PACIZZY permet aux professionnels de se concentrer
-            sur ce qu'ils font de mieux : rénover les logements des Français.
+            Dimensionnement, paperasse, conformité des dossiers... tout ça ne devrait jamais être
+            une source de stress. Certipac guide l'artisan de la visite technique au versement des primes,
+            pour qu'il se concentre sur ce qu'il fait de mieux : installer des pompes à chaleur.
           </p>
         </motion.div>
       </SectionWrapper>
@@ -77,10 +76,10 @@ export default function APropos() {
         <motion.div variants={fadeUp} className="text-center mb-12">
           <Badge className="mb-4">L'équipe</Badge>
           <h2 className="text-3xl font-bold text-surface-900 sm:text-4xl">
-            Les personnes derrière PACIZZY
+            Les personnes derrière Certipac
           </h2>
           <p className="mt-4 text-lg text-surface-600 max-w-2xl mx-auto">
-            Une équipe passionnée par la rénovation énergétique et la technologie.
+            Une équipe passionnée par la rénovation énergétique et le terrain.
           </p>
         </motion.div>
         <motion.div

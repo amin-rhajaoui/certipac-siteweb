@@ -28,17 +28,17 @@ export const FOOTER_LINKS = {
 }
 
 export const COMPANY_INFO = {
-  name: 'PACIZZY',
-  tagline: 'Dossiers & Devis PAC pour Artisans RGE',
+  name: 'Certipac',
+  tagline: 'Posez vos PAC en toute sérénité.',
   description:
-    'PACIZZY simplifie la création de dossiers et devis conformes pour l\'installation de pompes à chaleur. Conçu par des professionnels, pour des professionnels RGE.',
-  email: 'contact@pacizzy.fr',
+    'Certipac est le logiciel + app mobile qui guide les artisans RGE de A à Z : visite technique, dimensionnement, devis, signature électronique et dossiers conformes pour toucher les primes.',
+  email: 'contact@certipac.fr',
   phone: '01 23 45 67 89',
   address: 'Paris, France',
 }
 
 export const CTA_TEXT = {
-  primary: 'Essai gratuit 1 mois',
-  secondary: 'Demander une démo',
+  primary: 'Essayer gratuitement',
+  secondary: 'Voir une démo',
   pricing: 'Voir les tarifs',
 }

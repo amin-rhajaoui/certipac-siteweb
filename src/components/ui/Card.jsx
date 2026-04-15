@@ -5,7 +5,7 @@ export default function Card({ children, className, hover = true, ...props }) {
   return (
     <motion.div
       className={cn(
-        'rounded-xl bg-surface-100 p-6 shadow-soft border border-surface-200',
+        'rounded-xl bg-surface-100/60 p-6 shadow-soft',
         className
       )}
       {...(hover && { whileHover: { y: -4, transition: { duration: 0.2 } } })}

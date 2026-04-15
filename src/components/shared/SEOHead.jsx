@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 export default function SEOHead({ title, description }) {
   useEffect(() => {
     document.title = title
-      ? `${title} — PACIZZY`
-      : 'PACIZZY — Dossiers & Devis PAC pour Artisans RGE'
+      ? `${title} — Certipac`
+      : 'Certipac — Posez vos PAC en toute sérénité.'
 
     if (description) {
       let meta = document.querySelector('meta[name="description"]')

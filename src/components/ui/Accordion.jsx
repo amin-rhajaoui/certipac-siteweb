@@ -15,11 +15,11 @@ export default function Accordion({ items, className }) {
       {items.map((item, index) => (
         <div
           key={index}
-          className="rounded-lg border border-surface-200 bg-surface-100 overflow-hidden"
+          className="rounded-lg bg-surface-100/60 overflow-hidden"
         >
           <button
             onClick={() => toggle(index)}
-            className="flex w-full items-center justify-between p-5 text-left font-medium text-surface-900 hover:bg-surface-50 transition-colors cursor-pointer"
+            className="flex w-full items-center justify-between p-5 text-left font-medium text-surface-800 hover:bg-surface-100 transition-colors cursor-pointer"
           >
             <span>{item.question}</span>
             <motion.div

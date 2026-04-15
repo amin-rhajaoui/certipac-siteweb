@@ -18,15 +18,15 @@ export default function CGV() {
             <h2 className="text-2xl font-bold text-surface-900 mb-4">1. Objet</h2>
             <p>
               Les présentes Conditions Générales de Vente (CGV) régissent les relations
-              contractuelles entre PACIZZY SAS et tout professionnel souscrivant à un
-              abonnement au service PACIZZY.
+              contractuelles entre Certipac SAS et tout professionnel souscrivant à un
+              abonnement au service Certipac.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-surface-900 mb-4">2. Services</h2>
             <p>
-              PACIZZY propose un service en ligne (SaaS) de génération de dossiers et devis
+              Certipac propose un service en ligne (SaaS) de génération de dossiers et devis
               pour l'installation de pompes à chaleur. Les fonctionnalités varient selon le
               forfait souscrit (Solo, Équipe, Entreprise).
             </p>
@@ -49,7 +49,7 @@ export default function CGV() {
           <section>
             <h2 className="text-2xl font-bold text-surface-900 mb-4">4. Essai gratuit</h2>
             <p>
-              PACIZZY offre une période d'essai gratuite de 30 jours, sans engagement et sans
+              Certipac offre une période d'essai gratuite de 30 jours, sans engagement et sans
               carte bancaire. À l'issue de cette période, le client peut souscrire un abonnement
               ou cesser d'utiliser le service.
             </p>
@@ -67,8 +67,8 @@ export default function CGV() {
           <section>
             <h2 className="text-2xl font-bold text-surface-900 mb-4">6. Responsabilité</h2>
             <p>
-              PACIZZY SAS s'engage à fournir un service conforme aux descriptions. La
-              responsabilité de PACIZZY est limitée au montant des sommes versées par le
+              Certipac SAS s'engage à fournir un service conforme aux descriptions. La
+              responsabilité de Certipac est limitée au montant des sommes versées par le
               client au cours des 12 derniers mois.
             </p>
           </section>

@@ -1,39 +1,39 @@
-import { UserPlus, FileText, Settings, Send, CheckCircle } from 'lucide-react'
+import { ClipboardCheck, Ruler, FileText, FolderCheck, Banknote } from 'lucide-react'
 
 export const steps = [
   {
     number: 1,
-    icon: UserPlus,
-    title: 'Créez votre compte',
+    icon: ClipboardCheck,
+    title: 'Visite technique',
     description:
-      'Inscrivez-vous en 2 minutes. Renseignez les informations de votre entreprise et votre numéro RGE. Aucune carte bancaire requise.',
+      'Ouvrez l\'app mobile sur le terrain. Certipac vous guide : relevés, photos, caractéristiques du logement. Tout est structuré, rien n\'est oublié.',
   },
   {
     number: 2,
-    icon: Settings,
-    title: 'Configurez vos préférences',
+    icon: Ruler,
+    title: 'Dimensionnement & choix du modèle',
     description:
-      'Ajoutez votre logo, vos conditions générales et paramétrez vos marges par défaut. PACIZZY s\'adapte à votre façon de travailler.',
+      'Certipac calcule la puissance nécessaire et vous propose les modèles de PAC compatibles. Vous choisissez, le logiciel valide.',
   },
   {
     number: 3,
     icon: FileText,
-    title: 'Créez votre premier dossier',
+    title: 'Devis + signature électronique',
     description:
-      'Saisissez les informations client et les caractéristiques de l\'installation. PACIZZY génère automatiquement le dossier complet et le devis.',
+      'Générez un devis professionnel avec le détail des aides et le reste à charge. Votre client signe directement sur tablette ou par email.',
   },
   {
     number: 4,
-    icon: Send,
-    title: 'Envoyez et suivez',
+    icon: FolderCheck,
+    title: 'Dossier conforme',
     description:
-      'Exportez vos documents en PDF, envoyez-les par email à vos clients et déposez les dossiers directement sur les plateformes ANAH et CEE.',
+      'Le dossier complet (ANAH, CEE, MaPrimeRénov\') est généré automatiquement avec toutes les pièces. Prêt au dépôt, sans stress.',
   },
   {
     number: 5,
-    icon: CheckCircle,
-    title: 'Recevez le paiement',
+    icon: Banknote,
+    title: 'Suivi & encaissement des primes',
     description:
-      'Suivez l\'avancement de chaque dossier jusqu\'au versement des aides. Tableau de bord clair avec statuts en temps réel.',
+      'Suivez l\'avancement de chaque dossier jusqu\'au versement des primes. Tableau de bord clair, alertes automatiques, zéro surprise.',
   },
 ]

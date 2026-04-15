@@ -13,37 +13,37 @@ const aides = [
   {
     icon: Euro,
     title: 'MaPrimeRénov\'',
-    description: 'Aide principale de l\'État pour la rénovation énergétique. PACIZZY calcule automatiquement le montant selon les revenus du ménage et le type de PAC.',
+    description: 'Aide principale de l\'État pour la rénovation énergétique. Certipac calcule automatiquement le montant selon les revenus du ménage et le type de PAC, et génère le dossier complet.',
     montant: 'Jusqu\'à 11 000€',
   },
   {
     icon: FileText,
     title: 'Certificats d\'Économies d\'Énergie (CEE)',
-    description: 'Primes versées par les fournisseurs d\'énergie. PACIZZY génère les attestations nécessaires et calcule les montants selon la zone climatique.',
+    description: 'Primes versées par les fournisseurs d\'énergie. Certipac génère les attestations nécessaires, calcule les kWh cumac et prépare le dossier de demande.',
     montant: 'Jusqu\'à 5 000€',
   },
   {
     icon: TrendingUp,
     title: 'Éco-prêt à taux zéro',
-    description: 'Prêt sans intérêt pour financer le reste à charge. PACIZZY prépare les justificatifs nécessaires pour la demande de prêt.',
+    description: 'Prêt sans intérêt pour financer le reste à charge de votre client. Certipac prépare les justificatifs nécessaires pour la demande de prêt.',
     montant: 'Jusqu\'à 50 000€',
   },
   {
     icon: Building2,
     title: 'Aides locales',
-    description: 'Régions, départements et communes proposent des aides complémentaires. PACIZZY vous aide à identifier les aides disponibles dans chaque territoire.',
+    description: 'Régions, départements et communes proposent des aides complémentaires. Certipac vous aide à identifier les aides disponibles dans chaque territoire.',
     montant: 'Variable',
   },
   {
     icon: Users,
     title: 'TVA réduite à 5,5%',
-    description: 'Les travaux de rénovation énergétique bénéficient d\'une TVA réduite. PACIZZY applique automatiquement le bon taux dans vos devis.',
+    description: 'Les travaux de rénovation énergétique bénéficient d\'une TVA réduite. Certipac applique automatiquement le bon taux dans vos devis.',
     montant: 'Économie directe',
   },
   {
     icon: Calculator,
     title: 'Cumul des aides',
-    description: 'PACIZZY calcule le reste à charge réel en cumulant toutes les aides auxquelles votre client est éligible. Résultat : un devis clair et motivant.',
+    description: 'Certipac calcule le reste à charge réel en cumulant toutes les aides. Résultat : un devis clair qui convainc votre client immédiatement.',
     montant: 'Jusqu\'à 90% financé',
   },
 ]
@@ -53,15 +53,15 @@ export default function Financement() {
     <PageWrapper>
       <SEOHead
         title="Financement"
-        description="Découvrez toutes les aides au financement PAC : MaPrimeRénov', CEE, éco-PTZ. PACIZZY calcule automatiquement les montants."
+        description="Certipac calcule automatiquement toutes les aides PAC (MaPrimeRénov', CEE, éco-PTZ) et génère les dossiers de demande. Maximisez les primes pour vos clients."
       />
 
       <HeroSection
         badge="Financement"
-        title="Maximisez les aides pour"
-        highlight="vos clients"
-        description="MaPrimeRénov', CEE, éco-PTZ, aides locales... PACIZZY calcule automatiquement toutes les aides et génère les dossiers de demande."
-        primaryCTA={{ label: 'Essai gratuit 1 mois', to: '/tarifs' }}
+        title="Maximisez les primes,"
+        highlight="on gère les dossiers."
+        description="MaPrimeRénov', CEE, éco-PTZ, aides locales... Certipac calcule toutes les aides, affiche le reste à charge et génère les dossiers conformes."
+        primaryCTA={{ label: 'Essayer gratuitement', to: '/tarifs' }}
         secondaryCTA={{ label: 'Nous contacter', to: '/contact' }}
       />
 
@@ -69,10 +69,10 @@ export default function Financement() {
         <motion.div variants={fadeUp} className="text-center mb-12">
           <Badge className="mb-4">Les aides disponibles</Badge>
           <h2 className="text-3xl font-bold text-surface-900 sm:text-4xl">
-            Toutes les aides au financement PAC
+            Toutes les aides, calculées et intégrées
           </h2>
           <p className="mt-4 text-lg text-surface-600 max-w-2xl mx-auto">
-            PACIZZY intègre tous les dispositifs d'aide et calcule automatiquement les montants.
+            Certipac intègre tous les dispositifs d'aide et génère les dossiers de demande pour chacun.
           </p>
         </motion.div>
 
@@ -105,15 +105,14 @@ export default function Financement() {
 
       <SectionWrapper className="bg-surface-50">
         <motion.div variants={fadeUp} className="max-w-3xl mx-auto text-center">
-          <Badge variant="accent" className="mb-4">Le + PACIZZY</Badge>
+          <Badge variant="accent" className="mb-4">Le + Certipac</Badge>
           <h2 className="text-3xl font-bold text-surface-900 sm:text-4xl mb-6">
             Un devis clair = un client convaincu
           </h2>
           <p className="text-lg text-surface-600 leading-relaxed">
-            Grâce au calcul automatique des aides, vos devis affichent le reste à charge réel
-            pour le client. Résultat : vos prospects comprennent immédiatement l'avantage financier
-            et signent plus vite. Nos utilisateurs constatent en moyenne une hausse de 30% de leur
-            taux de conversion.
+            Grâce au calcul automatique des aides, vos devis affichent le reste à charge réel.
+            Votre client comprend immédiatement l'avantage financier et signe plus vite.
+            Nos artisans constatent en moyenne +30% de taux de conversion.
           </p>
         </motion.div>
       </SectionWrapper>

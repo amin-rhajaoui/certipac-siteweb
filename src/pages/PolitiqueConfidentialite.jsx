@@ -17,9 +17,9 @@ export default function PolitiqueConfidentialite() {
           <section>
             <h2 className="text-2xl font-bold text-surface-900 mb-4">1. Responsable du traitement</h2>
             <p>
-              PACIZZY SAS, dont le siège social est situé à Paris, France, est responsable
-              du traitement des données personnelles collectées sur le site pacizzy.fr et
-              via le service PACIZZY.
+              Certipac SAS, dont le siège social est situé à Paris, France, est responsable
+              du traitement des données personnelles collectées sur le site certipac.fr et
+              via le service Certipac.
             </p>
           </section>
 
@@ -38,7 +38,7 @@ export default function PolitiqueConfidentialite() {
             <h2 className="text-2xl font-bold text-surface-900 mb-4">3. Finalités du traitement</h2>
             <p>Vos données sont utilisées pour :</p>
             <ul className="mt-4 space-y-2 list-disc pl-6">
-              <li>Fournir et améliorer le service PACIZZY</li>
+              <li>Fournir et améliorer le service Certipac</li>
               <li>Gérer votre compte et votre abonnement</li>
               <li>Assurer le support client</li>
               <li>Envoyer des communications commerciales (avec votre consentement)</li>
@@ -79,8 +79,8 @@ export default function PolitiqueConfidentialite() {
             </ul>
             <p className="mt-4">
               Pour exercer vos droits, contactez-nous à{' '}
-              <a href="mailto:dpo@pacizzy.fr" className="text-primary-500 underline">
-                dpo@pacizzy.fr
+              <a href="mailto:dpo@certipac.fr" className="text-primary-500 underline">
+                dpo@certipac.fr
               </a>.
             </p>
           </section>

@@ -7,7 +7,7 @@ export default function CookieConsent() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const consent = localStorage.getItem('pacizzy-cookies')
+    const consent = localStorage.getItem('certipac-cookies')
     if (!consent) {
       const timer = setTimeout(() => setVisible(true), 1500)
       return () => clearTimeout(timer)
@@ -15,12 +15,12 @@ export default function CookieConsent() {
   }, [])
 
   const accept = () => {
-    localStorage.setItem('pacizzy-cookies', 'accepted')
+    localStorage.setItem('certipac-cookies', 'accepted')
     setVisible(false)
   }
 
   const decline = () => {
-    localStorage.setItem('pacizzy-cookies', 'declined')
+    localStorage.setItem('certipac-cookies', 'declined')
     setVisible(false)
   }
 
@@ -32,15 +32,15 @@ export default function CookieConsent() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 60 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-lg rounded-xl bg-surface-100 p-5 shadow-elevated border border-surface-200"
+          className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-lg rounded-xl bg-white p-5 shadow-elevated"
         >
           <div className="flex items-start gap-3">
-            <Cookie className="h-6 w-6 text-primary-500 shrink-0 mt-0.5" />
+            <Cookie className="h-6 w-6 text-[#194296] shrink-0 mt-0.5" />
             <div className="space-y-3">
               <p className="text-sm text-surface-600 leading-relaxed">
                 Nous utilisons des cookies pour améliorer votre expérience.
                 En continuant, vous acceptez notre{' '}
-                <a href="/politique-confidentialite" className="text-primary-500 underline">
+                <a href="/politique-confidentialite" className="text-[#194296] underline">
                   politique de confidentialité
                 </a>.
               </p>

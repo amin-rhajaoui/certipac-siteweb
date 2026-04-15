@@ -110,8 +110,8 @@ export default function BlogArticle() {
       </article>
 
       <CTASection
-        title="Simplifiez vos dossiers PAC"
-        description="Essayez PACIZZY gratuitement et gagnez du temps sur chaque dossier."
+        title="Posez vos PAC en toute sérénité"
+        description="Essayez Certipac gratuitement : guidage complet de la visite technique au versement des primes."
       />
     </PageWrapper>
   )

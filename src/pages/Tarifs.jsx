@@ -19,14 +19,14 @@ export default function Tarifs() {
     <PageWrapper>
       <SEOHead
         title="Tarifs"
-        description="Découvrez les tarifs PACIZZY : Solo à 100€/mois, Équipe à 190€/mois, Entreprise sur mesure. Essai gratuit 1 mois sans engagement."
+        description="Découvrez les tarifs Certipac : Solo à 100€/mois, Équipe à 190€/mois, Entreprise sur mesure. App mobile, dimensionnement, dossiers conformes. Essai gratuit 1 mois."
       />
 
       <HeroSection
         badge="Tarifs transparents"
         title="Un plan pour chaque"
         highlight="artisan RGE"
-        description="Essai gratuit 1 mois sur tous les forfaits. Sans engagement, sans carte bancaire. Annulez à tout moment."
+        description="Essai gratuit 1 mois sur tous les forfaits. App mobile, dimensionnement, dossiers conformes inclus. Sans engagement, sans carte bancaire."
       />
 
       {/* Pricing cards */}
@@ -50,7 +50,7 @@ export default function Tarifs() {
           </h2>
         </motion.div>
         <motion.div variants={fadeUp} className="overflow-x-auto">
-          <table className="w-full bg-surface-100 rounded-xl shadow-soft border border-surface-200 overflow-hidden">
+          <table className="w-full bg-surface-100 rounded-xl shadow-soft overflow-hidden">
             <thead>
               <tr className="border-b border-surface-200">
                 <th className="text-left p-4 text-surface-600 font-medium">Fonctionnalité</th>

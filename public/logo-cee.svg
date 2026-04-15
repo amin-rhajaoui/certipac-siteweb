@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" rx="8" fill="#2E7D32"/>
+  <text x="100" y="32" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="20" fill="#FFFFFF">CEE</text>
+  <text x="100" y="48" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="7" fill="#FFFFFF" opacity="0.8">Certificats d'Économies d'Énergie</text>
+</svg>

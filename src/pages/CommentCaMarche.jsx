@@ -13,21 +13,21 @@ export default function CommentCaMarche() {
     <PageWrapper>
       <SEOHead
         title="Comment ça marche"
-        description="Découvrez comment PACIZZY simplifie la création de vos dossiers PAC en 5 étapes simples."
+        description="Découvrez comment Certipac guide les artisans RGE de la visite technique au versement des primes en 5 étapes simples."
       />
 
       <HeroSection
-        badge="Simple et rapide"
-        title="Opérationnel en"
-        highlight="5 minutes"
-        description="De l'inscription à votre premier dossier, PACIZZY vous accompagne à chaque étape. Pas de formation nécessaire, tout est intuitif."
+        badge="Simple et guidé"
+        title="De la visite au versement"
+        highlight="des primes"
+        description="Certipac vous accompagne à chaque étape, du premier relevé chez le client jusqu'à l'encaissement des aides. Pas de formation nécessaire, tout est intuitif."
       />
 
       {/* Timeline */}
       <SectionWrapper>
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-200 hidden lg:block" />
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-surface-200 hidden lg:block" />
 
           <motion.div
             variants={staggerContainer}
@@ -45,7 +45,7 @@ export default function CommentCaMarche() {
                   className="relative flex flex-col lg:flex-row items-start gap-8"
                 >
                   {/* Number circle */}
-                  <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary-500 text-white shadow-card">
+                  <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#194296] text-white shadow-card">
                     <Icon className="h-8 w-8" />
                   </div>
 
@@ -62,8 +62,8 @@ export default function CommentCaMarche() {
 
                   {/* Illustration placeholder */}
                   <div className="w-full lg:w-80 shrink-0">
-                    <div className="rounded-xl bg-surface-100 border border-surface-200 p-8 flex items-center justify-center min-h-[160px]">
-                      <Icon className="h-12 w-12 text-primary-300" />
+                    <div className="rounded-xl bg-surface-100/60 p-8 flex items-center justify-center min-h-[160px]">
+                      <Icon className="h-12 w-12 text-[#194296]/30" />
                     </div>
                   </div>
                 </motion.div>
@@ -78,11 +78,11 @@ export default function CommentCaMarche() {
         <motion.div variants={fadeUp} className="text-center max-w-3xl mx-auto">
           <Badge variant="accent" className="mb-4">Résultat</Badge>
           <h2 className="text-3xl font-bold text-surface-900 sm:text-4xl mb-6">
-            Vos dossiers PAC, sans prise de tête
+            Vos PAC posées, vos primes encaissées
           </h2>
           <p className="text-lg text-surface-600 leading-relaxed">
-            En moyenne, nos utilisateurs créent leur premier dossier complet en moins de 20 minutes.
-            Ce qui prenait 2 heures avec les méthodes traditionnelles ne prend plus qu'un quart d'heure.
+            De la visite technique au versement des aides, tout est guidé. Nos artisans gagnent en moyenne
+            2 heures par chantier et obtiennent 98% de dossiers conformes du premier coup.
           </p>
         </motion.div>
       </SectionWrapper>

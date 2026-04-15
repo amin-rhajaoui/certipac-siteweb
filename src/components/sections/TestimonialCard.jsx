@@ -8,29 +8,29 @@ export default function TestimonialCard({ name, role, company, content, rating =
     <motion.div
       variants={fadeUp}
       className={cn(
-        'rounded-lg p-6 flex flex-col border',
+        'rounded-xl p-6 flex flex-col',
         featured
-          ? 'bg-surface-100 border-primary-500/30 ring-1 ring-primary-500/10'
-          : 'bg-surface-100/50 border-surface-200/50'
+          ? 'bg-[#194296] text-white'
+          : 'bg-surface-100/60'
       )}
     >
       <Quote className={cn(
         'h-6 w-6 mb-4',
-        featured ? 'text-primary-500' : 'text-surface-300'
+        featured ? 'text-[#43AA43]' : 'text-surface-300'
       )} />
-      <p className="text-surface-600 leading-relaxed flex-1 text-sm">{content}</p>
+      <p className={cn('leading-relaxed flex-1 text-sm', featured ? 'text-white/80' : 'text-surface-600')}>{content}</p>
       <div className="flex gap-0.5 my-4">
         {Array.from({ length: rating }).map((_, i) => (
           <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
         ))}
       </div>
-      <div className="flex items-center gap-3 pt-4 border-t border-surface-200/50">
-        <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-semibold text-xs">
+      <div className={cn('flex items-center gap-3 pt-4 border-t', featured ? 'border-white/15' : 'border-surface-200/50')}>
+        <div className="h-9 w-9 rounded-full bg-gradient-to-br from-[#194296] to-[#43AA43] flex items-center justify-center text-white font-semibold text-xs">
           {name.charAt(0)}
         </div>
         <div>
-          <p className="font-semibold text-surface-950 text-sm">{name}</p>
-          <p className="text-surface-400 text-xs">
+          <p className={cn('font-semibold text-sm', featured ? 'text-white' : 'text-surface-800')}>{name}</p>
+          <p className={cn('text-xs', featured ? 'text-white/50' : 'text-surface-400')}>
             {role}{company && ` — ${company}`}
           </p>
         </div>

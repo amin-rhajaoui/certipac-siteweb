@@ -13,14 +13,14 @@ export default function Temoignages() {
     <PageWrapper>
       <SEOHead
         title="Témoignages"
-        description="Découvrez les avis de plus de 2 500 artisans RGE qui utilisent PACIZZY au quotidien."
+        description="Découvrez les avis de plus de 2 500 artisans RGE qui utilisent Certipac pour poser leurs PAC en toute sérénité."
       />
 
       <HeroSection
         badge="Témoignages"
-        title="La parole à nos"
-        highlight="utilisateurs"
-        description="Plus de 2 500 artisans RGE utilisent PACIZZY au quotidien. Voici ce qu'ils en pensent."
+        title="Ils posent leurs PAC"
+        highlight="sereinement"
+        description="Plus de 2 500 artisans RGE font confiance à Certipac pour les guider au quotidien. Voici ce qu'ils en pensent."
       />
 
       <SectionWrapper>
@@ -39,7 +39,7 @@ export default function Temoignages() {
 
       <CTASection
         title="Rejoignez-les !"
-        description="Essayez PACIZZY gratuitement pendant 1 mois et constatez la différence par vous-même."
+        description="Essayez Certipac gratuitement et posez vos PAC en toute sérénité dès le premier chantier."
       />
     </PageWrapper>
   )

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+  <rect width="220" height="60" rx="8" fill="#1D1D1B"/>
+  <text x="110" y="28" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="16" fill="#FFFFFF">MaPrimeRénov'</text>
+  <rect x="40" y="36" width="140" height="4" rx="2" fill="url(#mpr-gradient)"/>
+  <text x="110" y="52" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="7" fill="#FFFFFF" opacity="0.7">Aide à la rénovation énergétique</text>
+  <defs>
+    <linearGradient id="mpr-gradient" x1="40" y1="38" x2="180" y2="38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#003DA5"/>
+      <stop offset="0.33" stop-color="#FFD700"/>
+      <stop offset="0.66" stop-color="#E74C3C"/>
+      <stop offset="1" stop-color="#27AE60"/>
+    </linearGradient>
+  </defs>
+</svg>

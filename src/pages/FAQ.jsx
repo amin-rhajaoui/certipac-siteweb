@@ -14,14 +14,14 @@ export default function FAQ() {
     <PageWrapper>
       <SEOHead
         title="FAQ"
-        description="Toutes les réponses à vos questions sur PACIZZY : fonctionnalités, tarifs, support, conformité et plus encore."
+        description="Toutes les réponses à vos questions sur Certipac : app mobile, dimensionnement, signature électronique, dossiers conformes, tarifs et support."
       />
 
       <HeroSection
         badge="FAQ"
         title="Questions"
         highlight="fréquentes"
-        description="Retrouvez les réponses aux questions les plus courantes. Vous ne trouvez pas ce que vous cherchez ? Contactez-nous !"
+        description="Retrouvez les réponses aux questions les plus courantes sur Certipac. Vous ne trouvez pas ce que vous cherchez ? Contactez-nous !"
         secondaryCTA={{ label: 'Nous contacter', to: '/contact' }}
       />
 

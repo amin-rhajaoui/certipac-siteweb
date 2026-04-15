@@ -4,13 +4,13 @@ import { cn } from '@/lib/utils'
 
 const variants = {
   primary:
-    'bg-primary-500 text-white hover:bg-primary-600',
+    'bg-[#194296] text-white hover:bg-[#143578]',
   secondary:
-    'bg-accent-500 text-white hover:bg-accent-600',
+    'bg-[#43AA43] text-white hover:bg-[#369236]',
   outline:
-    'border border-surface-200 text-surface-700 hover:border-primary-500 hover:text-primary-500',
+    'border border-surface-300 text-surface-700 hover:border-[#194296] hover:text-[#194296]',
   ghost:
-    'text-surface-500 hover:text-primary-400',
+    'text-surface-600 hover:text-[#194296]',
 }
 
 const sizes = {

@@ -17,14 +17,14 @@ export default function MentionsLegales() {
           <section>
             <h2 className="text-2xl font-bold text-surface-900 mb-4">1. Éditeur du site</h2>
             <p>
-              Le site pacizzy.fr est édité par la société PACIZZY SAS, au capital de 10 000 euros,
+              Le site certipac.fr est édité par la société Certipac SAS, au capital de 10 000 euros,
               immatriculée au Registre du Commerce et des Sociétés de Paris sous le numéro
               RCS Paris XXX XXX XXX.
             </p>
             <ul className="mt-4 space-y-2">
               <li><strong>Siège social :</strong> Paris, France</li>
               <li><strong>Directeur de la publication :</strong> Alexandre Fontaine</li>
-              <li><strong>Email :</strong> contact@pacizzy.fr</li>
+              <li><strong>Email :</strong> contact@certipac.fr</li>
               <li><strong>Téléphone :</strong> 01 23 45 67 89</li>
             </ul>
           </section>
@@ -40,11 +40,11 @@ export default function MentionsLegales() {
           <section>
             <h2 className="text-2xl font-bold text-surface-900 mb-4">3. Propriété intellectuelle</h2>
             <p>
-              L'ensemble des contenus présents sur le site pacizzy.fr (textes, images, graphismes,
-              logo, icônes, logiciels) sont la propriété exclusive de PACIZZY SAS ou de ses
+              L'ensemble des contenus présents sur le site certipac.fr (textes, images, graphismes,
+              logo, icônes, logiciels) sont la propriété exclusive de Certipac SAS ou de ses
               partenaires. Toute reproduction, représentation, modification, publication ou
               adaptation de tout ou partie de ces éléments est interdite sans autorisation
-              préalable écrite de PACIZZY SAS.
+              préalable écrite de Certipac SAS.
             </p>
           </section>
 
@@ -71,9 +71,9 @@ export default function MentionsLegales() {
           <section>
             <h2 className="text-2xl font-bold text-surface-900 mb-4">6. Limitation de responsabilité</h2>
             <p>
-              PACIZZY SAS s'efforce de fournir des informations exactes et à jour sur ce site.
+              Certipac SAS s'efforce de fournir des informations exactes et à jour sur ce site.
               Toutefois, elle ne peut garantir l'exactitude, la complétude ou l'actualité des
-              informations diffusées. PACIZZY SAS décline toute responsabilité pour tout
+              informations diffusées. Certipac SAS décline toute responsabilité pour tout
               dommage résultant de l'utilisation des informations contenues sur ce site.
             </p>
           </section>

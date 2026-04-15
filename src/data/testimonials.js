@@ -4,7 +4,7 @@ export const testimonials = [
     role: 'Gérant',
     company: 'Durand Énergie',
     content:
-      'Depuis que j\'utilise PACIZZY, je gagne 2 heures par dossier. Les devis sont professionnels et mes clients sont impressionnés par la rapidité.',
+      'Avant Certipac, le dimensionnement et la paperasse me stressaient. Maintenant l\'app me guide du premier relevé jusqu\'au dossier final. Je gagne 2 heures par chantier et je ne fais plus d\'erreurs.',
     rating: 5,
   },
   {
@@ -12,7 +12,7 @@ export const testimonials = [
     role: 'Responsable technique',
     company: 'EcoTherm Solutions',
     content:
-      'La conformité automatique est un vrai game-changer. Plus de stress lors des contrôles, tout est toujours à jour avec les dernières réglementations.',
+      'La signature électronique et le dossier conforme généré automatiquement ont tout changé. On enchaîne les chantiers sans stress. Les primes tombent, les clients sont contents.',
     rating: 5,
   },
   {
@@ -20,7 +20,7 @@ export const testimonials = [
     role: 'Artisan RGE indépendant',
     company: null,
     content:
-      'En tant qu\'indépendant, le temps c\'est de l\'argent. PACIZZY me permet de traiter 3 fois plus de dossiers par semaine. L\'investissement est rentabilisé dès le premier mois.',
+      'En tant qu\'indépendant, je n\'avais personne pour vérifier mes dossiers. Certipac me guide pas à pas : dimensionnement, devis, dossier ANAH et CEE. Je suis serein à chaque installation.',
     rating: 5,
   },
   {
@@ -28,7 +28,7 @@ export const testimonials = [
     role: 'Directrice',
     company: 'Leclerc & Fils Chauffage',
     content:
-      'Nous avons équipé toute notre équipe de 8 techniciens. Le tableau de bord centralisé nous donne une vision claire de l\'activité. Support réactif et efficace.',
+      'On a équipé nos 8 techniciens avec l\'app mobile. Les visites techniques sont standardisées, les devis partent le jour même et les dossiers sont toujours conformes. Un vrai gain de productivité.',
     rating: 5,
   },
   {
@@ -36,7 +36,7 @@ export const testimonials = [
     role: 'Installateur PAC',
     company: 'Roux Climatisation',
     content:
-      'Interface intuitive, même pour quelqu\'un qui n\'est pas à l\'aise avec l\'informatique. Les exports directs vers l\'ANAH font gagner un temps fou.',
+      'Le dimensionnement automatique, c\'est ce qui m\'a convaincu. Plus besoin de sortir mes tableaux Excel. Certipac calcule la puissance, me propose les modèles et génère le devis. Impeccable.',
     rating: 4,
   },
   {
@@ -44,7 +44,7 @@ export const testimonials = [
     role: 'Assistante administrative',
     company: 'ProClim 76',
     content:
-      'Je gère toute la partie administrative des dossiers PAC. PACIZZY a simplifié mon quotidien, les formulaires pré-remplis évitent les erreurs de saisie.',
+      'Je gère le suivi des dossiers et des primes. Avec le tableau de bord, je vois en un clin d\'œil où en est chaque chantier. Plus aucun dossier ne tombe entre les mailles du filet.',
     rating: 5,
   },
   {
@@ -52,15 +52,15 @@ export const testimonials = [
     role: 'Chef d\'entreprise',
     company: 'Garcia Énergies Nouvelles',
     content:
-      'Après avoir testé 3 solutions concurrentes, PACIZZY est clairement la plus complète et la plus simple. Le rapport qualité-prix est imbattable.',
+      'La gestion commerciale intégrée a boosté notre taux de conversion. On suit les prospects, on relance au bon moment, et le devis avec le reste à charge convainc les clients immédiatement.',
     rating: 5,
   },
   {
     name: 'Élodie Moreau',
-    role: 'Technicienne',
+    role: 'Technicienne terrain',
     company: 'Moreau Chauffage',
     content:
-      'Les mises à jour automatiques des barèmes MaPrimeRénov\' sont un vrai plus. On n\'a plus besoin de vérifier manuellement les montants.',
+      'L\'app mobile sur le terrain, c\'est un game-changer. Je fais la visite technique, le dimensionnement et le devis directement chez le client. Même hors connexion, tout fonctionne.',
     rating: 5,
   },
 ]

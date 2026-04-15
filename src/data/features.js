@@ -1,111 +1,110 @@
 import {
+  ClipboardCheck,
+  Ruler,
+  Package,
   FileText,
+  PenTool,
+  Building2,
+  Leaf,
   Calculator,
-  Shield,
-  Zap,
   Users,
+  HardHat,
+  Smartphone,
   BarChart3,
-  Download,
-  RefreshCw,
-  Settings,
-  Headphones,
-  Cloud,
-  Lock,
 } from 'lucide-react'
 
 export const features = [
   {
-    icon: FileText,
-    title: 'Génération de dossiers',
+    icon: ClipboardCheck,
+    title: 'Visite technique guidée',
     description:
-      'Créez des dossiers complets et conformes en quelques clics. Formulaires pré-remplis, pièces justificatives automatiques, mise en page professionnelle.',
-    category: 'Productivité',
+      'L\'app mobile vous guide pas à pas pendant la visite chez le client : relevés, photos, caractéristiques du logement. Rien n\'est oublié.',
+    category: 'Terrain',
+  },
+  {
+    icon: Ruler,
+    title: 'Dimensionnement automatique',
+    description:
+      'Calcul automatique de la puissance PAC nécessaire selon la surface, l\'isolation et la zone climatique. Fini les erreurs de dimensionnement.',
+    category: 'Technique',
+  },
+  {
+    icon: Package,
+    title: 'Choix du modèle PAC',
+    description:
+      'Accédez au catalogue des PAC compatibles avec le dimensionnement calculé. Comparez les modèles, les COP et les prix en un coup d\'œil.',
+    category: 'Technique',
+  },
+  {
+    icon: FileText,
+    title: 'Devis professionnel',
+    description:
+      'Générez un devis complet et personnalisé avec votre logo, vos marges, le détail des aides et le reste à charge client. Prêt à envoyer.',
+    category: 'Commercial',
+  },
+  {
+    icon: PenTool,
+    title: 'Signature électronique',
+    description:
+      'Votre client signe le devis directement sur tablette ou par email. Valeur légale, horodatage, archivage automatique.',
+    category: 'Commercial',
+  },
+  {
+    icon: Building2,
+    title: 'Dossier ANAH conforme',
+    description:
+      'Le dossier MaPrimeRénov\' est généré automatiquement avec toutes les pièces requises. Conforme aux exigences de l\'ANAH, prêt au dépôt.',
+    category: 'Conformité',
+  },
+  {
+    icon: Leaf,
+    title: 'Dossier CEE conforme',
+    description:
+      'Attestations et documents CEE générés automatiquement. Calcul des volumes de kWh cumac selon la fiche d\'opération standardisée.',
+    category: 'Conformité',
   },
   {
     icon: Calculator,
-    title: 'Devis automatiques',
+    title: 'Calcul des aides',
     description:
-      'Calculez automatiquement le coût des installations PAC avec prix des équipements, main d\'œuvre et marges. Export PDF professionnel.',
-    category: 'Productivité',
-  },
-  {
-    icon: Shield,
-    title: 'Conformité garantie',
-    description:
-      'Zéro risque de non-conformité. Nos modèles sont mis à jour en temps réel selon les évolutions réglementaires RGE et les exigences des organismes certificateurs.',
-    category: 'Conformité',
-  },
-  {
-    icon: Zap,
-    title: 'Rapidité d\'exécution',
-    description:
-      'Divisez par 5 le temps de création de vos dossiers. Ce qui prenait 2 heures ne prend plus que 20 minutes.',
-    category: 'Productivité',
+      'MaPrimeRénov\', CEE, éco-PTZ, aides locales : Certipac calcule toutes les aides et affiche le reste à charge réel sur le devis.',
+    category: 'Financement',
   },
   {
     icon: Users,
-    title: 'Gestion d\'équipe',
+    title: 'Gestion commerciale',
     description:
-      'Attribuez des dossiers à vos collaborateurs, suivez l\'avancement en temps réel et centralisez la communication.',
-    category: 'Collaboration',
-  },
-  {
-    icon: BarChart3,
-    title: 'Tableau de bord',
-    description:
-      'Visualisez votre activité en un coup d\'œil : dossiers en cours, revenus générés, taux de conversion, statistiques mensuelles.',
+      'Pipeline de prospects, suivi des relances, taux de conversion : gérez toute votre activité commerciale depuis un seul endroit.',
     category: 'Pilotage',
   },
   {
-    icon: Download,
-    title: 'Export multi-formats',
+    icon: HardHat,
+    title: 'Suivi des chantiers',
     description:
-      'Exportez vos dossiers en PDF, Excel ou directement vers les plateformes des organismes (ANAH, CEE).',
-    category: 'Productivité',
+      'Planifiez vos interventions, suivez l\'avancement des chantiers et recevez des alertes sur les étapes clés.',
+    category: 'Pilotage',
   },
   {
-    icon: RefreshCw,
-    title: 'Mises à jour automatiques',
+    icon: Smartphone,
+    title: 'App mobile terrain',
     description:
-      'Les barèmes MaPrimeRénov\', CEE et les formulaires réglementaires sont mis à jour automatiquement dès leur publication officielle.',
-    category: 'Conformité',
+      'Tout Certipac dans votre poche. Visite technique, devis, signature : travaillez directement sur le terrain, même hors connexion.',
+    category: 'Terrain',
   },
   {
-    icon: Settings,
-    title: 'Personnalisation',
+    icon: BarChart3,
+    title: 'Tableau de bord & pilotage',
     description:
-      'Ajoutez votre logo, vos coordonnées et personnalisez l\'apparence de vos devis et dossiers à l\'image de votre entreprise.',
-    category: 'Personnalisation',
-  },
-  {
-    icon: Headphones,
-    title: 'Support dédié',
-    description:
-      'Une équipe d\'experts en rénovation énergétique à votre disposition par chat, email et téléphone.',
-    category: 'Support',
-  },
-  {
-    icon: Cloud,
-    title: 'Cloud sécurisé',
-    description:
-      'Toutes vos données stockées en France sur des serveurs sécurisés. Accédez à vos dossiers depuis n\'importe quel appareil.',
-    category: 'Sécurité',
-  },
-  {
-    icon: Lock,
-    title: 'RGPD & Sécurité',
-    description:
-      'Conforme RGPD, chiffrement de bout en bout, sauvegardes automatiques quotidiennes et authentification deux facteurs.',
-    category: 'Sécurité',
+      'CA généré, dossiers en cours, primes à encaisser, performance de l\'équipe : pilotez votre activité avec des indicateurs clairs.',
+    category: 'Pilotage',
   },
 ]
 
 export const featureCategories = [
-  'Productivité',
+  'Terrain',
+  'Technique',
+  'Commercial',
   'Conformité',
-  'Collaboration',
+  'Financement',
   'Pilotage',
-  'Personnalisation',
-  'Support',
-  'Sécurité',
 ]

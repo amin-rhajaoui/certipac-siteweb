@@ -28,11 +28,10 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-[#0A0F1C]/90 backdrop-blur-xl border-b border-surface-200/30'
+          ? 'bg-white/92 backdrop-blur-xl shadow-soft'
           : 'bg-transparent'
       )}
     >
-      {/* Brand bar from brand book */}
       <div className="brand-bar" />
 
       <Container>
@@ -48,8 +47,8 @@ export default function Navbar() {
                 className={cn(
                   'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
                   location.pathname === link.path
-                    ? 'text-primary-500 bg-primary-500/10'
-                    : 'text-surface-500 hover:text-primary-500 hover:bg-surface-100'
+                    ? 'text-[#194296] bg-[#194296]/8'
+                    : 'text-surface-600 hover:text-[#194296] hover:bg-surface-100'
                 )}
               >
                 {link.label}
@@ -69,7 +68,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-lg text-surface-500 hover:bg-surface-100 cursor-pointer"
+            className="lg:hidden p-2 rounded-lg text-surface-600 hover:bg-surface-100 cursor-pointer"
             aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -85,7 +84,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden bg-[#0A0F1C]/95 backdrop-blur-lg border-t border-surface-200/50 overflow-hidden"
+            className="lg:hidden bg-white/95 backdrop-blur-lg overflow-hidden"
           >
             <Container className="py-4 space-y-1">
               {NAV_LINKS.map((link, i) => (
@@ -100,15 +99,15 @@ export default function Navbar() {
                     className={cn(
                       'block px-4 py-3 rounded-lg text-base font-medium transition-colors',
                       location.pathname === link.path
-                        ? 'text-primary-500 bg-primary-500/10'
-                        : 'text-surface-500 hover:text-primary-500 hover:bg-surface-100'
+                        ? 'text-[#194296] bg-[#194296]/8'
+                        : 'text-surface-600 hover:text-[#194296] hover:bg-surface-100'
                     )}
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-              <div className="pt-4 space-y-2 border-t border-surface-200 mt-2">
+              <div className="pt-4 space-y-2 mt-2">
                 <Button variant="outline" size="md" to="/contact" className="w-full">
                   {CTA_TEXT.secondary}
                 </Button>

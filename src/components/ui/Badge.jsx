@@ -1,10 +1,11 @@
 import { cn } from '@/lib/utils'
 
 const variants = {
-  primary: 'bg-primary-500/10 text-primary-400 border border-primary-500/20',
-  accent: 'bg-accent-500/10 text-accent-400 border border-accent-500/20',
-  amber: 'bg-amber-500/10 text-amber-400 border border-amber-500/20',
-  surface: 'bg-surface-100/50 text-surface-500 border border-surface-200/50',
+  primary: 'bg-[#194296]/10 text-[#194296]',
+  accent: 'bg-[#43AA43]/10 text-[#43AA43]',
+  accentSolid: 'bg-[#43AA43] text-white',
+  amber: 'bg-amber-500/10 text-amber-600',
+  surface: 'bg-surface-100 text-surface-500',
 }
 
 export default function Badge({ children, variant = 'primary', className }) {

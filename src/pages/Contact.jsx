@@ -14,7 +14,7 @@ import { COMPANY_INFO } from '@/lib/constants'
 
 const subjectOptions = [
   { value: '', label: 'Sélectionnez un sujet' },
-  { value: 'demo', label: 'Demander une démo' },
+  { value: 'demo', label: 'Voir une démo' },
   { value: 'essai', label: 'Essai gratuit' },
   { value: 'tarif', label: 'Question sur les tarifs' },
   { value: 'support', label: 'Support technique' },
@@ -34,7 +34,7 @@ export default function Contact() {
     <PageWrapper>
       <SEOHead
         title="Contact"
-        description="Contactez l'équipe PACIZZY. Demandez une démo, posez vos questions ou demandez un devis personnalisé."
+        description="Contactez l'équipe Certipac. Demandez une démo, posez vos questions sur le logiciel, l'app mobile ou les dossiers conformes."
       />
 
       <section className="bg-surface-50 py-24 lg:py-32">
@@ -47,11 +47,11 @@ export default function Contact() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl font-extrabold text-surface-900 sm:text-5xl">
-                Parlons de votre <span className="text-primary-500">projet</span>
+                Parlons de votre <span className="text-primary-500">activité</span>
               </h1>
               <p className="mt-6 text-lg text-surface-600 leading-relaxed">
-                Notre équipe est à votre disposition pour répondre à toutes vos questions
-                et vous accompagner dans la prise en main de PACIZZY.
+                Notre équipe est à votre disposition pour vous montrer comment Certipac
+                peut vous guider au quotidien : visite technique, dimensionnement, dossiers conformes.
               </p>
 
               <div className="mt-10 space-y-6">
@@ -103,7 +103,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="rounded-2xl bg-surface-100 p-8 shadow-card border border-surface-200"
+              className="rounded-2xl bg-surface-100 p-8 shadow-card"
             >
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
