@@ -26,10 +26,10 @@ const stats = [
 ]
 
 const valueProps = [
-  'Visite technique guidée sur le terrain',
-  'Dimensionnement & choix du modèle PAC',
-  'Devis + signature électronique',
-  'Dossiers conformes ANAH, CEE, MaPrimeRénov\'',
+  'Installateur : visite technique et dimensionnement guidés sur le terrain',
+  'Commercial : devis et signature électronique, vente qui avance',
+  'Mise en service : dossiers conformes et pièces prêtes pour le contrôle',
+  'Aides : dossiers ANAH, CEE, MaPrimeRénov\'',
 ]
 
 const partnerLogos = [
@@ -44,15 +44,15 @@ export default function Accueil() {
     <PageWrapper>
       <SEOHead
         title="Accueil"
-        description="Certipac — Le logiciel + app mobile qui guide les artisans RGE de A à Z : visite technique, dimensionnement, devis, signature électronique et dossiers conformes pour toucher les primes."
+        description="Certipac — Logiciel et app pour équipes PAC : installateurs, commerciaux et mise en service sur un même fil. Visite, dimensionnement, devis, signatures et dossiers conformes jusqu'aux primes."
       />
 
       {/* Hero */}
       <HeroSection
         badge="Essai gratuit 1 mois — sans engagement"
-        title="Posez vos PAC"
-        highlight="en toute sérénité."
-        description="Certipac vous guide de A à Z : visite technique, dimensionnement, devis, signature électronique et dossiers conformes. Zéro stress, zéro erreur."
+        title="Installateur, commercial,"
+        highlight="mise en service : un seul outil."
+        description="Le terrain et le bureau sur le même fil : visite et dimensionnement pour les poseurs, devis et signatures pour la vente, dossiers conformes et livrables pour la mise en service. Certipac guide chaque étape jusqu'aux primes, avec moins d'allers-retours."
         primaryCTA={{ label: 'Essayer gratuitement', href: 'https://app.certipac.fr' }}
         secondaryCTA={{ label: 'Voir une démo', to: '/comment-ca-marche' }}
         footer={
@@ -61,13 +61,13 @@ export default function Accueil() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center"
           >
             {valueProps.map((prop, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="flex items-center gap-3"
+                className="flex max-w-sm items-center justify-center gap-3 text-center sm:max-w-md"
               >
                 <CheckCircle className="h-5 w-5 text-[#43AA43] shrink-0" />
                 <span className="text-surface-700 font-medium text-sm">{prop}</span>
@@ -104,11 +104,11 @@ export default function Accueil() {
           <motion.div variants={fadeUp}>
             <Badge className="mb-4">Fonctionnalités</Badge>
             <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">
-              Tout ce qu'il faut pour<br className="hidden sm:block" /> poser vos PAC sereinement
+              Tout ce qu'il faut pour<br className="hidden sm:block" /> faire avancer vos PAC
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Du terrain au bureau, Certipac guide chaque étape de votre activité.
+            Installateur, commercial ou mise en service : un flux commun, de la prise de contact aux dossiers finaux.
           </motion.p>
         </div>
         <FeatureGrid features={features.slice(0, 6)} />
@@ -154,11 +154,11 @@ export default function Accueil() {
           <motion.div variants={fadeUp}>
             <Badge className="mb-4">Témoignages</Badge>
             <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">
-              Ils posent leurs PAC sereinement
+              Les équipes en parlent
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Plus de 2 500 artisans RGE font confiance à Certipac au quotidien.
+            Installateurs, commerciaux et mise en service : plus de 2 500 entreprises RGE s'appuient sur Certipac au quotidien.
           </motion.p>
         </div>
         <motion.div
@@ -177,7 +177,7 @@ export default function Accueil() {
           <motion.div variants={fadeUp}>
             <Badge variant="amber" className="mb-4">Tarifs</Badge>
             <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">
-              Un prix adapté à chaque artisan
+              Un prix adapté à votre structure
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
@@ -195,7 +195,10 @@ export default function Accueil() {
       </SectionWrapper>
 
       {/* CTA */}
-      <CTASection />
+      <CTASection
+        title="Prêt à aligner toute l'équipe PAC ?"
+        description="Essai gratuit 1 mois, sans engagement. Installateurs, commerciaux et mise en service : le même outil, du terrain aux primes."
+      />
     </PageWrapper>
   )
 }

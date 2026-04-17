@@ -125,7 +125,9 @@ export default function HeroSection({
             {heroGrid}
           </Container>
           <div className="relative z-10 mt-auto w-full shrink-0">
-            <Container className="pt-10 lg:pt-12">{footer}</Container>
+            <Container className="pt-10 lg:pt-12">
+              <div className="mx-auto w-full max-w-6xl">{footer}</div>
+            </Container>
             <div className="brand-bar mt-6 lg:mt-8" aria-hidden />
           </div>
         </>
