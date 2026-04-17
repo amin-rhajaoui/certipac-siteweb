@@ -1,4 +1,24 @@
 export const NAV_LINKS = [
+  {
+    label: 'Pour qui ?',
+    children: [
+      {
+        label: 'Installateurs & poseurs',
+        path: '/installateurs',
+        description: 'Artisans RGE et équipes de pose sur le terrain',
+      },
+      {
+        label: 'Commerciaux PAC',
+        path: '/commerciaux',
+        description: 'Équipes de vente : éligibilité, devis, signature',
+      },
+      {
+        label: 'Entreprises & professionnels',
+        path: '/professionnels',
+        description: 'Pilotage multi-équipes et conformité globale',
+      },
+    ],
+  },
   { label: 'Fonctionnalités', path: '/fonctionnalites' },
   { label: 'Comment ça marche', path: '/comment-ca-marche' },
   { label: 'Tarifs', path: '/tarifs' },
