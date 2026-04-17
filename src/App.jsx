@@ -4,6 +4,8 @@ import Layout from '@/components/layout/Layout'
 
 const Accueil = lazy(() => import('@/pages/Accueil'))
 const AccueilCommerciaux = lazy(() => import('@/pages/AccueilCommerciaux'))
+const AccueilProfessionnels = lazy(() => import('@/pages/AccueilProfessionnels'))
+const AccueilInstallateurs = lazy(() => import('@/pages/AccueilInstallateurs'))
 const Fonctionnalites = lazy(() => import('@/pages/Fonctionnalites'))
 const CommentCaMarche = lazy(() => import('@/pages/CommentCaMarche'))
 const Tarifs = lazy(() => import('@/pages/Tarifs'))
@@ -35,6 +37,8 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<Accueil />} />
           <Route path="commerciaux" element={<AccueilCommerciaux />} />
+          <Route path="professionnels" element={<AccueilProfessionnels />} />
+          <Route path="installateurs" element={<AccueilInstallateurs />} />
           <Route path="fonctionnalites" element={<Fonctionnalites />} />
           <Route path="comment-ca-marche" element={<CommentCaMarche />} />
           <Route path="tarifs" element={<Tarifs />} />

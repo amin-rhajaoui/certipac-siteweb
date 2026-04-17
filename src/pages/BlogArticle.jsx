@@ -16,7 +16,10 @@ export default function BlogArticle() {
   if (!post) {
     return (
       <PageWrapper>
-        <SEOHead title="Article non trouvé" />
+        <SEOHead
+          title="Article non trouvé"
+          description="Cet article du blog Certipac n'existe pas ou a été déplacé. Retrouvez tous nos guides et actualités sur la pose de PAC et les aides à la rénovation."
+        />
         <Container className="py-32 text-center">
           <h1 className="text-3xl font-bold text-surface-900 mb-4">Article non trouvé</h1>
           <p className="text-surface-600 mb-8">Cet article n'existe pas ou a été déplacé.</p>

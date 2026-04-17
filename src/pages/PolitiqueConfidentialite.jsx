@@ -5,7 +5,10 @@ import Container from '@/components/ui/Container'
 export default function PolitiqueConfidentialite() {
   return (
     <PageWrapper>
-      <SEOHead title="Politique de confidentialité" />
+      <SEOHead
+        title="Politique de confidentialité"
+        description="Comment Certipac collecte, utilise et protège vos données personnelles, conformément au RGPD : finalités, durée de conservation et exercice de vos droits."
+      />
       <div className="bg-surface-50 py-20">
         <Container className="max-w-4xl">
           <h1 className="text-4xl font-extrabold text-surface-900">Politique de confidentialité</h1>

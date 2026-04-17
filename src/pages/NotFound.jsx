@@ -8,7 +8,10 @@ import Button from '@/components/ui/Button'
 export default function NotFound() {
   return (
     <PageWrapper>
-      <SEOHead title="Page non trouvée" />
+      <SEOHead
+        title="Page non trouvée"
+        description="La page demandée n'existe pas ou a été déplacée. Retournez à l'accueil Certipac ou contactez notre équipe."
+      />
       <Container className="py-32 lg:py-44">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

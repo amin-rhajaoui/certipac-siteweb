@@ -5,7 +5,10 @@ import Container from '@/components/ui/Container'
 export default function MentionsLegales() {
   return (
     <PageWrapper>
-      <SEOHead title="Mentions légales" />
+      <SEOHead
+        title="Mentions légales"
+        description="Mentions légales du site certipac.fr : éditeur, hébergement, propriété intellectuelle et traitement des données personnelles."
+      />
       <div className="bg-surface-50 py-20">
         <Container className="max-w-4xl">
           <h1 className="text-4xl font-extrabold text-surface-900">Mentions légales</h1>

@@ -8,6 +8,8 @@ export const NAV_LINKS = [
 
 export const FOOTER_LINKS = {
   produit: [
+    { label: 'Professionnels / entreprises', path: '/professionnels' },
+    { label: 'Installateurs & artisans', path: '/installateurs' },
     { label: 'Commerciaux PAC', path: '/commerciaux' },
     { label: 'Fonctionnalités', path: '/fonctionnalites' },
     { label: 'Tarifs', path: '/tarifs' },

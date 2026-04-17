@@ -5,7 +5,10 @@ import Container from '@/components/ui/Container'
 export default function CGV() {
   return (
     <PageWrapper>
-      <SEOHead title="Conditions Générales de Vente" />
+      <SEOHead
+        title="Conditions Générales de Vente"
+        description="Conditions Générales de Vente du service Certipac : forfaits, durée, résiliation, responsabilité et propriété des données."
+      />
       <div className="bg-surface-50 py-20">
         <Container className="max-w-4xl">
           <h1 className="text-4xl font-extrabold text-surface-900">Conditions Générales de Vente</h1>
