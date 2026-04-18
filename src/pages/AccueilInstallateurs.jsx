@@ -1,323 +1,260 @@
-import { motion } from 'motion/react'
-import {
-  CheckCircle,
-  ClipboardCheck,
-  FileText,
-  Bell,
-  FolderCheck,
-  Handshake,
-} from 'lucide-react'
+import { CheckCircle, ClipboardCheck, FileText, Bell, FolderCheck, Handshake } from 'lucide-react'
 import PageWrapper from '@/components/layout/PageWrapper'
 import SEOHead from '@/components/shared/SEOHead'
 import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
+import SectionHeader from '@/components/sections/SectionHeader'
 import FeatureGrid from '@/components/sections/FeatureGrid'
 import StatCounter from '@/components/sections/StatCounter'
 import TestimonialCard from '@/components/sections/TestimonialCard'
 import PricingCard from '@/components/sections/PricingCard'
 import CTASection from '@/components/sections/CTASection'
 import DashboardMockup from '@/components/sections/DashboardMockup'
-import Badge from '@/components/ui/Badge'
-import { fadeUp, staggerContainer } from '@/lib/animations'
+import PartenairesStrip from '@/components/sections/PartenairesStrip'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 import { features } from '@/data/features'
 import { plans } from '@/data/pricing'
 import { testimonials } from '@/data/testimonials'
+import { CTA_TEXT, APP_URL } from '@/lib/constants'
 
 const stats = [
-  { value: 2500, suffix: '+', label: 'Artisans guidés' },
-  { value: 50000, suffix: '+', label: 'PAC installées' },
-  { value: 98, suffix: '%', label: 'Dossiers conformes' },
-  { value: 5, suffix: 'x', label: 'Plus rapide' },
+  { value: 2500, suffix: '+', label: 'Artisans RGE accompagnés', reference: 'Indicateur · A' },
+  { value: 50000, suffix: '+', label: 'PAC installées conformes', reference: 'Indicateur · B' },
+  { value: 98, suffix: '%', label: 'Dossiers acceptés au dépôt', reference: 'Indicateur · C' },
+  { value: 5, suffix: 'x', label: 'Gain de temps administratif', reference: 'Indicateur · D' },
 ]
 
 const valueProps = [
-  'Concentrez-vous sur la pose : devis, signatures et relances sont cadrés dans l\'app',
-  'Dossiers MaPrimeRénov\', CEE et ANAH guidés pour éviter les oublis et les retours',
-  'Suivi des subventions et des primes sans tableur ni dossier éparpillé',
-  'Un cadre simple pour avancer avec vos partenaires et rester conforme',
-]
-
-const partnerLogos = [
-  { src: '/logo-anah.svg', alt: 'ANAH' },
-  { src: '/logo-maprimerenov.svg', alt: 'MaPrimeRénov\'' },
-  { src: '/logo-cee.svg', alt: 'CEE' },
-  { src: '/logo-rge.svg', alt: 'RGE Qualibat' },
+  { title: 'Aucun bureau administratif requis', body: "Devis, signatures et relances sont cadrés dans l'application." },
+  { title: 'Dossiers conformes au dépôt', body: "MaPrimeRénov', CEE et ANAH guidés pour éviter les retours." },
+  { title: 'Suivi des primes lisible', body: 'Sans tableur ni dossier éparpillé, avec un historique complet.' },
+  { title: 'Cadre commun aux partenaires', body: 'Fournisseurs, bureaux de contrôle et mandataires sur la même base.' },
 ]
 
 const installerSteps = [
   {
-    number: 1,
-    icon: ClipboardCheck,
-    title: 'Visite & dimensionnement',
-    description:
-      'Sur le terrain, l\'app vous guide : relevés, photos, puissance à prévoir. Même si vous n\'avez pas une organisation « bureau », vous gardez une base technique solide.',
-    result: 'Moins d\'improvisation, plus de chantiers posés dans les bonnes conditions.',
+    number: 1, icon: ClipboardCheck, title: 'Visite & dimensionnement',
+    description: "Relevés, photos, puissance à prévoir. L'application guide chaque étape, y compris en mode hors connexion.",
+    result: "Moins d'improvisation, des chantiers posés dans les bonnes conditions.",
   },
   {
-    number: 2,
-    icon: FileText,
-    title: 'Devis & signature',
-    description:
-      'Générez un devis clair avec le détail des aides et le reste à charge, puis faites signer électroniquement : vous évitez les allers-retours papier.',
-    result: 'Des engagements clients plus rapides et mieux tracés.',
+    number: 2, icon: FileText, title: 'Devis & signature électronique',
+    description: 'Devis clair avec détail des aides et reste à charge, signature électronique légale sur place ou à distance.',
+    result: 'Engagements clients plus rapides et mieux tracés.',
   },
   {
-    number: 3,
-    icon: Bell,
-    title: 'Relances & suivi',
-    description:
-      'Relances client, pièces manquantes, jalons dossiers : le suivi est structuré pour que rien ne se perde entre deux chantiers.',
+    number: 3, icon: Bell, title: 'Relances & suivi',
+    description: 'Pièces manquantes, jalons dossiers, relances automatisées — rien ne se perd entre deux chantiers.',
     result: 'Moins de dossiers qui traînent après le retour de la machine.',
   },
   {
-    number: 4,
-    icon: FolderCheck,
-    title: 'Conformité des dossiers',
-    description:
-      'Les pièces attendues par MaPrimeRénov\', les CEE et l\'ANAH sont intégrées au parcours : vous déposez un dossier cohérent avec les exigences en vigueur.',
+    number: 4, icon: FolderCheck, title: 'Conformité des dossiers',
+    description: "MaPrimeRénov', CEE et ANAH intégrés au parcours. Vous déposez un dossier aligné avec les exigences en vigueur.",
     result: 'Moins de demandes de complément côté organismes.',
   },
   {
-    number: 5,
-    icon: Handshake,
-    title: 'Subventions & partenariats',
-    description:
-      'Visualisez les aides, le reste à charge et l\'avancement vers le versement des primes. Gardez une lecture simple pour vous et vos partenaires.',
-    result: 'Une vision claire sur l\'argent des aides sans monter un service compta.',
+    number: 5, icon: Handshake, title: 'Subventions & partenariats',
+    description: 'Aides, reste à charge et avancement vers le versement. Lecture simple, partagée avec vos partenaires.',
+    result: 'Vision claire sur les primes sans monter un service compta.',
   },
 ]
 
-const journeyBenefits = [
-  'Guidage pas à pas',
-  'Peu de structure interne requise',
-  'Du terrain au versement des primes',
-]
-
-const installerFeatures = [
-  features[0],
-  features[1],
-  features[2],
-  features[3],
-  features[4],
-  features[7],
-]
-
-const installerTestimonials = [
-  testimonials[2],
-  testimonials[4],
-  testimonials[0],
-]
+const installerFeatures = [features[0], features[1], features[2], features[3], features[4], features[7]]
+const installerTestimonials = [testimonials[2], testimonials[4], testimonials[0]]
 
 export default function AccueilInstallateurs() {
   return (
     <PageWrapper>
       <SEOHead
-        title="Installateurs PAC"
-        description="Certipac pour les installateurs et artisans RGE : posez vos PAC, l'app gère devis, signatures, relances, dossiers conformes ANAH, CEE et MaPrimeRénov', suivi des subventions et partenariats."
+        title="Installateurs & artisans RGE"
+        description="Certipac pour les installateurs et artisans RGE : posez vos PAC, l'application gère les devis, signatures, relances et dossiers conformes ANAH, CEE et MaPrimeRénov'."
+      />
+
+      <Breadcrumb
+        items={[
+          { label: 'Accueil', path: '/' },
+          { label: 'Pour qui', path: '/' },
+          { label: 'Artisans RGE & installateurs' },
+        ]}
       />
 
       <HeroSection
-        badge="Essai gratuit 1 mois — sans engagement"
+        eyebrow="Persona · 01 — Artisans RGE & installateurs"
+        reference="CTP-PERSONA-01"
         title="Vous savez poser des PAC,"
-        highlight="Certipac s'occupe du reste."
-        description="Peu de structure administrative ? Pas de problème : Certipac vous guide pour le devis, la signature électronique, les relances, la conformité des dossiers et le suivi des subventions. Vous restez concentré sur la pose et la qualité d'installation, tout en présentant des dossiers propres aux organismes et en gardant une lecture simple sur les aides et les partenariats."
-        primaryCTA={{ label: 'Essayer gratuitement', href: 'https://app.certipac.fr' }}
+        highlight="Certipac s'occupe du reste"
+        description="Essai gratuit 1 mois, sans engagement. Peu de structure administrative ? Certipac vous guide : devis, signature, relances, conformité et suivi des subventions. Vous restez concentré sur la pose et la qualité d'installation ; la plateforme présente des dossiers propres aux organismes et garde une lecture simple sur les aides."
+        primaryCTA={{ label: CTA_TEXT.primary, href: APP_URL }}
         secondaryCTA={{ label: 'Comment ça marche', to: '/comment-ca-marche' }}
-        footer={
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center"
-          >
-            {valueProps.map((prop, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                className="flex max-w-sm items-center justify-center gap-3 text-center sm:max-w-md"
-              >
-                <CheckCircle className="h-5 w-5 text-[#43AA43] shrink-0" />
-                <span className="text-surface-700 font-medium text-sm">{prop}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        }
+        metadata={[
+          { label: 'Audience', value: 'Artisan RGE · Indépendant' },
+          { label: 'Terminaux', value: 'Mobile · Tablette · Web' },
+          { label: 'Mode', value: 'En ligne et hors connexion' },
+          { label: 'Support', value: 'Email · Chat' },
+        ]}
       >
         <DashboardMockup />
       </HeroSection>
 
-      <section className="py-10 bg-surface-50">
-        <div className="mx-auto max-w-5xl px-6">
-          <p className="text-center text-sm text-surface-400 mb-6 font-medium tracking-wide uppercase">
-            Dossiers alignés sur MaPrimeRénov&apos;, CEE et ANAH
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {partnerLogos.map((logo) => (
-              <img
-                key={logo.alt}
-                src={logo.src}
-                alt={logo.alt}
-                className="h-10 w-auto opacity-70 hover:opacity-100 transition-opacity"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <PartenairesStrip />
 
-      <SectionWrapper id="features">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-          <motion.div variants={fadeUp}>
-            <Badge className="mb-4">Fonctionnalités</Badge>
-            <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">
-              De la visite au devis signé,
-              <br className="hidden sm:block" /> jusqu&apos;aux aides
-            </h2>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Le même fil conducteur que pour une grande équipe, adapté à un artisan qui veut avancer sans se noyer dans l&apos;administratif.
-          </motion.p>
+      {/* Value propositions */}
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="01 — Engagement produit"
+          eyebrow="Promesses opposables"
+          title="Quatre engagements pour l'artisan."
+        />
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E0E0E0]">
+          {valueProps.map((p, i) => (
+            <div key={p.title} className="bg-white p-5 sm:p-6 flex items-start gap-4">
+              <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252] pt-0.5">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <CheckCircle className="h-4 w-4 text-[#43AA43] shrink-0" strokeWidth={2.5} />
+                  <h3 className="text-[15px] font-semibold text-[#161616]">{p.title}</h3>
+                </div>
+                <p className="text-[13.5px] leading-[1.6] text-[#525252]">{p.body}</p>
+              </div>
+            </div>
+          ))}
         </div>
-        <FeatureGrid features={installerFeatures} />
       </SectionWrapper>
 
-      <SectionWrapper className="bg-surface-100/50" stagger>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-          <motion.div variants={fadeUp}>
-            <Badge variant="accent" className="mb-4">Parcours installateur</Badge>
-            <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">
-              Cinq étapes pour garder la tête sur la pose
-            </h2>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Certipac remplace le « système D » par un chemin clair : moins de stress, moins d&apos;oublis.
-          </motion.p>
+      {/* Features */}
+      <SectionWrapper tone="gray">
+        <SectionHeader
+          number="02 — Fonctionnalités installateur"
+          eyebrow="Capacités terrain"
+          title="De la visite au devis signé, jusqu'aux aides."
+          lede="Le même fil conducteur qu'une grande équipe, adapté à un artisan qui veut avancer sans se noyer dans l'administratif."
+        />
+        <div className="mt-12">
+          <FeatureGrid features={installerFeatures} />
         </div>
-        <motion.div variants={fadeUp} className="mb-8 flex flex-wrap items-center gap-2">
-          {journeyBenefits.map((benefit) => (
-            <span
-              key={benefit}
-              className="rounded-full border border-[#194296]/20 bg-white/80 px-3 py-1 text-xs font-semibold text-[#194296]"
-            >
-              {benefit}
-            </span>
-          ))}
-        </motion.div>
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"
-        >
+      </SectionWrapper>
+
+      {/* Parcours */}
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="03 — Parcours installateur"
+          eyebrow="Processus opposable"
+          title="Cinq étapes pour garder la tête sur la pose."
+          lede="Certipac remplace le système D par un chemin clair : moins de stress, moins d'oublis, des dossiers propres."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-[#E0E0E0]">
           {installerSteps.map((step) => {
             const Icon = step.icon
             return (
-              <motion.div
-                key={step.number}
-                variants={fadeUp}
-                className="h-full rounded-2xl border border-[#194296]/10 bg-white p-5 shadow-soft"
-              >
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#194296]/10 text-[#194296]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <span className="text-xs font-bold tracking-wide text-[#194296]">ETAPE {step.number}</span>
+              <article key={step.number} className="bg-white p-5 border-t-[3px] border-[#194296]">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#194296]">
+                    Étape {String(step.number).padStart(2, '0')}
+                  </span>
+                  <Icon className="h-4 w-4 text-[#525252]" strokeWidth={1.75} />
                 </div>
-                <h3 className="mb-2 text-base font-semibold text-surface-800">{step.title}</h3>
-                <p className="text-sm text-surface-500 leading-relaxed">{step.description}</p>
-                <p className="mt-4 border-t border-surface-100 pt-3 text-xs font-semibold text-[#43AA43]">
-                  Résultat: {step.result}
+                <h3 className="text-[15px] font-semibold text-[#161616] mb-2 leading-[1.3]">
+                  {step.title}
+                </h3>
+                <p className="text-[13px] leading-[1.55] text-[#525252]">{step.description}</p>
+                <p className="mt-4 pt-3 border-t border-[#E0E0E0] font-mono text-[11px] uppercase tracking-[0.06em] text-[#2A7A2A]">
+                  → {step.result}
                 </p>
-              </motion.div>
+              </article>
             )
           })}
-        </motion.div>
-      </SectionWrapper>
-
-      <SectionWrapper>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <motion.div
-            variants={fadeUp}
-            className="rounded-2xl border border-[#194296]/10 bg-white p-6 shadow-soft"
-          >
-            <Badge className="mb-4">Vous posez, on structure</Badge>
-            <h3 className="text-2xl font-bold text-[#194296]">
-              L&apos;administratif sans monter un bureau dédié
-            </h3>
-            <p className="mt-4 text-surface-600 leading-relaxed">
-              Devis, signatures, pièces attendues par les organismes et jalons de conformité : tout est
-              enchaîné dans Certipac pour que vous ne couriez plus après les mails et les PDF au dernier moment.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="rounded-2xl border border-[#194296]/10 bg-white p-6 shadow-soft"
-          >
-            <Badge variant="accent" className="mb-4">Aides & partenariats</Badge>
-            <h3 className="text-2xl font-bold text-[#194296]">
-              Subventions lisibles, partenaires dans le même cadre
-            </h3>
-            <p className="mt-4 text-surface-600 leading-relaxed">
-              Le calcul des aides et le suivi des primes restent compréhensibles pour un petit atelier. Si vous
-              travaillez avec un fournisseur ou un partenaire, tout le monde s&apos;appuie sur les mêmes dossiers à jour.
-            </p>
-          </motion.div>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper>
-        <motion.div variants={fadeUp} className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">Des chiffres qui parlent</h2>
-        </motion.div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, i) => (
-            <StatCounter key={i} {...stat} />
+      {/* Benefits double card */}
+      <SectionWrapper tone="gray">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-[#E0E0E0]">
+          <div className="bg-white p-6 sm:p-8 border-l-[3px] border-[#194296]">
+            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#194296] mb-3">
+              Vous posez, nous structurons
+            </p>
+            <h3 className="text-[20px] font-bold text-[#161616] mb-3 leading-[1.25]">
+              L'administratif sans monter un bureau dédié.
+            </h3>
+            <p className="text-[14px] leading-[1.65] text-[#525252]">
+              Devis, signatures, pièces attendues par les organismes et jalons de conformité : tout
+              est enchaîné dans Certipac pour que vous ne couriez plus après les mails et les PDF
+              au dernier moment.
+            </p>
+          </div>
+          <div className="bg-white p-6 sm:p-8 border-l-[3px] border-[#43AA43]">
+            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#2A7A2A] mb-3">
+              Aides & partenariats
+            </p>
+            <h3 className="text-[20px] font-bold text-[#161616] mb-3 leading-[1.25]">
+              Subventions lisibles, partenaires dans le même cadre.
+            </h3>
+            <p className="text-[14px] leading-[1.65] text-[#525252]">
+              Le calcul des aides et le suivi des primes restent compréhensibles pour un petit
+              atelier. Si vous travaillez avec un fournisseur ou un partenaire, tout le monde
+              s'appuie sur les mêmes dossiers à jour.
+            </p>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Stats */}
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="04 — Indicateurs"
+          eyebrow="Mesure de performance"
+          title="Des chiffres opposables."
+        />
+        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((s) => (
+            <StatCounter key={s.label} {...s} />
           ))}
         </div>
       </SectionWrapper>
 
-      <SectionWrapper className="bg-surface-100/50" stagger>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-          <motion.div variants={fadeUp}>
-            <Badge className="mb-4">Témoignages</Badge>
-            <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">Ils posent, Certipac cadre</h2>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Artisans indépendants et installateurs : retours sur simplicité et dossiers conformes.
-          </motion.p>
-        </div>
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+      {/* Testimonials */}
+      <SectionWrapper tone="gray">
+        <SectionHeader
+          number="05 — Témoignages"
+          eyebrow="Retours terrain"
+          title="Ils posent, Certipac cadre."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {installerTestimonials.map((t, i) => (
-            <TestimonialCard key={t.name} {...t} featured={i === 0} />
+            <TestimonialCard
+              key={t.name}
+              {...t}
+              featured={i === 0}
+              reference={`TÉMOIGNAGE · ${String(i + 1).padStart(2, '0')}`}
+            />
           ))}
-        </motion.div>
+        </div>
       </SectionWrapper>
 
-      <SectionWrapper stagger>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-          <motion.div variants={fadeUp}>
-            <Badge variant="amber" className="mb-4">Tarifs</Badge>
-            <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">Un prix adapté à l&apos;artisan</h2>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Essai gratuit 1 mois. Sans engagement, sans carte bancaire.
-          </motion.p>
-        </div>
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
-        >
+      {/* Tarifs */}
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="06 — Tarification"
+          eyebrow="Engagement commercial"
+          title="Un prix adapté à l'artisan."
+          lede="Essai gratuit 1 mois. Sans engagement, sans carte bancaire."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
           {plans.map((plan, i) => (
-            <PricingCard key={i} {...plan} />
+            <PricingCard
+              key={plan.name}
+              {...plan}
+              reference={`Formule · ${String(i + 1).padStart(2, '0')}`}
+            />
           ))}
-        </motion.div>
+        </div>
       </SectionWrapper>
 
       <CTASection
         title="Prêt à poser sans la paperasse ?"
-        description="Essai gratuit 1 mois. Devis, signatures, relances, conformité et suivi des aides : tout ce qui n'est pas la pose, Certipac vous le structure."
+        description="Essai gratuit 1 mois. Devis, signatures, relances, conformité et suivi des aides — tout ce qui n'est pas la pose, Certipac vous le structure."
       />
     </PageWrapper>
   )

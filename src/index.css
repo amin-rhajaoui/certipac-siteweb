@@ -1,88 +1,127 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* -----------------------------------------------------------
+   * Certipac 2026 — Design Tokens (Carbon-inspired institutional)
+   * Réf : Brand Book v2.0 — CTP-BB-2026-FR-001
+   * ---------------------------------------------------------*/
 
-  /* Primary — Bleu Certipac (#194296) - confiance, autorité, conformité */
-  --color-primary-50: #E6EBF5;
-  --color-primary-100: #CDD8EB;
-  --color-primary-200: #9BB1D7;
-  --color-primary-300: #6989C3;
-  --color-primary-400: #2556A0;
+  --font-sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Bleu Certipac — $brand-primary · #194296 */
+  --color-primary-10: #E6EBF5;
+  --color-primary-20: #CDD8EB;
+  --color-primary-30: #9BB1D7;
+  --color-primary-40: #6989C3;
+  --color-primary-50: #3D62AE;
+  --color-primary-60: #194296; /* Token officiel */
+  --color-primary-70: #143578;
+  --color-primary-80: #0F285A;
+  --color-primary-90: #0A1A3C;
+  --color-primary-100: #050D1E;
+
+  /* Alias compat rétro (ancien nommage Tailwind) */
   --color-primary-500: #194296;
   --color-primary-600: #143578;
   --color-primary-700: #0F285A;
   --color-primary-800: #0A1A3C;
-  --color-primary-900: #050D1E;
-  --color-primary-950: #030710;
 
-  /* Accent — Vert Certipac (#43AA43) - validation, écologie, succès */
-  --color-accent-50: #E8F8ED;
-  --color-accent-100: #D1F1DB;
-  --color-accent-200: #A3E3B7;
-  --color-accent-300: #75D593;
-  --color-accent-400: #4FBB56;
+  /* Vert Certipac — $brand-accent · #43AA43 */
+  --color-accent-10: #E8F8ED;
+  --color-accent-20: #D1F1DB;
+  --color-accent-30: #A3E3B7;
+  --color-accent-40: #75D593;
+  --color-accent-50: #43AA43; /* Token officiel */
+  --color-accent-60: #369236;
+  --color-accent-70: #2A7A2A;
+  --color-accent-80: #1E5B1E;
+  --color-accent-90: #123D12;
+  --color-accent-100: #091E09;
+
   --color-accent-500: #43AA43;
   --color-accent-600: #369236;
-  --color-accent-700: #2A7A2A;
-  --color-accent-800: #1E5B1E;
-  --color-accent-900: #123D12;
-  --color-accent-950: #091E09;
 
-  /* Gold — accent chaud, alertes, mises en attente (#D4A017) */
-  --color-amber-50: #FDF8E8;
-  --color-amber-100: #FBF0D1;
-  --color-amber-200: #F6E1A3;
-  --color-amber-300: #F2D275;
-  --color-amber-400: #E3B832;
-  --color-amber-500: #D4A017;
-  --color-amber-600: #B38613;
-  --color-amber-700: #8C690F;
+  /* Gray Carbon — échelle neutre institutionnelle */
+  --color-gray-10: #F4F4F4;
+  --color-gray-20: #E0E0E0;
+  --color-gray-30: #C6C6C6;
+  --color-gray-40: #A8A8A8;
+  --color-gray-50: #8D8D8D;
+  --color-gray-60: #6F6F6F;
+  --color-gray-70: #525252;
+  --color-gray-80: #393939;
+  --color-gray-90: #262626;
+  --color-gray-100: #161616; /* Noir institutionnel · Ink */
 
-  /* Sarcelle — accent complémentaire (#1A8A7D) */
-  --color-teal-50: #E6F5F3;
-  --color-teal-100: #CCEBE7;
-  --color-teal-200: #99D7CF;
-  --color-teal-300: #66C3B7;
-  --color-teal-400: #33AF9F;
-  --color-teal-500: #1A8A7D;
-  --color-teal-600: #156E64;
-  --color-teal-700: #10534B;
-
-  /* Surface — Neutres (thème clair) */
+  /* Surface — alias mappés sur Gray Carbon pour fond clair */
   --color-surface-50: #FFFFFF;
-  --color-surface-100: #F4F7FB;
-  --color-surface-200: #E8EDF3;
-  --color-surface-300: #D1DAE6;
-  --color-surface-400: #A0B0C4;
-  --color-surface-500: #7A8BA5;
-  --color-surface-600: #5A6D85;
-  --color-surface-700: #3A4D65;
-  --color-surface-800: #1A2B4A;
-  --color-surface-900: #194296;
-  --color-surface-950: #194296;
+  --color-surface-100: #F4F4F4;
+  --color-surface-200: #E0E0E0;
+  --color-surface-300: #C6C6C6;
+  --color-surface-400: #A8A8A8;
+  --color-surface-500: #6F6F6F;
+  --color-surface-600: #525252;
+  --color-surface-700: #393939;
+  --color-surface-800: #262626;
+  --color-surface-900: #161616;
 
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  /* Support — rouge erreur, ambre warning (Carbon support palette) */
+  --color-support-error: #DA1E28;
+  --color-support-error-bg: #FFF1F1;
+  --color-support-warning: #F1C21B;
+  --color-support-warning-bg: #FCF4D6;
+  --color-support-success: #24A148;
+  --color-support-success-bg: #DEFBE6;
+  --color-support-info: #0043CE;
+  --color-support-info-bg: #EDF5FF;
 
-  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.03);
-  --shadow-card: 0 4px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
-  --shadow-elevated: 0 20px 60px -12px rgba(0, 0, 0, 0.12);
+  /* Radius — Carbon utilise des angles francs, très faibles arrondis */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+
+  /* Shadows — plats, institutionnels, peu dramatiques */
+  --shadow-soft: 0 1px 2px 0 rgba(22, 22, 22, 0.05), 0 1px 3px 0 rgba(22, 22, 22, 0.04);
+  --shadow-card: 0 2px 6px 0 rgba(22, 22, 22, 0.06), 0 1px 2px 0 rgba(22, 22, 22, 0.04);
+  --shadow-elevated: 0 8px 24px -8px rgba(22, 22, 22, 0.12), 0 2px 6px 0 rgba(22, 22, 22, 0.04);
+
+  /* Type scale — brand book hiérarchie */
+  --text-display: 3rem;         /* 48 / 52 */
+  --text-display--line-height: 1.08;
+  --text-h1: 1.75rem;            /* 28 / 34 */
+  --text-h1--line-height: 1.21;
+  --text-h2: 1.125rem;           /* 18 / 24 */
+  --text-h2--line-height: 1.33;
+  --text-h3: 0.875rem;           /* 14 / 20 */
+  --text-h3--line-height: 1.42;
+  --text-body: 0.875rem;         /* 14 / 22 */
+  --text-body--line-height: 1.57;
+  --text-caption: 0.75rem;       /* 12 / 16 */
+  --text-caption--line-height: 1.33;
 }
+
+/* -----------------------------------------------------------
+ * Base
+ * ---------------------------------------------------------*/
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-sans);
-  color: #5A6D85;
+  color: #262626;
   background-color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv05", "cv11";
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 ::selection {
@@ -90,16 +129,99 @@ body {
   color: #FFFFFF;
 }
 
-/* Brand bar — bleu/vert Certipac */
-.brand-bar {
-  height: 3px;
-  background: linear-gradient(90deg, #194296 0%, #194296 50%, #43AA43 50%, #43AA43 100%);
+:focus-visible {
+  outline: 2px solid #194296;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
-/* Subtle grid pattern */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(25, 66, 150, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(25, 66, 150, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
+button {
+  font-family: inherit;
+}
+
+/* -----------------------------------------------------------
+ * Signature institutionnelle — Barre tricolore
+ * Bleu Certipac · Vert Certipac · Noir institutionnel
+ * ---------------------------------------------------------*/
+
+.brand-bar {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #194296 0%,
+    #194296 33.333%,
+    #43AA43 33.333%,
+    #43AA43 66.666%,
+    #161616 66.666%,
+    #161616 100%
+  );
+}
+
+.brand-bar-thin {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    #194296 0%,
+    #194296 33.333%,
+    #43AA43 33.333%,
+    #43AA43 66.666%,
+    #161616 66.666%,
+    #161616 100%
+  );
+}
+
+/* Cartes "pilier" — filet vertical de couleur à gauche */
+.card-rail {
+  position: relative;
+  border-left: 3px solid var(--card-rail-color, #194296);
+}
+
+/* Références monospace type brand book (RÉFÉRENCE · A / CTP-XX-001) */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem; /* 11px */
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #525252;
+}
+
+/* Eyebrow — libellé sur-titre institutionnel */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #194296;
+}
+
+/* Numérotation de section — 01, 02, 03… */
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #525252;
+  letter-spacing: 0.04em;
+}
+
+/* Bandeau institutionnel — emprunté à l'entête du brand book */
+.bandeau-republique {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E0E0E0;
+  font-family: var(--font-sans);
+}
+
+/* Filet horizontal institutionnel (séparateur sobre) */
+.filet {
+  height: 1px;
+  background: #E0E0E0;
+}
+
+/* Focus ring institutionnel Carbon */
+.focus-ring:focus-visible {
+  outline: 2px solid #194296;
+  outline-offset: 2px;
 }

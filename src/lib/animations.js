@@ -1,9 +1,13 @@
+/* Animations institutionnelles — sobres, minimales.
+ * Certipac 2026 : préférence pour la réserve plutôt que le spectacle.
+ */
+
 export const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 }
 
@@ -11,7 +15,7 @@ export const fadeIn = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.5 },
+    transition: { duration: 0.3 },
   },
 }
 
@@ -19,8 +23,8 @@ export const staggerContainer = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
+      staggerChildren: 0.06,
+      delayChildren: 0.05,
     },
   },
 }
@@ -30,39 +34,32 @@ export const slideDown = {
   visible: {
     opacity: 1,
     height: 'auto',
-    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
   },
   exit: {
     opacity: 0,
     height: 0,
-    transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] },
   },
 }
 
 export const pageTransition = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
   },
   exit: {
     opacity: 0,
-    y: -20,
-    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] },
   },
 }
 
 export const slideUp = {
-  hidden: { opacity: 0, y: 60 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
-  exit: {
-    opacity: 0,
-    y: 60,
-    transition: { duration: 0.3 },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 }

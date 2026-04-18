@@ -1,41 +1,43 @@
-import { motion } from 'motion/react'
-import { fadeUp } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
-const iconColors = [
-  'bg-[#194296]/8 text-[#194296]',
-  'bg-[#43AA43]/8 text-[#43AA43]',
-  'bg-amber-500/8 text-amber-600',
-  'bg-teal-500/8 text-teal-600',
-  'bg-[#2556A0]/8 text-[#2556A0]',
-  'bg-[#43AA43]/8 text-[#369236]',
-]
+/**
+ * FeatureCard institutionnel — "pilier" style brand book.
+ * Filet vertical coloré + label mono + titre + description.
+ */
 
-export default function FeatureCard({ icon: Icon, title, description, index = 0 }) {
-  const iconBg = iconColors[index % iconColors.length]
+const railPalette = ['#194296', '#43AA43', '#161616']
+
+export default function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+  index = 0,
+  number,
+  tone,
+  reference,
+}) {
+  const rail = tone || railPalette[index % railPalette.length]
 
   return (
-    <motion.div
-      variants={fadeUp}
-      className={cn(
-        'group relative overflow-hidden rounded-xl bg-surface-100/60 p-5',
-        'transition-all duration-300',
-        'hover:bg-surface-100 hover:shadow-card',
-      )}
-      whileHover={{ y: -3, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+    <article
+      className="h-full bg-[#F4F4F4] p-5 sm:p-6 transition-colors duration-200 hover:bg-[#E0E0E0] rounded-[2px]"
+      style={{ borderLeft: `3px solid ${rail}` }}
     >
-      <div className="relative">
-        <div
-          className={cn(
-            'mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl',
-            iconBg,
-          )}
-        >
-          <Icon className="h-5 w-5" />
-        </div>
-        <h3 className="mb-1.5 text-base font-semibold text-surface-800">{title}</h3>
-        <p className="text-sm text-surface-500 leading-relaxed">{description}</p>
+      <div className="flex items-center justify-between mb-4">
+        {(number || reference) && (
+          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252]">
+            {number ? `Pilier ${String(number).padStart(2, '0')}` : reference}
+          </span>
+        )}
+        {Icon && (
+          <Icon className="h-5 w-5 shrink-0" style={{ color: rail }} strokeWidth={1.75} />
+        )}
       </div>
-    </motion.div>
+
+      <h3 className="text-[17px] font-semibold text-[#161616] mb-2 leading-[1.3]">
+        {title}
+      </h3>
+      <p className="text-[14px] leading-[1.6] text-[#525252]">{description}</p>
+    </article>
   )
 }

@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Certipac — Brand Book 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+@page { size: A4; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    /* Tokens — inspirés de DSFR + Carbon */
+    --c-blue:         #194296;
+    --c-blue-dark:    #0F2C66;
+    --c-blue-soft:    #E6EDF8;
+    --c-green:        #43AA43;
+    --c-green-dark:   #2E7A2E;
+    --c-green-soft:   #E9F6EA;
+    --c-red:          #CE0500;
+    --c-red-soft:     #FBE6E5;
+    --c-amber:        #B34000;
+    --c-amber-soft:   #FDEAD5;
+
+    /* Neutres institutionnels type DSFR */
+    --n-ink:          #161616;   /* Carbon gray-100 */
+    --n-text:         #3D3D3D;
+    --n-muted:        #6E7481;
+    --n-line:         #DDDDDD;
+    --n-line-strong:  #161616;
+    --n-bg:           #FFFFFF;
+    --n-bg-alt:       #F6F6F6;   /* Carbon gray-10 */
+    --n-bg-tile:      #F2F2F2;
+}
+
+html { -webkit-font-smoothing: antialiased; }
+
+body {
+    font-family: 'IBM Plex Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--n-bg);
+    color: var(--n-ink);
+    font-feature-settings: "ss01", "cv11";
+}
+
+.mono { font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; }
+
+/* ==================================================================
+   PAGE SHELL — format A4, grille institutionnelle stricte
+   ================================================================== */
+.page {
+    width: 210mm; height: 297mm;
+    padding: 14mm 16mm 8mm;
+    position: relative;
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+    overflow: hidden;
+    background: var(--n-bg);
+    display: flex;
+    flex-direction: column;
+}
+.page:last-child { page-break-after: auto; break-after: auto; }
+.page > *:not(.top-bar):not(.page-footer):not(.cover-section) { flex-shrink: 0; }
+
+/* Bandeau supérieur — type marque d'État */
+.top-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 2mm;
+    display: flex;
+}
+.top-bar > div { flex: 1; height: 100%; }
+
+/* En-tête de page : filets très fins, typo majuscule minuscule */
+.page-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 3mm 0 2.5mm;
+    border-bottom: 0.25mm solid var(--n-ink);
+    margin-bottom: 9mm;
+}
+.page-header .id {
+    font-size: 7pt; font-weight: 600; letter-spacing: 1.2pt;
+    text-transform: uppercase; color: var(--n-ink);
+}
+.page-header .id b { color: var(--c-blue); font-weight: 700; }
+.page-header .section {
+    font-size: 7pt; color: var(--n-muted); font-weight: 500;
+    letter-spacing: 0.4pt;
+}
+.page-header .section .num { color: var(--n-ink); font-weight: 600; }
+
+/* Pied de page — placé en fin de flux via margin-top: auto */
+.page-footer {
+    margin-top: auto;
+    padding-top: 2.5mm; border-top: 0.25mm solid var(--n-line);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 7pt; color: var(--n-muted); letter-spacing: 0.3pt;
+    flex-shrink: 0;
+}
+.page-footer .doc-id { font-family: 'IBM Plex Mono', monospace; font-size: 6.5pt; color: var(--n-ink); }
+
+/* ==================================================================
+   TITRES DE SECTION — style DSFR : gros, carré, aligné à gauche
+   ================================================================== */
+.eyebrow {
+    display: inline-block;
+    font-size: 7pt; font-weight: 600; letter-spacing: 1.5pt;
+    text-transform: uppercase; color: var(--c-blue);
+    padding: 1.2mm 2.5mm;
+    background: var(--c-blue-soft);
+    margin-bottom: 5mm;
+}
+.section-title {
+    font-family: 'IBM Plex Sans', 'Inter', sans-serif;
+    font-size: 28pt; font-weight: 600; line-height: 1.1;
+    color: var(--n-ink); margin-bottom: 3mm;
+    letter-spacing: -0.4pt;
+}
+.section-sub {
+    font-size: 11pt; font-weight: 400; line-height: 1.6;
+    color: var(--n-text); max-width: 155mm; margin-bottom: 8mm;
+}
+.section-sub b { color: var(--n-ink); font-weight: 600; }
+.divider-thick { height: 0.6mm; background: var(--n-ink); margin-bottom: 8mm; width: 18mm; }
+
+/* Titres intermédiaires */
+.block-title {
+    font-size: 10pt; font-weight: 600; color: var(--n-ink);
+    text-transform: uppercase; letter-spacing: 1.5pt;
+    padding-bottom: 1.8mm; border-bottom: 0.25mm solid var(--n-ink);
+    margin: 8mm 0 5mm;
+}
+
+/* ==================================================================
+   COVER
+   ================================================================== */
+.cover {
+    padding: 0;
+    background: var(--n-bg);
+    display: grid;
+    grid-template-rows: 14mm 1fr 80mm 20mm;
+}
+.cover .top-strip {
+    display: flex;
+    border-bottom: 0.3mm solid var(--n-line);
+}
+.cover .top-strip > div {
+    flex: 1; padding: 0 16mm;
+    display: flex; align-items: center;
+    font-size: 7pt; letter-spacing: 1.5pt; text-transform: uppercase;
+    color: var(--n-ink); font-weight: 600;
+}
+.cover .top-strip > div:last-child {
+    justify-content: flex-end; color: var(--n-muted); font-weight: 500;
+}
+.cover .hero {
+    padding: 14mm 16mm 0;
+    display: flex; flex-direction: column; justify-content: flex-end;
+}
+.cover .hero .meta {
+    font-size: 8pt; font-weight: 600; letter-spacing: 1.5pt;
+    text-transform: uppercase; color: var(--c-blue); margin-bottom: 4mm;
+}
+.cover .hero h1 {
+    font-size: 58pt; font-weight: 700; line-height: 0.95;
+    color: var(--n-ink); letter-spacing: -1.8pt;
+    margin-bottom: 5mm;
+}
+.cover .hero h1 .accent { color: var(--c-blue); }
+.cover .hero .tag {
+    font-size: 13pt; color: var(--n-text); max-width: 130mm;
+    line-height: 1.4; font-weight: 400;
+}
+.cover .identity-bar {
+    margin: 8mm 16mm 0;
+    padding-top: 5mm;
+    border-top: 0.5mm solid var(--n-ink);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm;
+}
+.cover .identity-bar .cell h6 {
+    font-size: 6.5pt; font-weight: 600; letter-spacing: 1pt;
+    text-transform: uppercase; color: var(--n-muted); margin-bottom: 1.2mm;
+}
+.cover .identity-bar .cell p {
+    font-size: 8.5pt; color: var(--n-ink); font-weight: 500; line-height: 1.3;
+}
+.cover .logo-block {
+    padding: 0 16mm; display: flex; align-items: flex-end; justify-content: space-between;
+}
+.cover .logo-block img { height: 22mm; width: auto; }
+.cover .logo-block .badge-row {
+    display: flex; gap: 2mm;
+}
+.cover .logo-block .badge {
+    font-size: 7pt; font-weight: 600; letter-spacing: 0.8pt;
+    padding: 1.8mm 3mm; border: 0.3mm solid var(--n-ink);
+    color: var(--n-ink);
+}
+.cover .bottom-strip {
+    background: var(--n-ink); color: #FFFFFF;
+    padding: 0 16mm;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 7pt; letter-spacing: 1.5pt; text-transform: uppercase; font-weight: 600;
+}
+.cover .bottom-strip .rep {
+    display: flex; align-items: center; gap: 3mm;
+}
+.cover .bottom-strip .rep .chip {
+    padding: 0.8mm 2.5mm; background: var(--c-green); color: #FFFFFF;
+    font-weight: 700;
+}
+
+/* ==================================================================
+   SOMMAIRE — liste structurée type rapport public
+   ================================================================== */
+.toc-list { margin-top: 2mm; }
+.toc-row {
+    display: grid; grid-template-columns: 14mm 1fr auto 14mm;
+    gap: 4mm; align-items: baseline;
+    padding: 4.5mm 0;
+    border-top: 0.25mm solid var(--n-line);
+}
+.toc-row:last-of-type { border-bottom: 0.25mm solid var(--n-line); }
+.toc-row .n {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10pt; font-weight: 500; color: var(--c-blue);
+    letter-spacing: 0.3pt;
+}
+.toc-row .t h4 {
+    font-size: 11pt; font-weight: 600; color: var(--n-ink); margin-bottom: 1mm;
+}
+.toc-row .t p {
+    font-size: 8pt; color: var(--n-muted); line-height: 1.4;
+}
+.toc-row .cat {
+    font-size: 6.5pt; font-weight: 600; letter-spacing: 0.8pt;
+    text-transform: uppercase; color: var(--n-ink);
+    padding: 0.8mm 2.5mm; border: 0.25mm solid var(--n-ink);
+}
+.toc-row .pg {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt; color: var(--n-ink); text-align: right;
+}
+
+/* ==================================================================
+   CARBON TILES — tuiles nettes, bord fin, sans rayons
+   ================================================================== */
+.tiles { display: grid; gap: 2mm; }
+.tiles.c3 { grid-template-columns: repeat(3, 1fr); }
+.tiles.c2 { grid-template-columns: repeat(2, 1fr); }
+.tiles.c4 { grid-template-columns: repeat(4, 1fr); }
+
+.tile {
+    background: var(--n-bg-tile);
+    padding: 6mm 5mm;
+    border-left: 0.8mm solid var(--c-blue);
+    position: relative;
+}
+.tile.accent-green { border-left-color: var(--c-green); }
+.tile.accent-dark  { border-left-color: var(--n-ink); }
+.tile.accent-amber { border-left-color: var(--c-amber); }
+.tile .kicker {
+    font-size: 6.5pt; font-weight: 600; letter-spacing: 1.2pt;
+    text-transform: uppercase; color: var(--n-muted);
+    margin-bottom: 2mm;
+}
+.tile h3 {
+    font-size: 10pt; font-weight: 600; color: var(--n-ink); margin-bottom: 2mm;
+}
+.tile p {
+    font-size: 8.5pt; line-height: 1.55; color: var(--n-text);
+}
+
+/* Tuile metric (Carbon style) */
+.metric-tile {
+    background: var(--n-bg);
+    border: 0.3mm solid var(--n-line);
+    padding: 4mm 5mm 5mm;
+}
+.metric-tile .label {
+    font-size: 7pt; color: var(--n-muted); font-weight: 500;
+    letter-spacing: 0.4pt; margin-bottom: 2mm;
+}
+.metric-tile .value {
+    font-size: 20pt; font-weight: 300; color: var(--n-ink);
+    letter-spacing: -0.5pt; line-height: 1;
+}
+.metric-tile .value sup {
+    font-size: 9pt; font-weight: 500; color: var(--n-muted);
+    vertical-align: super;
+}
+.metric-tile .delta {
+    font-size: 7.5pt; margin-top: 1.5mm; color: var(--c-green-dark);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ==================================================================
+   CHIPS / TAGS — institutionnels
+   ================================================================== */
+.chips { display: flex; flex-wrap: wrap; gap: 2mm; }
+.chip-i {
+    font-size: 7.5pt; font-weight: 500;
+    padding: 1.4mm 3mm; border: 0.25mm solid var(--n-ink);
+    color: var(--n-ink); background: var(--n-bg);
+}
+.chip-i.filled { background: var(--n-ink); color: #FFFFFF; }
+
+/* ==================================================================
+   DEFINITION LIST — type fiche réglementaire
+   ================================================================== */
+.dl { display: grid; grid-template-columns: 42mm 1fr; gap: 0 5mm; }
+.dl dt {
+    font-size: 7.5pt; font-weight: 600; color: var(--n-ink);
+    text-transform: uppercase; letter-spacing: 0.8pt;
+    padding: 3mm 0; border-top: 0.25mm solid var(--n-line);
+}
+.dl dd {
+    font-size: 9pt; color: var(--n-text); line-height: 1.55;
+    padding: 3mm 0; border-top: 0.25mm solid var(--n-line);
+}
+.dl dt:first-of-type, .dl dd:first-of-type { border-top: 0.5mm solid var(--n-ink); }
+
+/* ==================================================================
+   LOGO & protection zone
+   ================================================================== */
+.stage {
+    padding: 18mm;
+    background: var(--n-bg-alt);
+    border: 0.3mm solid var(--n-line);
+    display: flex; align-items: center; justify-content: center;
+    height: 78mm;
+    position: relative;
+}
+.stage.dark { background: var(--c-blue); border-color: var(--c-blue-dark); }
+.stage img { max-height: 46mm; max-width: 100%; }
+.stage .corner {
+    position: absolute; width: 6mm; height: 6mm;
+    border: 0.4mm solid var(--n-ink);
+}
+.stage.dark .corner { border-color: rgba(255,255,255,0.4); }
+.stage .corner.tl { top: 2.5mm; left: 2.5mm; border-right: 0; border-bottom: 0; }
+.stage .corner.tr { top: 2.5mm; right: 2.5mm; border-left: 0; border-bottom: 0; }
+.stage .corner.bl { bottom: 2.5mm; left: 2.5mm; border-right: 0; border-top: 0; }
+.stage .corner.br { bottom: 2.5mm; right: 2.5mm; border-left: 0; border-top: 0; }
+.stage .ref-label {
+    position: absolute; top: 3mm; left: 50%; transform: translateX(-50%);
+    font-family: 'IBM Plex Mono', monospace; font-size: 6.5pt;
+    color: var(--n-muted); letter-spacing: 1pt; text-transform: uppercase;
+}
+.stage.dark .ref-label { color: rgba(255,255,255,0.5); }
+
+/* Zone de protection — style annotation technique */
+.protection {
+    position: relative;
+    background: var(--n-bg);
+    border: 0.3mm solid var(--n-line);
+    height: 80mm;
+    padding: 16mm;
+    display: flex; align-items: center; justify-content: center;
+}
+.protection img { height: 36mm; width: auto; }
+.protection .guide {
+    position: absolute; border: 0.25mm dashed var(--n-muted);
+}
+.protection .guide.outer {
+    top: 8mm; left: 8mm; right: 8mm; bottom: 8mm;
+}
+.protection .x-lbl {
+    position: absolute; font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt; font-weight: 600; color: var(--n-ink);
+    background: var(--n-bg); padding: 0.5mm 1.5mm;
+}
+.protection .x-top { top: 6mm; left: 50%; transform: translateX(-50%); }
+.protection .x-bot { bottom: 6mm; left: 50%; transform: translateX(-50%); }
+.protection .x-left { left: 6mm; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+.protection .x-right { right: 6mm; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+.annot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin-top: 6mm; }
+.annot {
+    border: 0.3mm solid var(--n-line);
+    padding: 5mm;
+    background: var(--n-bg);
+}
+.annot .ref {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt; color: var(--c-blue); font-weight: 500;
+    margin-bottom: 2mm; letter-spacing: 0.3pt;
+}
+.annot h4 {
+    font-size: 9.5pt; font-weight: 600; color: var(--n-ink);
+    margin-bottom: 2mm;
+}
+.annot p { font-size: 8.5pt; line-height: 1.55; color: var(--n-text); }
+
+/* ==================================================================
+   COLOR SYSTEM — tokens Carbon-like
+   ================================================================== */
+.palette-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm; margin-bottom: 4mm; }
+.swatch {
+    border: 0.3mm solid var(--n-line);
+    overflow: hidden;
+}
+.swatch .color {
+    height: 32mm;
+    position: relative;
+}
+.swatch .color .on-color {
+    position: absolute; bottom: 3mm; left: 3mm;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt; color: rgba(255,255,255,0.9); letter-spacing: 0.3pt;
+}
+.swatch .color.light .on-color { color: rgba(0,0,0,0.6); }
+.swatch .info { padding: 4mm 4mm 4.5mm; }
+.swatch .info h4 {
+    font-size: 9pt; font-weight: 600; color: var(--n-ink);
+    margin-bottom: 1mm;
+}
+.swatch .info .token {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt; color: var(--n-muted);
+    margin-bottom: 2.5mm;
+}
+.swatch .info .specs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm;
+    font-family: 'IBM Plex Mono', monospace; font-size: 6.5pt;
+    color: var(--n-text);
+}
+.swatch .info .specs span { display: block; color: var(--n-muted); margin-bottom: 0.3mm; letter-spacing: 0.3pt; }
+.swatch .info .specs strong { color: var(--n-ink); font-weight: 500; }
+
+.palette-ramp {
+    display: grid; grid-template-columns: repeat(10, 1fr);
+    height: 14mm; margin-bottom: 2mm;
+    border: 0.3mm solid var(--n-line);
+}
+.palette-ramp > div {
+    position: relative;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 1mm;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 6pt; color: rgba(255,255,255,0.7);
+}
+.palette-ramp > div.light-step { color: rgba(0,0,0,0.5); }
+
+.ratio-bar {
+    display: flex; height: 8mm; border: 0.3mm solid var(--n-line);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 6.5pt;
+}
+.ratio-bar > div {
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.9);
+}
+.ratio-bar > div.light-bar { color: rgba(0,0,0,0.6); }
+
+/* ==================================================================
+   TYPOGRAPHY
+   ================================================================== */
+.type-hero {
+    background: var(--n-ink); color: #FFFFFF;
+    padding: 10mm; display: grid; grid-template-columns: 60mm 1fr;
+    gap: 10mm; align-items: center;
+    margin-bottom: 8mm;
+}
+.type-hero .big {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 72pt; line-height: 0.9; font-weight: 300;
+    letter-spacing: -2pt;
+}
+.type-hero .big span { color: var(--c-green); font-weight: 600; }
+.type-hero .meta h3 {
+    font-size: 14pt; font-weight: 500; margin-bottom: 2mm;
+}
+.type-hero .meta p {
+    font-size: 8.5pt; color: rgba(255,255,255,0.65); line-height: 1.5; max-width: 90mm;
+}
+.type-hero .meta .mono-ref {
+    margin-top: 3mm; font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt; color: rgba(255,255,255,0.5); letter-spacing: 0.5pt;
+}
+
+.weight-row {
+    display: grid; grid-template-columns: 30mm 20mm 1fr;
+    align-items: center; padding: 3.5mm 0;
+    border-top: 0.25mm solid var(--n-line);
+}
+.weight-row:last-of-type { border-bottom: 0.25mm solid var(--n-line); }
+.weight-row .name { font-size: 9pt; font-weight: 600; color: var(--n-ink); }
+.weight-row .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt; color: var(--n-muted);
+}
+.weight-row .sample { font-size: 13pt; color: var(--n-ink); }
+
+.scale-row {
+    display: grid; grid-template-columns: 26mm 22mm 1fr;
+    align-items: baseline; padding: 3mm 0;
+    border-top: 0.25mm solid var(--n-line);
+}
+.scale-row:last-of-type { border-bottom: 0.25mm solid var(--n-line); }
+.scale-row .lbl {
+    font-size: 7pt; color: var(--n-muted); letter-spacing: 1pt;
+    text-transform: uppercase; font-weight: 600;
+}
+.scale-row .sz {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 7pt; color: var(--n-muted);
+}
+.scale-row .dem { color: var(--n-ink); }
+
+/* ==================================================================
+   DO / DON'T — DSFR style (bandes colorées, pas de rondeurs)
+   ================================================================== */
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
+.rules-panel {
+    border: 0.3mm solid var(--n-line);
+    border-top: 1.2mm solid var(--c-green);
+    padding: 6mm;
+}
+.rules-panel.dont { border-top-color: var(--c-red); }
+.rules-panel .hd {
+    display: flex; align-items: center; gap: 2.5mm; margin-bottom: 4mm;
+}
+.rules-panel .hd .mark {
+    width: 6mm; height: 6mm;
+    background: var(--c-green); color: #FFFFFF;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10pt; font-weight: 700;
+}
+.rules-panel.dont .hd .mark { background: var(--c-red); }
+.rules-panel .hd h3 { font-size: 11pt; font-weight: 600; color: var(--n-ink); }
+.rules-panel ul { list-style: none; }
+.rules-panel li {
+    font-size: 8.5pt; line-height: 1.5; color: var(--n-text);
+    padding: 2mm 0 2mm 6mm; position: relative;
+    border-bottom: 0.2mm solid var(--n-bg-tile);
+}
+.rules-panel li:last-child { border-bottom: 0; }
+.rules-panel li::before {
+    position: absolute; left: 0; top: 2.5mm;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt; font-weight: 600;
+}
+.rules-panel.do li::before   { content: '+'; color: var(--c-green-dark); }
+.rules-panel.dont li::before { content: '×'; color: var(--c-red); }
+
+/* ==================================================================
+   NOTIFICATION / NOTICE (DSFR notice block)
+   ================================================================== */
+.notice {
+    padding: 4mm 6mm; border-left: 1.2mm solid var(--c-blue);
+    background: var(--c-blue-soft);
+    font-size: 9pt; color: var(--n-ink); line-height: 1.55;
+    margin: 4mm 0;
+}
+.notice b { font-weight: 600; }
+
+/* ==================================================================
+   APPLICATIONS — carte, letterhead, interface
+   ================================================================== */
+.card-face {
+    background: var(--n-bg);
+    border: 0.3mm solid var(--n-line);
+    width: 130mm; height: 82mm;
+    padding: 8mm; position: relative;
+    margin: 4mm auto;
+}
+.card-face .top-line { height: 1.2mm; display: flex; margin: -8mm -8mm 6mm; }
+.card-face .top-line div:first-child { flex: 0 0 22mm; background: var(--c-blue); }
+.card-face .top-line div:nth-child(2) { flex: 0 0 12mm; background: var(--c-green); }
+.card-face .top-line div:last-child { flex: 1; background: var(--n-ink); }
+.card-face img { height: 11mm; width: auto; margin-bottom: 5mm; }
+.card-face .who { font-size: 11.5pt; font-weight: 600; color: var(--n-ink); margin-bottom: 0.8mm; letter-spacing: -0.2pt; }
+.card-face .role { font-size: 8pt; color: var(--c-blue); font-weight: 600; margin-bottom: 4mm; letter-spacing: 0.3pt; text-transform: uppercase; }
+.card-face .contact { font-size: 7.5pt; color: var(--n-text); line-height: 1.5; font-family: 'IBM Plex Mono', monospace; }
+.card-face .footer {
+    position: absolute; bottom: 5mm; left: 8mm; right: 8mm;
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 2mm; border-top: 0.25mm solid var(--n-line);
+    font-size: 6.5pt; color: var(--n-muted); letter-spacing: 0.5pt; text-transform: uppercase; font-weight: 500;
+}
+
+.card-face.back {
+    background: var(--n-ink);
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 10mm 12mm;
+}
+.card-face.back img { height: 16mm; margin-bottom: 6mm; }
+.card-face.back .quote { color: #FFFFFF; font-size: 13pt; font-weight: 400; line-height: 1.35; max-width: 90mm; letter-spacing: -0.2pt; }
+.card-face.back .accent-bar { height: 0.6mm; width: 22mm; background: var(--c-green); margin-top: 5mm; }
+
+.format-caption {
+    font-family: 'IBM Plex Mono', monospace; font-size: 7pt;
+    color: var(--n-muted); text-align: center; letter-spacing: 0.4pt; margin-top: 2mm;
+}
+
+/* Letterhead */
+.letterhead {
+    border: 0.3mm solid var(--n-line);
+    margin-bottom: 6mm;
+}
+.letterhead .lh-top {
+    background: var(--n-ink); color: #FFFFFF;
+    padding: 3mm 6mm;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 6.5pt; letter-spacing: 1.2pt; text-transform: uppercase; font-weight: 600;
+}
+.letterhead .lh-top .dot { width: 1.8mm; height: 1.8mm; background: var(--c-green); display: inline-block; margin-right: 2mm; vertical-align: middle; }
+.letterhead .lh-body { padding: 6mm; }
+.letterhead .lh-brand {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding-bottom: 4mm; border-bottom: 0.25mm solid var(--n-ink);
+    margin-bottom: 4mm;
+}
+.letterhead .lh-brand img { height: 13mm; width: auto; }
+.letterhead .lh-brand .coord {
+    text-align: right; font-size: 7pt; color: var(--n-text); line-height: 1.55;
+    font-family: 'IBM Plex Mono', monospace;
+}
+.letterhead .lh-brand .coord b { color: var(--n-ink); font-weight: 500; display: block; margin-bottom: 0.8mm; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; }
+.letterhead .placeholder { height: 1.8mm; background: var(--n-bg-tile); margin-bottom: 2mm; }
+.letterhead .placeholder.last { width: 55%; }
+
+/* ==================================================================
+   INTERFACE MOCKUP — style Carbon
+   ================================================================== */
+.ui-frame {
+    border: 0.3mm solid var(--n-line-strong);
+    overflow: hidden;
+    background: var(--n-bg);
+}
+.ui-header {
+    background: var(--n-ink); color: #FFFFFF;
+    padding: 2.5mm 4mm;
+    display: flex; align-items: center; gap: 4mm;
+    border-bottom: 0.3mm solid #393939;
+}
+.ui-header img { height: 4.5mm; }
+.ui-header .brand-sep { width: 0.25mm; height: 5mm; background: #525252; }
+.ui-header .app-name { font-size: 8pt; font-weight: 500; }
+.ui-header .nav {
+    display: flex; gap: 0; margin-left: auto;
+}
+.ui-header .nav-item {
+    font-size: 7pt; padding: 2mm 4mm;
+    color: rgba(255,255,255,0.65); font-weight: 400;
+    border-bottom: 0.5mm solid transparent;
+}
+.ui-header .nav-item.active {
+    color: #FFFFFF; border-bottom-color: var(--c-green);
+}
+
+.ui-body { display: grid; grid-template-columns: 40mm 1fr; min-height: 100mm; }
+.ui-side {
+    background: var(--n-bg-alt);
+    padding: 4mm 0;
+    border-right: 0.25mm solid var(--n-line);
+}
+.ui-side .grp {
+    padding: 1.5mm 4mm;
+    font-size: 6pt; font-weight: 600; color: var(--n-muted);
+    letter-spacing: 1pt; text-transform: uppercase;
+    margin-top: 2mm;
+}
+.ui-side .item {
+    padding: 2.2mm 4mm;
+    font-size: 7.5pt; color: var(--n-text);
+    border-left: 0.8mm solid transparent;
+    display: flex; align-items: center; gap: 2mm;
+}
+.ui-side .item.active {
+    background: var(--n-bg);
+    color: var(--n-ink); font-weight: 500;
+    border-left-color: var(--c-blue);
+}
+.ui-side .item .dot { width: 1.3mm; height: 1.3mm; background: currentColor; }
+
+.ui-main { padding: 5mm; background: var(--n-bg); }
+.ui-main .crumbs {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 6.5pt; color: var(--n-muted); margin-bottom: 2mm;
+}
+.ui-main .crumbs .on { color: var(--n-ink); }
+.ui-main h2 {
+    font-size: 13pt; font-weight: 400; color: var(--n-ink);
+    margin-bottom: 5mm; letter-spacing: -0.3pt;
+}
+.ui-main .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5mm; margin-bottom: 4mm; }
+.ui-main .metrics .metric {
+    background: var(--n-bg-alt);
+    padding: 3.5mm 4mm 4mm;
+    border-left: 0.6mm solid var(--c-blue);
+}
+.ui-main .metrics .metric.green { border-left-color: var(--c-green); }
+.ui-main .metrics .metric.ink   { border-left-color: var(--n-ink); }
+.ui-main .metrics .metric.amber { border-left-color: var(--c-amber); }
+.ui-main .metrics .metric .l {
+    font-size: 6.5pt; color: var(--n-muted); font-weight: 500;
+    letter-spacing: 0.3pt; margin-bottom: 1.5mm;
+}
+.ui-main .metrics .metric .v {
+    font-size: 16pt; font-weight: 300; color: var(--n-ink);
+    letter-spacing: -0.4pt; line-height: 1;
+}
+.ui-main .metrics .metric .d {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 6pt; margin-top: 1mm; color: var(--c-green-dark);
+}
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 7pt; }
+.data-table thead th {
+    text-align: left; padding: 2.5mm 3mm;
+    font-size: 6pt; font-weight: 600; letter-spacing: 0.5pt;
+    text-transform: uppercase; color: var(--n-muted);
+    background: var(--n-bg-alt);
+    border-bottom: 0.3mm solid var(--n-ink);
+}
+.data-table tbody td {
+    padding: 2.4mm 3mm; color: var(--n-text);
+    border-bottom: 0.2mm solid var(--n-line);
+}
+.data-table tbody tr:last-child td { border-bottom: 0; }
+.data-table .ref-cell {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--c-blue); font-weight: 500;
+}
+.status-pill {
+    font-size: 6.5pt; font-weight: 500;
+    padding: 0.8mm 2.2mm; display: inline-flex; align-items: center; gap: 1.5mm;
+}
+.status-pill::before { content: ''; width: 1.3mm; height: 1.3mm; background: currentColor; }
+.status-pill.ok { background: var(--c-green-soft); color: var(--c-green-dark); }
+.status-pill.wait { background: var(--c-amber-soft); color: var(--c-amber); }
+.status-pill.ko { background: var(--c-red-soft); color: var(--c-red); }
+
+/* ==================================================================
+   VOIX — exemples institutionnels
+   ================================================================== */
+.voice-row {
+    display: grid; grid-template-columns: 36mm 1fr 1fr; gap: 2mm;
+    margin-bottom: 3mm;
+}
+.voice-ctx {
+    background: var(--n-bg-tile); padding: 3.5mm 4mm;
+    font-size: 7.5pt; color: var(--n-ink); font-weight: 500;
+    letter-spacing: 0.3pt;
+}
+.voice-ctx .tag-ctx {
+    font-size: 6pt; color: var(--n-muted); letter-spacing: 0.8pt;
+    text-transform: uppercase; display: block; margin-bottom: 1mm;
+}
+.voice-ex {
+    padding: 3.5mm 4mm;
+    font-size: 8.5pt; line-height: 1.45;
+    border-left: 0.8mm solid transparent;
+}
+.voice-ex.good { background: var(--c-green-soft); color: var(--c-green-dark); border-left-color: var(--c-green); }
+.voice-ex.bad  { background: var(--c-red-soft);   color: var(--c-red);        border-left-color: var(--c-red); text-decoration: line-through; text-decoration-color: rgba(206,5,0,0.35); }
+.voice-ex .lbl {
+    display: block; font-size: 6pt; font-weight: 600;
+    letter-spacing: 1pt; text-transform: uppercase; margin-bottom: 1mm;
+    text-decoration: none;
+}
+
+/* ==================================================================
+   SIGNATURES EMAIL
+   ================================================================== */
+.sig-block {
+    display: grid; grid-template-columns: 22mm 0.4mm 1fr;
+    gap: 5mm; padding: 6mm 7mm;
+    align-items: center;
+    margin-bottom: 4mm;
+}
+.sig-block.dark { background: var(--n-ink); color: #FFFFFF; }
+.sig-block.light { background: var(--n-bg-alt); border: 0.3mm solid var(--n-line); }
+.sig-block img { height: 14mm; width: auto; }
+.sig-block .divider { width: 0.4mm; height: 18mm; background: var(--c-green); }
+.sig-block.dark .divider { background: var(--c-green); }
+.sig-block.light .divider { background: var(--c-blue); }
+.sig-block .info .nm { font-size: 11pt; font-weight: 600; letter-spacing: -0.1pt; margin-bottom: 0.5mm; }
+.sig-block .info .rl { font-size: 8pt; margin-bottom: 2mm; }
+.sig-block.dark .info .rl { color: var(--c-green); }
+.sig-block.light .info .rl { color: var(--c-blue); }
+.sig-block .info .ln { font-size: 7.5pt; font-family: 'IBM Plex Mono', monospace; line-height: 1.5; }
+.sig-block.dark .info .ln { color: rgba(255,255,255,0.65); }
+.sig-block.light .info .ln { color: var(--n-text); }
+.sig-block .info .tl { font-size: 7pt; margin-top: 1.5mm; font-style: italic; }
+.sig-block.dark .info .tl { color: rgba(255,255,255,0.45); }
+.sig-block.light .info .tl { color: var(--n-muted); }
+.sig-label {
+    font-size: 7pt; font-weight: 600; letter-spacing: 1pt;
+    text-transform: uppercase; color: var(--n-ink); margin: 6mm 0 2mm;
+    display: flex; align-items: center; gap: 3mm;
+}
+.sig-label::after { content: ''; flex: 1; height: 0.25mm; background: var(--n-line); }
+
+/* ==================================================================
+   BACK COVER
+   ================================================================== */
+.back {
+    padding: 0; background: var(--n-ink); color: #FFFFFF;
+    display: grid; grid-template-rows: 14mm 1fr auto 14mm;
+}
+.back .head {
+    display: flex; padding: 0 16mm;
+    align-items: center; justify-content: space-between;
+    border-bottom: 0.3mm solid rgba(255,255,255,0.15);
+    font-size: 7pt; font-weight: 600; letter-spacing: 1.5pt; text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+}
+.back .middle {
+    padding: 20mm 16mm; display: flex; flex-direction: column; justify-content: center;
+}
+.back .middle img { height: 28mm; width: auto; margin-bottom: 10mm; }
+.back .middle h2 {
+    font-size: 32pt; font-weight: 300; letter-spacing: -0.8pt; line-height: 1.1;
+    margin-bottom: 6mm; max-width: 150mm;
+}
+.back .middle h2 b { color: var(--c-green); font-weight: 500; }
+.back .middle .line { width: 22mm; height: 0.5mm; background: var(--c-green); margin-bottom: 6mm; }
+.back .middle .sub {
+    font-size: 10pt; color: rgba(255,255,255,0.7); max-width: 130mm; line-height: 1.55;
+}
+.back .cred { padding: 0 16mm 8mm; }
+.back .cred .chips { margin-bottom: 5mm; }
+.back .cred .chip-i { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); background: transparent; }
+.back .foot {
+    background: #000000;
+    padding: 0 16mm;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 7pt; letter-spacing: 1pt; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 500;
+}
+
+/* ==================================================================
+   UTIL
+   ================================================================== */
+.mt-sm { margin-top: 3mm; }
+.mt-md { margin-top: 6mm; }
+.mt-lg { margin-top: 10mm; }
+.gap-2 { gap: 2mm; } .gap-4 { gap: 4mm; }
+.row { display: flex; }
+.muted { color: var(--n-muted); }
+
+/* Print */
+@media print {
+    body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================= -->
+<!-- PAGE 01 — COUVERTURE                                          -->
+<!-- ============================================================= -->
+<div class="page cover">
+    <div class="top-strip">
+        <div><span>République — Transition énergétique</span></div>
+        <div>Document de référence · Édition 2026</div>
+    </div>
+
+    <div class="hero">
+        <div class="meta">Charte graphique & système de marque</div>
+        <h1>Brand<br>Book<span class="accent">.</span></h1>
+        <p class="tag">Document institutionnel de référence définissant l'identité, le ton et les composants d'interface de <b>Certipac</b> — plateforme de conformité documentaire pour la rénovation énergétique.</p>
+    </div>
+
+    <div class="identity-bar">
+        <div class="cell">
+            <h6>Éditeur</h6>
+            <p>Certipac SAS</p>
+        </div>
+        <div class="cell">
+            <h6>Cadre réglementaire</h6>
+            <p>ANAH · MaPrimeRénov' · CEE</p>
+        </div>
+        <div class="cell">
+            <h6>Version</h6>
+            <p>v2.0 — Édition 2026</p>
+        </div>
+        <div class="cell">
+            <h6>Référence document</h6>
+            <p class="mono">CTP-BB-2026-FR-001</p>
+        </div>
+    </div>
+
+    <div class="logo-block">
+        <img src="CertiPac.svg" alt="Certipac">
+        <div class="badge-row">
+            <span class="badge">ANAH</span>
+            <span class="badge">MPR</span>
+            <span class="badge">CEE</span>
+            <span class="badge">RGE</span>
+        </div>
+    </div>
+
+    <div class="bottom-strip">
+        <div class="rep"><span class="chip">FR</span><span>Certipac — La conformité de vos dossiers, certifiée.</span></div>
+        <div>www.certipac.fr</div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 02 — SOMMAIRE                                            -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">00</span> — Sommaire</span>
+    </div>
+
+    <span class="eyebrow">Sommaire</span>
+    <h1 class="section-title">Table des matières</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">Ce document structure en dix sections l'ensemble des règles d'identité, des tokens de design et des composants d'interface de la marque Certipac. Chaque section est autonome et opposable.</p>
+
+    <div class="toc-list">
+        <div class="toc-row"><div class="n">01</div><div class="t"><h4>La Marque</h4><p>Vision, mission, positionnement et univers de confiance</p></div><div class="cat">IDENTITÉ</div><div class="pg">P.03</div></div>
+        <div class="toc-row"><div class="n">02</div><div class="t"><h4>Conformité & Engagement</h4><p>ANAH · MaPrimeRénov' · CEE — cadre réglementaire opposable</p></div><div class="cat">CADRE</div><div class="pg">P.04</div></div>
+        <div class="toc-row"><div class="n">03</div><div class="t"><h4>Le Logo</h4><p>Construction, symbolique et lecture graphique</p></div><div class="cat">MARQUE</div><div class="pg">P.05</div></div>
+        <div class="toc-row"><div class="n">04</div><div class="t"><h4>Déclinaisons du logo</h4><p>Versions fond clair, fond sombre, monochromes</p></div><div class="cat">MARQUE</div><div class="pg">P.06</div></div>
+        <div class="toc-row"><div class="n">05</div><div class="t"><h4>Zone de protection</h4><p>Espacement minimal, taille et grille de construction</p></div><div class="cat">MARQUE</div><div class="pg">P.07</div></div>
+        <div class="toc-row"><div class="n">06</div><div class="t"><h4>Système de couleurs</h4><p>Tokens de marque, échelles et ratios d'usage</p></div><div class="cat">TOKENS</div><div class="pg">P.08</div></div>
+        <div class="toc-row"><div class="n">07</div><div class="t"><h4>Typographie</h4><p>IBM Plex Sans — hiérarchie, échelles et graisses</p></div><div class="cat">TOKENS</div><div class="pg">P.09</div></div>
+        <div class="toc-row"><div class="n">08</div><div class="t"><h4>Voix & ton institutionnel</h4><p>Principes rédactionnels et exemples comparatifs</p></div><div class="cat">EXPRESSION</div><div class="pg">P.10</div></div>
+        <div class="toc-row"><div class="n">09</div><div class="t"><h4>Règles d'utilisation</h4><p>Obligations, interdictions et cas d'usage officiels</p></div><div class="cat">RÈGLES</div><div class="pg">P.11</div></div>
+        <div class="toc-row"><div class="n">10</div><div class="t"><h4>Applications</h4><p>Supports print, letterhead, UI produit et signatures</p></div><div class="cat">APPLICATIONS</div><div class="pg">P.12–14</div></div>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>02 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 03 — LA MARQUE                                           -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">01</span> — La Marque</span>
+    </div>
+
+    <span class="eyebrow">Identité de marque</span>
+    <h1 class="section-title">La Marque<br>Certipac.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub"><b>Certipac</b> est la plateforme de référence pour la constitution de dossiers de subventions conformément aux exigences de l'ANAH, de MaPrimeRénov' et des CEE. Le nom articule deux promesses : <b style="color:var(--c-blue);">Certi</b> — la <b>conformité réglementaire</b> (CEE, ANAH, MPR, RGE) — et <b style="color:var(--c-green);">PAC</b> — la <b>pompe à chaleur</b>, cœur de métier de la transition énergétique.</p>
+
+    <div class="tiles c3">
+        <div class="tile">
+            <div class="kicker">Pilier 01</div>
+            <h3>Conformité</h3>
+            <p>Vérification automatique de chaque pièce selon les référentiels ANAH, MPR et CEE. Zéro rejet, zéro surprise.</p>
+        </div>
+        <div class="tile accent-green">
+            <div class="kicker">Pilier 02</div>
+            <h3>Confiance</h3>
+            <p>Processus transparent, contrôles en temps réel et historique d'audit complet pour chaque dossier.</p>
+        </div>
+        <div class="tile accent-dark">
+            <div class="kicker">Pilier 03</div>
+            <h3>Simplicité</h3>
+            <p>Interface pensée pour les professionnels du terrain. Aucune expertise administrative requise.</p>
+        </div>
+    </div>
+
+    <div class="block-title">Écosystème utilisateurs</div>
+    <div class="chips">
+        <span class="chip-i filled">Artisans RGE</span>
+        <span class="chip-i">Installateurs PAC</span>
+        <span class="chip-i">Mandataires CEE</span>
+        <span class="chip-i">Bénéficiaires ANAH</span>
+        <span class="chip-i">Bureaux de contrôle</span>
+        <span class="chip-i">Back-office conformité</span>
+    </div>
+
+    <div class="block-title">Attributs de marque</div>
+    <div class="dl">
+        <dt>Fiable</dt><dd>L'engagement opposable auprès des organismes de financement — chaque contrôle est tracé et horodaté.</dd>
+        <dt>Conforme</dt><dd>Alignement continu sur les référentiels réglementaires. Mise à jour des grilles automatique.</dd>
+        <dt>Rassurante</dt><dd>Langage clair, pédagogique, anti-technocratique. Le professionnel sait toujours où il en est.</dd>
+        <dt>Simple</dt><dd>Parcours en trois étapes maximum. Mobile-first pour l'usage terrain.</dd>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>03 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 04 — CONFORMITÉ                                          -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">02</span> — Conformité</span>
+    </div>
+
+    <span class="eyebrow">Cadre réglementaire</span>
+    <h1 class="section-title">Conformité<br>& engagement.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">Certipac s'inscrit dans un cadre réglementaire strict. Chaque fonctionnalité de la plateforme est conçue pour respecter les exigences des organismes de référence de la rénovation énergétique en France.</p>
+
+    <div class="notice"><b>Article 1.</b> Les présentes règles sont opposables. Toute communication utilisant la marque Certipac doit respecter la hiérarchie documentaire décrite dans ce chapitre et ne peut suggérer un agrément qui n'existe pas.</div>
+
+    <div class="tiles c2 mt-md">
+        <div class="tile">
+            <div class="kicker">Référence · A</div>
+            <h3>ANAH — Agence Nationale de l'Habitat</h3>
+            <p>Conformité aux critères d'éligibilité des aides à la rénovation énergétique. Vérification des plafonds de ressources, conditions de logement et travaux éligibles.</p>
+            <div class="mono" style="font-size:6.5pt;color:var(--c-blue);margin-top:3mm;letter-spacing:0.3pt;">Décret n°2020-26 du 14 janvier 2020</div>
+        </div>
+        <div class="tile accent-green">
+            <div class="kicker">Référence · M</div>
+            <h3>MaPrimeRénov'</h3>
+            <p>Constitution automatisée des dossiers selon le barème en vigueur. Contrôle des devis, attestations sur l'honneur et qualification RGE de l'installateur.</p>
+            <div class="mono" style="font-size:6.5pt;color:var(--c-green-dark);margin-top:3mm;letter-spacing:0.3pt;">Arrêté du 14 janvier 2020 modifié</div>
+        </div>
+        <div class="tile accent-dark">
+            <div class="kicker">Référence · C</div>
+            <h3>CEE — Certificats d'Économies d'Énergie</h3>
+            <p>Génération des fiches d'opérations standardisées (BAR-TH-159, BAR-TH-171). Contrôle de la complétude documentaire et de la cohérence technique.</p>
+            <div class="mono" style="font-size:6.5pt;color:var(--n-ink);margin-top:3mm;letter-spacing:0.3pt;">Fiches CEE BAR-TH en vigueur</div>
+        </div>
+        <div class="tile accent-amber">
+            <div class="kicker">Référence · R</div>
+            <h3>Qualification RGE</h3>
+            <p>Vérification en temps réel de la validité de la qualification RGE de chaque artisan partenaire. Alerte automatique en cas d'expiration imminente.</p>
+            <div class="mono" style="font-size:6.5pt;color:var(--c-amber);margin-top:3mm;letter-spacing:0.3pt;">Label RGE · Qualibat / QualiPAC</div>
+        </div>
+    </div>
+
+    <div class="block-title">Garanties structurelles</div>
+    <div class="tiles c3">
+        <div class="tile" style="border-left-color: var(--n-ink); background: var(--n-bg); border: 0.3mm solid var(--n-line); border-left: 0.8mm solid var(--n-ink);">
+            <div class="kicker">01</div>
+            <h3>Données sécurisées</h3>
+            <p>Hébergement HDS conforme RGPD. Chiffrement bout-en-bout.</p>
+        </div>
+        <div class="tile" style="background: var(--n-bg); border: 0.3mm solid var(--n-line); border-left: 0.8mm solid var(--c-green);">
+            <div class="kicker">02</div>
+            <h3>Contrôle temps réel</h3>
+            <p>Vérification instantanée de la conformité de chaque document.</p>
+        </div>
+        <div class="tile" style="background: var(--n-bg); border: 0.3mm solid var(--n-line); border-left: 0.8mm solid var(--c-blue);">
+            <div class="kicker">03</div>
+            <h3>Traçabilité complète</h3>
+            <p>Historique d'audit de chaque dossier, accessible à tout moment.</p>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>04 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 05 — LE LOGO                                             -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">03</span> — Logotype</span>
+    </div>
+
+    <span class="eyebrow">Système de marque</span>
+    <h1 class="section-title">Le Logo.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">Le logotype Certipac associe un <b>« C » protecteur</b>, un <b>checkmark dynamique</b> et un <b>mot-marque bicolore</b>. La composition traduit littéralement le nom : <b style="color:var(--c-blue);">Certi</b> pour la conformité réglementaire (CEE, ANAH, MPR) et <b style="color:var(--c-green);">PAC</b> pour la pompe à chaleur.</p>
+
+    <div class="stage">
+        <span class="ref-label">Logo principal — spécimen</span>
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <img src="CertiPac.svg" alt="Certipac">
+    </div>
+
+    <div class="annot-grid mt-md">
+        <div class="annot">
+            <div class="ref">01 · Arc bleu</div>
+            <h4>Le « C » protecteur — Certi</h4>
+            <p>L'arc enveloppant évoque la protection et le cadre réglementaire. Il matérialise la <b>conformité</b> aux dispositifs CEE, ANAH et MaPrimeRénov'.</p>
+        </div>
+        <div class="annot">
+            <div class="ref">02 · Checkmark vert</div>
+            <h4>La coche ascendante — PAC</h4>
+            <p>La coche-flèche symbolise la validation et la transition énergétique. Le dégradé vert ancre la <b>pompe à chaleur</b>, cœur de métier.</p>
+        </div>
+        <div class="annot">
+            <div class="ref">03 · Mot-marque</div>
+            <h4>Bicolore signifiant</h4>
+            <p><b style="color:var(--c-blue);">Certi</b> — conformité réglementaire (CEE · ANAH · MPR · RGE).<br><b style="color:var(--c-green);">PAC</b> — pompe à chaleur et transition énergétique.</p>
+        </div>
+        <div class="annot">
+            <div class="ref">04 · Variables officielles</div>
+            <h4>Fichiers sources</h4>
+            <p class="mono" style="font-size:7.5pt;line-height:1.6;">
+                CertiPac.svg<br>
+                CertiPacfond.svg<br>
+                CertiPac-icon.svg<br>
+                CertiPac-white.svg
+            </p>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>05 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 06 — DÉCLINAISONS                                        -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">04</span> — Déclinaisons</span>
+    </div>
+
+    <span class="eyebrow">Versions officielles</span>
+    <h1 class="section-title">Déclinaisons<br>du logo.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">Deux versions principales, plus une version icône. Chaque déclinaison est optimisée pour un contexte précis. Toute reproduction hors de ces variantes est proscrite.</p>
+
+    <div class="tiles c2" style="gap: 2mm;">
+        <div>
+            <div class="stage">
+                <span class="ref-label">V01 — Fond clair · Principal</span>
+                <span class="corner tl"></span><span class="corner tr"></span>
+                <span class="corner bl"></span><span class="corner br"></span>
+                <img src="CertiPac.svg" alt="Fond clair">
+            </div>
+            <div class="annot" style="margin-top:2mm;">
+                <div class="ref">CertiPac.svg</div>
+                <h4>Version fond clair — usage principal</h4>
+                <p>Supports blancs, gris clairs et documents imprimés. Version obligatoire pour les courriers officiels et les annexes réglementaires.</p>
+            </div>
+        </div>
+        <div>
+            <div class="stage dark">
+                <span class="ref-label">V02 — Fond sombre · Institutionnel</span>
+                <span class="corner tl"></span><span class="corner tr"></span>
+                <span class="corner bl"></span><span class="corner br"></span>
+                <img src="CertiPacfond.svg" alt="Fond sombre">
+            </div>
+            <div class="annot" style="margin-top:2mm;">
+                <div class="ref">CertiPacfond.svg</div>
+                <h4>Version fond sombre — UI produit</h4>
+                <p>Interface logicielle, présentations, écrans d'accueil et réseaux sociaux. Le « C » passe en blanc pour maintenir le contraste institutionnel.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-title">Favicon & variantes réduites</div>
+    <div class="tiles c4">
+        <div class="tile" style="background: var(--n-bg); border: 0.3mm solid var(--n-line); border-left: 0.8mm solid var(--c-blue); text-align:center; padding: 8mm 4mm;">
+            <img src="CertiPac-icon.svg" alt="Icon" style="height: 14mm; margin-bottom: 4mm;">
+            <div class="kicker" style="margin-bottom:1mm;">Icon</div>
+            <p class="mono" style="font-size:7pt;">CertiPac-icon.svg</p>
+        </div>
+        <div class="tile" style="background: var(--c-blue); border: 0.3mm solid var(--c-blue-dark); border-left: 0.8mm solid var(--c-green); text-align:center; padding: 8mm 4mm;">
+            <img src="CertiPac-icon-white.svg" alt="Icon white" style="height: 14mm; margin-bottom: 4mm;">
+            <div class="kicker" style="margin-bottom:1mm; color: rgba(255,255,255,0.6);">Icon White</div>
+            <p class="mono" style="font-size:7pt; color: rgba(255,255,255,0.85);">CertiPac-icon-white.svg</p>
+        </div>
+        <div class="tile" style="background: var(--n-bg); border: 0.3mm solid var(--n-line); border-left: 0.8mm solid var(--n-ink); text-align:center; padding: 8mm 4mm;">
+            <img src="CertiPac-favicon.svg" alt="Favicon" style="height: 14mm; margin-bottom: 4mm;">
+            <div class="kicker" style="margin-bottom:1mm;">Favicon</div>
+            <p class="mono" style="font-size:7pt;">CertiPac-favicon.svg</p>
+        </div>
+        <div class="tile" style="background: var(--n-bg); border: 0.3mm solid var(--n-line); border-left: 0.8mm solid var(--c-amber); text-align:center; padding: 8mm 4mm;">
+            <img src="CertiPac-og.svg" alt="OG" style="height: 14mm; margin-bottom: 4mm;">
+            <div class="kicker" style="margin-bottom:1mm;">Open Graph</div>
+            <p class="mono" style="font-size:7pt;">CertiPac-og.svg</p>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>06 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 07 — ZONE DE PROTECTION                                  -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">05</span> — Zone de protection</span>
+    </div>
+
+    <span class="eyebrow">Construction & tailles</span>
+    <h1 class="section-title">Zone de<br>protection.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">Un espace de sécurité entoure le logo pour préserver sa lisibilité. Aucun élément graphique, texte ou logo partenaire ne doit empiéter sur cet espace — y compris les logos d'organismes (ANAH, ADEME).</p>
+
+    <div class="protection">
+        <div class="guide outer"></div>
+        <span class="x-lbl x-top">X</span>
+        <span class="x-lbl x-bot">X</span>
+        <span class="x-lbl x-left">X</span>
+        <span class="x-lbl x-right">X</span>
+        <img src="CertiPac.svg" alt="Certipac">
+    </div>
+
+    <div class="annot-grid mt-md">
+        <div class="annot">
+            <div class="ref">Règle X · Zone libre</div>
+            <h4>Espacement minimal</h4>
+            <p>La valeur « X » correspond à la hauteur des lettres <b>« pac »</b> du mot-marque. Cette marge doit être respectée en toutes circonstances, notamment à proximité des logos institutionnels.</p>
+        </div>
+        <div class="annot">
+            <div class="ref">Règle T · Taille minimale</div>
+            <h4>Lisibilité garantie</h4>
+            <p>
+                <b>Print :</b> <span class="mono">28 mm</span> de largeur minimale.<br>
+                <b>Digital :</b> <span class="mono">90 px</span> de largeur minimale.<br>
+                <b>Documents ANAH :</b> <span class="mono">35 mm</span> minimum.
+            </p>
+        </div>
+    </div>
+
+    <div class="block-title">Grille de construction</div>
+    <div class="dl">
+        <dt>Alignement</dt><dd>Le mot-marque s'aligne optiquement sur la baseline du checkmark. L'arc bleu définit le cadre vertical du bloc.</dd>
+        <dt>Rapport H/L</dt><dd>Rapport hauteur / largeur : <span class="mono">1 : 3,4</span> — préserver impérativement lors de tout redimensionnement.</dd>
+        <dt>Cohabitation</dt><dd>En cohabitation avec un autre logo, prévoir un filet vertical de séparation de 0,3 mm, centré sur la hauteur du logo Certipac.</dd>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>07 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 08 — COULEURS                                            -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">06</span> — Système de couleurs</span>
+    </div>
+
+    <span class="eyebrow">Design tokens</span>
+    <h1 class="section-title">Système<br>de couleurs.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">La palette Certipac s'articule autour de deux tokens de marque — <b>Bleu Certipac</b> et <b>Vert Certipac</b> — complétés d'une échelle neutre inspirée de Carbon Gray. Chaque couleur est déclinée selon 10 valeurs pour les besoins d'interface.</p>
+
+    <div class="block-title">Tokens de marque</div>
+    <div class="palette-grid">
+        <div class="swatch">
+            <div class="color" style="background:#194296;"><span class="on-color">$brand-primary / 60</span></div>
+            <div class="info">
+                <h4>Bleu Certipac</h4>
+                <div class="token">--c-blue · $brand-primary</div>
+                <div class="specs">
+                    <div><span>HEX</span><strong>#194296</strong></div>
+                    <div><span>RGB</span><strong>25 · 66 · 150</strong></div>
+                    <div><span>CMJN</span><strong>83 · 56 · 0 · 41</strong></div>
+                    <div><span>Pantone</span><strong>7686 C</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="color" style="background:#43AA43;"><span class="on-color">$brand-accent / 50</span></div>
+            <div class="info">
+                <h4>Vert Certipac</h4>
+                <div class="token">--c-green · $brand-accent</div>
+                <div class="specs">
+                    <div><span>HEX</span><strong>#43AA43</strong></div>
+                    <div><span>RGB</span><strong>67 · 170 · 67</strong></div>
+                    <div><span>CMJN</span><strong>61 · 0 · 61 · 33</strong></div>
+                    <div><span>Pantone</span><strong>361 C</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="color" style="background:#161616;"><span class="on-color">$gray-100 / ink</span></div>
+            <div class="info">
+                <h4>Noir institutionnel</h4>
+                <div class="token">--n-ink · $gray-100</div>
+                <div class="specs">
+                    <div><span>HEX</span><strong>#161616</strong></div>
+                    <div><span>RGB</span><strong>22 · 22 · 22</strong></div>
+                    <div><span>CMJN</span><strong>0 · 0 · 0 · 91</strong></div>
+                    <div><span>Pantone</span><strong>Black 6 C</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-title">Échelle Bleu — gradient 10 · 100</div>
+    <div class="palette-ramp">
+        <div class="light-step" style="background:#E6EDF8;">10</div>
+        <div class="light-step" style="background:#C1D0EB;">20</div>
+        <div class="light-step" style="background:#8FAAD7;">30</div>
+        <div class="light-step" style="background:#5E83C3;">40</div>
+        <div style="background:#2D5DAF;">50</div>
+        <div style="background:#194296;">60</div>
+        <div style="background:#133676;">70</div>
+        <div style="background:#0F2C66;">80</div>
+        <div style="background:#0A2048;">90</div>
+        <div style="background:#051129;">100</div>
+    </div>
+
+    <div class="block-title">Échelle Vert — gradient 10 · 100</div>
+    <div class="palette-ramp">
+        <div class="light-step" style="background:#E9F6EA;">10</div>
+        <div class="light-step" style="background:#C7E8C9;">20</div>
+        <div class="light-step" style="background:#98D39A;">30</div>
+        <div style="background:#6ABE6C;">40</div>
+        <div style="background:#43AA43;">50</div>
+        <div style="background:#378F37;">60</div>
+        <div style="background:#2E7A2E;">70</div>
+        <div style="background:#235C23;">80</div>
+        <div style="background:#173D17;">90</div>
+        <div style="background:#0A1F0A;">100</div>
+    </div>
+
+    <div class="block-title">Ratio d'usage recommandé</div>
+    <div class="ratio-bar">
+        <div class="light-bar" style="background: #FFFFFF; flex: 40; border-right: 0.2mm solid var(--n-line);">Blanc · 40%</div>
+        <div style="background: var(--c-blue); flex: 25;">Bleu · 25%</div>
+        <div style="background: var(--c-green); flex: 15;">Vert · 15%</div>
+        <div style="background: var(--n-ink); flex: 12;">Ink · 12%</div>
+        <div class="light-bar" style="background: var(--n-bg-alt); flex: 8;">Gray · 8%</div>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>08 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 09 — TYPOGRAPHIE                                         -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">07</span> — Typographie</span>
+    </div>
+
+    <span class="eyebrow">Système typographique</span>
+    <h1 class="section-title">Typographie.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">La famille <b>IBM Plex Sans</b> — typographie libre, institutionnelle et hautement lisible — est la police de marque Certipac. <b>IBM Plex Mono</b> accompagne les références, identifiants et données techniques.</p>
+
+    <div class="type-hero">
+        <div class="big">Aa<span>Aa</span></div>
+        <div class="meta">
+            <h3>IBM Plex Sans</h3>
+            <p>Famille typographique libre de droits (SIL OFL) conçue par IBM. Support complet du français, lisibilité optimale en corps courant et en titraille.</p>
+            <div class="mono-ref">BRAND-TYPE / 01 · GOOGLE FONTS</div>
+        </div>
+    </div>
+
+    <div class="tiles c2">
+        <div>
+            <div class="block-title" style="margin-top:0;">Graisses autorisées</div>
+            <div class="weight-row"><span class="name">Light</span><span class="num">300</span><span class="sample" style="font-weight:300;">Conformité documentaire</span></div>
+            <div class="weight-row"><span class="name">Regular</span><span class="num">400</span><span class="sample" style="font-weight:400;">Conformité documentaire</span></div>
+            <div class="weight-row"><span class="name">Medium</span><span class="num">500</span><span class="sample" style="font-weight:500;">Conformité documentaire</span></div>
+            <div class="weight-row"><span class="name">Semibold</span><span class="num">600</span><span class="sample" style="font-weight:600;">Conformité documentaire</span></div>
+            <div class="weight-row"><span class="name">Bold</span><span class="num">700</span><span class="sample" style="font-weight:700;">Conformité documentaire</span></div>
+        </div>
+        <div>
+            <div class="block-title" style="margin-top:0;">Échelle de hiérarchie</div>
+            <div class="scale-row"><span class="lbl">Display · D1</span><span class="sz">48 / 52</span><span class="dem" style="font-size:18pt;font-weight:300;letter-spacing:-0.4pt;">Certipac</span></div>
+            <div class="scale-row"><span class="lbl">Heading · H1</span><span class="sz">28 / 34</span><span class="dem" style="font-size:14pt;font-weight:600;">Conformité ANAH</span></div>
+            <div class="scale-row"><span class="lbl">Heading · H2</span><span class="sz">18 / 24</span><span class="dem" style="font-size:11pt;font-weight:600;">Dossier validé</span></div>
+            <div class="scale-row"><span class="lbl">Heading · H3</span><span class="sz">14 / 20</span><span class="dem" style="font-size:10pt;font-weight:600;color:var(--c-blue);">Section de contrôle</span></div>
+            <div class="scale-row"><span class="lbl">Body</span><span class="sz">14 / 22</span><span class="dem" style="font-size:9pt;">Corps de texte principal.</span></div>
+            <div class="scale-row"><span class="lbl">Caption</span><span class="sz">12 / 16</span><span class="dem" style="font-size:8pt; color: var(--n-muted);">Métadonnée · légende</span></div>
+            <div class="scale-row"><span class="lbl">Mono · Code</span><span class="sz">12 / 16</span><span class="dem mono" style="font-size:7.5pt;">CTP-2026-1247</span></div>
+        </div>
+    </div>
+
+    <div class="notice mt-md"><b>Règle T-01.</b> Aucune autre famille typographique n'est autorisée sur supports officiels. En cas d'indisponibilité d'IBM Plex Sans, utiliser la pile de secours <span class="mono" style="font-size:7.5pt;">Inter → Helvetica Neue → Arial → sans-serif</span>.</div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>09 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 10 — VOIX & TON                                          -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">08</span> — Voix & ton</span>
+    </div>
+
+    <span class="eyebrow">Expression de marque</span>
+    <h1 class="section-title">Voix & ton<br>institutionnel.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">La voix Certipac est <b>rassurante</b>, <b>professionnelle</b> et <b>claire</b>. Elle parle le langage de la conformité avec simplicité, sans jargon. Chaque message doit inspirer confiance et autorité.</p>
+
+    <div class="tiles c3">
+        <div class="tile"><div class="kicker">Principe 01</div><h3>Rassurant</h3><p>Le bénéficiaire et l'artisan doivent se sentir en confiance. Chaque message lève un doute.</p></div>
+        <div class="tile accent-green"><div class="kicker">Principe 02</div><h3>Professionnel</h3><p>Ton sérieux sans être froid. Experts de la conformité, pas technocrates.</p></div>
+        <div class="tile accent-dark"><div class="kicker">Principe 03</div><h3>Accessible</h3><p>Mots simples pour sujets complexes. Lisible en situation de chantier, sur mobile.</p></div>
+    </div>
+
+    <div class="block-title">Exemples comparatifs</div>
+
+    <div class="voice-row">
+        <div class="voice-ctx"><span class="tag-ctx">Contexte 01</span>Notification de succès</div>
+        <div class="voice-ex good"><span class="lbl">À faire</span>Votre dossier est conforme. Toutes les pièces ont été vérifiées.</div>
+        <div class="voice-ex bad"><span class="lbl">À éviter</span>Le process de validation documentaire a été finalisé sans anomalie.</div>
+    </div>
+
+    <div class="voice-row">
+        <div class="voice-ctx"><span class="tag-ctx">Contexte 02</span>Message d'erreur</div>
+        <div class="voice-ex good"><span class="lbl">À faire</span>Il manque l'attestation sur l'honneur. Ajoutez-la pour finaliser.</div>
+        <div class="voice-ex bad"><span class="lbl">À éviter</span>Erreur : document manquant dans le workflow (ref. ATT-HON-001).</div>
+    </div>
+
+    <div class="voice-row">
+        <div class="voice-ctx"><span class="tag-ctx">Contexte 03</span>Tagline / baseline</div>
+        <div class="voice-ex good"><span class="lbl">À faire</span>La conformité de vos dossiers, certifiée.</div>
+        <div class="voice-ex bad"><span class="lbl">À éviter</span>Solution SaaS B2B d'optimisation du pipeline documentaire CEE/MPR.</div>
+    </div>
+
+    <div class="voice-row">
+        <div class="voice-ctx"><span class="tag-ctx">Contexte 04</span>Demande d'action</div>
+        <div class="voice-ex good"><span class="lbl">À faire</span>Téléversez la facture pour déclencher la vérification ANAH.</div>
+        <div class="voice-ex bad"><span class="lbl">À éviter</span>Prière d'uploader la pièce justificative afin de procéder au check.</div>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>10 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 11 — RÈGLES D'UTILISATION                                -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">09</span> — Règles</span>
+    </div>
+
+    <span class="eyebrow">Règles opposables</span>
+    <h1 class="section-title">Règles<br>d'utilisation.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">Pour garantir la cohérence de la marque et maintenir sa crédibilité auprès des organismes réglementaires, ces règles doivent être respectées sans exception par l'ensemble des partenaires et prestataires.</p>
+
+    <div class="rules-grid">
+        <div class="rules-panel do">
+            <div class="hd">
+                <div class="mark">+</div>
+                <h3>Obligations — À faire</h3>
+            </div>
+            <ul>
+                <li>Utiliser exclusivement les versions officielles (SVG ou PNG haute résolution)</li>
+                <li>Respecter la zone de protection définie en section 05</li>
+                <li>Appliquer la version fond clair sur supports blancs ou gris clairs</li>
+                <li>Appliquer la version fond sombre sur supports institutionnels</li>
+                <li>Conserver les proportions originales en toute circonstance</li>
+                <li>Placer le logo à proximité des logos ANAH / ADEME lorsque requis</li>
+                <li>Vérifier la taille minimale avant chaque impression (28 mm / 90 px)</li>
+                <li>Privilégier le format SVG pour tous les supports digitaux</li>
+            </ul>
+        </div>
+        <div class="rules-panel dont">
+            <div class="hd">
+                <div class="mark">×</div>
+                <h3>Interdictions — À ne pas faire</h3>
+            </div>
+            <ul>
+                <li>Modifier les couleurs du logo ou le dégradé vert</li>
+                <li>Étirer, déformer ou faire pivoter le logotype</li>
+                <li>Ajouter des effets (ombres portées, lueurs, contours)</li>
+                <li>Placer le logo sur un fond photographique chargé</li>
+                <li>Réduire le logo en dessous de la taille minimale</li>
+                <li>Séparer le symbole du mot-marque sans autorisation</li>
+                <li>Utiliser le logo dans un contexte suggérant un label d'État</li>
+                <li>Modifier la typographie du mot-marque Certipac</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="notice mt-md"><b>Article 9.3.</b> Toute dérogation à ces règles doit faire l'objet d'une validation écrite préalable du pôle communication Certipac. Référer au document <span class="mono">CTP-DEROG-2026</span>.</div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>11 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 12 — APPLICATIONS PRINT                                  -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">10</span> — Applications · Print</span>
+    </div>
+
+    <span class="eyebrow">Applications</span>
+    <h1 class="section-title">Carte de visite<br>& courrier.</h1>
+    <div class="divider-thick"></div>
+
+    <div class="card-face">
+        <div class="top-line"><div></div><div></div><div></div></div>
+        <img src="CertiPac.svg" alt="Certipac">
+        <div class="who">Prénom NOM</div>
+        <div class="role">Responsable Conformité</div>
+        <div class="contact">+33 6 00 00 00 00<br>contact@certipac.fr</div>
+        <div class="footer">
+            <span>Partenaire conformité ANAH · CEE</span>
+            <span>www.certipac.fr</span>
+        </div>
+    </div>
+
+    <div class="card-face back">
+        <img src="CertiPacfond.svg" alt="Certipac">
+        <div class="quote">La conformité de vos dossiers, certifiée.</div>
+        <div class="accent-bar"></div>
+    </div>
+
+    <div class="format-caption">Format 85 × 55 mm · Impression recto-verso · Papier 350 g couché mat · Pantone</div>
+
+    <div class="block-title">Papier à en-tête institutionnel</div>
+    <div class="letterhead">
+        <div class="lh-top">
+            <span><span class="dot"></span>Certipac — Document officiel</span>
+            <span>CTP · PAPIER · A4</span>
+        </div>
+        <div class="lh-body">
+            <div class="lh-brand">
+                <img src="CertiPac.svg" alt="Certipac">
+                <div class="coord">
+                    <b>SAS Certipac</b>
+                    SIRET 000 000 000 00000<br>
+                    contact@certipac.fr · www.certipac.fr<br>
+                    Partenaire conformité ANAH · CEE
+                </div>
+            </div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder last"></div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>12 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 13 — UI PRODUIT (Carbon style)                           -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">10</span> — Applications · UI</span>
+    </div>
+
+    <span class="eyebrow">Interface produit</span>
+    <h1 class="section-title">Composants<br>d'interface.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">Le système d'interface Certipac s'inspire de <b>Carbon Design System</b> : composants structurels, bordures nettes, grille 4 colonnes, data tables institutionnelles et hiérarchie d'information claire.</p>
+
+    <div class="ui-frame">
+        <div class="ui-header">
+            <img src="CertiPac-white.svg" alt="Certipac">
+            <div class="brand-sep"></div>
+            <div class="app-name">Espace conformité</div>
+            <div class="nav">
+                <div class="nav-item active">Tableau de bord</div>
+                <div class="nav-item">Dossiers</div>
+                <div class="nav-item">Artisans</div>
+                <div class="nav-item">Audit</div>
+            </div>
+        </div>
+        <div class="ui-body">
+            <div class="ui-side">
+                <div class="grp">Conformité</div>
+                <div class="item active"><span class="dot"></span>Tableau de bord</div>
+                <div class="item"><span class="dot"></span>Dossiers ANAH</div>
+                <div class="item"><span class="dot"></span>Fiches CEE</div>
+                <div class="item"><span class="dot"></span>MaPrimeRénov'</div>
+                <div class="grp">Référentiels</div>
+                <div class="item"><span class="dot"></span>Artisans RGE</div>
+                <div class="item"><span class="dot"></span>Bénéficiaires</div>
+                <div class="grp">Système</div>
+                <div class="item"><span class="dot"></span>Paramètres</div>
+            </div>
+            <div class="ui-main">
+                <div class="crumbs">Conformité <span>/</span> <span class="on">Tableau de bord</span></div>
+                <h2>Tableau de bord — Avril 2026</h2>
+                <div class="metrics">
+                    <div class="metric"><div class="l">DOSSIERS CONFORMES</div><div class="v">1 247</div><div class="d">↑ 12,4%</div></div>
+                    <div class="metric green"><div class="l">TAUX DE CONFORMITÉ</div><div class="v">98,2<sup>%</sup></div><div class="d">↑ 0,6 pt</div></div>
+                    <div class="metric amber"><div class="l">PRIMES VALIDÉES</div><div class="v">156<sup>K€</sup></div><div class="d">↑ 8,1%</div></div>
+                    <div class="metric ink"><div class="l">ARTISANS RGE ACTIFS</div><div class="v">89</div><div class="d">↑ 4 cette semaine</div></div>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Référence</th>
+                            <th>Artisan RGE</th>
+                            <th>Type PAC</th>
+                            <th>Dispositif</th>
+                            <th>Conformité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ref-cell">CTP-2026-1247</td>
+                            <td>Martin Durand</td>
+                            <td>Air / Eau</td>
+                            <td>ANAH + CEE</td>
+                            <td><span class="status-pill ok">Conforme</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ref-cell">CTP-2026-1246</td>
+                            <td>Sophie Laurent</td>
+                            <td>Air / Air</td>
+                            <td>CEE</td>
+                            <td><span class="status-pill wait">En vérification</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ref-cell">CTP-2026-1245</td>
+                            <td>Pierre Bernard</td>
+                            <td>Eau / Eau</td>
+                            <td>MaPrimeRénov'</td>
+                            <td><span class="status-pill ko">Non conforme</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ref-cell">CTP-2026-1244</td>
+                            <td>Julie Moreau</td>
+                            <td>Air / Eau</td>
+                            <td>ANAH</td>
+                            <td><span class="status-pill ok">Conforme</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="block-title">Principes d'interface</div>
+    <div class="dl">
+        <dt>Grille</dt><dd>Grille responsive 4 / 8 / 16 colonnes, gouttière 16 px, marges 24 px.</dd>
+        <dt>Bordures</dt><dd>Bords nets, sans rayon. Bande latérale colorée (<span class="mono">4 px</span>) pour signaler le statut.</dd>
+        <dt>Hiérarchie</dt><dd>Valeurs de métriques en <b>Light 300</b>, labels en <b>Medium 500</b>, codes en <b>IBM Plex Mono</b>.</dd>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>13 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 14 — SIGNATURES EMAIL                                    -->
+<!-- ============================================================= -->
+<div class="page">
+    <div class="top-bar"><div style="background:var(--c-blue);"></div><div style="background:var(--c-green);"></div><div style="background:var(--n-ink);"></div></div>
+    <div class="page-header">
+        <span class="id"><b>Certipac</b> · Brand Book 2026</span>
+        <span class="section"><span class="num">10</span> — Applications · Signatures</span>
+    </div>
+
+    <span class="eyebrow">Signatures email</span>
+    <h1 class="section-title">Signature<br>institutionnelle.</h1>
+    <div class="divider-thick"></div>
+    <p class="section-sub">La signature email Certipac renforce l'image de conformité et de professionnalisme à chaque échange. Deux versions sont disponibles selon le client de messagerie utilisé.</p>
+
+    <div class="sig-label">Version 01 · Fond sombre — usage principal</div>
+    <div class="sig-block dark">
+        <img src="CertiPacfond.svg" alt="Certipac">
+        <div class="divider"></div>
+        <div class="info">
+            <div class="nm">Prénom NOM</div>
+            <div class="rl">Responsable Conformité · Certipac</div>
+            <div class="ln">+33 6 00 00 00 00 · contact@certipac.fr<br>www.certipac.fr</div>
+            <div class="tl">La conformité de vos dossiers, certifiée.</div>
+        </div>
+    </div>
+
+    <div class="sig-label">Version 02 · Fond clair — usage secondaire</div>
+    <div class="sig-block light">
+        <img src="CertiPac.svg" alt="Certipac">
+        <div class="divider"></div>
+        <div class="info">
+            <div class="nm">Prénom NOM</div>
+            <div class="rl">Responsable Conformité · Certipac</div>
+            <div class="ln">+33 6 00 00 00 00 · contact@certipac.fr<br>www.certipac.fr</div>
+            <div class="tl">La conformité de vos dossiers, certifiée.</div>
+        </div>
+    </div>
+
+    <div class="block-title">Spécifications techniques</div>
+    <div class="dl">
+        <dt>Formats</dt><dd>HTML inline · PNG 2× · SVG (clients compatibles Gmail, Outlook 365, Apple Mail)</dd>
+        <dt>Dimensions</dt><dd>Largeur fixe <span class="mono">540 px</span> · Hauteur <span class="mono">120 px</span> maximum</dd>
+        <dt>Poids</dt><dd>Inférieur à <span class="mono">40 Ko</span> images incluses. Pas de tracking pixel.</dd>
+        <dt>Liens obligatoires</dt><dd><span class="mono">www.certipac.fr</span> · mention des partenariats ANAH / CEE</dd>
+    </div>
+
+    <div class="page-footer">
+        <span class="doc-id">CTP-BB-2026-FR-001</span>
+        <span>14 / 15</span>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- PAGE 15 — BACK COVER                                          -->
+<!-- ============================================================= -->
+<div class="page back">
+    <div class="head">
+        <span>Certipac · Brand Book 2026</span>
+        <span>République — Transition énergétique</span>
+    </div>
+
+    <div class="middle">
+        <img src="CertiPacfond.svg" alt="Certipac">
+        <h2>La conformité<br>de vos dossiers,<br><b>certifiée.</b></h2>
+        <div class="line"></div>
+        <p class="sub">Document institutionnel émis par Certipac SAS dans le cadre de son engagement de transparence auprès des organismes de financement de la rénovation énergétique en France.</p>
+    </div>
+
+    <div class="cred">
+        <div class="chips">
+            <span class="chip-i">ANAH</span>
+            <span class="chip-i">MaPrimeRénov'</span>
+            <span class="chip-i">CEE</span>
+            <span class="chip-i">RGE</span>
+            <span class="chip-i">RGPD</span>
+            <span class="chip-i">HDS</span>
+        </div>
+    </div>
+
+    <div class="foot">
+        <span class="mono">CTP-BB-2026-FR-001 · v2.0</span>
+        <span>www.certipac.fr</span>
+    </div>
+</div>
+
+</body>
+</html>

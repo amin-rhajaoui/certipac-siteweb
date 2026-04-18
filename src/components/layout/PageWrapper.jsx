@@ -1,15 +1,9 @@
-import { motion } from 'motion/react'
-import { pageTransition } from '@/lib/animations'
+import { cn } from '@/lib/utils'
 
-export default function PageWrapper({ children }) {
-  return (
-    <motion.div
-      variants={pageTransition}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
-      {children}
-    </motion.div>
-  )
+/**
+ * PageWrapper — sobre, sans animation de page.
+ * Les pages institutionnelles ne glissent pas, elles s'affichent.
+ */
+export default function PageWrapper({ children, className }) {
+  return <div className={cn('bg-white', className)}>{children}</div>
 }

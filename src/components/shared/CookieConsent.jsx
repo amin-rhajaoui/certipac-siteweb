@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
-import { Cookie } from 'lucide-react'
 import Button from '@/components/ui/Button'
 
 export default function CookieConsent() {
@@ -9,53 +7,52 @@ export default function CookieConsent() {
   useEffect(() => {
     const consent = localStorage.getItem('certipac-cookies')
     if (!consent) {
-      const timer = setTimeout(() => setVisible(true), 1500)
+      const timer = setTimeout(() => setVisible(true), 1200)
       return () => clearTimeout(timer)
     }
   }, [])
+
+  if (!visible) return null
 
   const accept = () => {
     localStorage.setItem('certipac-cookies', 'accepted')
     setVisible(false)
   }
-
   const decline = () => {
     localStorage.setItem('certipac-cookies', 'declined')
     setVisible(false)
   }
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 60 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-lg rounded-xl bg-white p-5 shadow-elevated"
-        >
-          <div className="flex items-start gap-3">
-            <Cookie className="h-6 w-6 text-[#194296] shrink-0 mt-0.5" />
-            <div className="space-y-3">
-              <p className="text-sm text-surface-600 leading-relaxed">
-                Nous utilisons des cookies pour améliorer votre expérience.
-                En continuant, vous acceptez notre{' '}
-                <a href="/politique-confidentialite" className="text-[#194296] underline">
-                  politique de confidentialité
-                </a>.
-              </p>
-              <div className="flex gap-2">
-                <Button size="sm" onClick={accept}>
-                  Accepter
-                </Button>
-                <Button size="sm" variant="ghost" onClick={decline}>
-                  Refuser
-                </Button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div
+      role="dialog"
+      aria-live="polite"
+      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 z-50 sm:max-w-md bg-white border border-[#E0E0E0] shadow-elevated"
+    >
+      <div className="brand-bar-thin" />
+      <div className="p-5">
+        <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#525252] mb-2">
+          Cookies · Information
+        </p>
+        <p className="text-[13px] leading-relaxed text-[#393939] mb-4">
+          Ce site utilise des cookies de mesure d'audience. En continuant, vous acceptez notre{' '}
+          <a
+            href="/politique-confidentialite"
+            className="text-[#194296] underline underline-offset-2 hover:text-[#143578]"
+          >
+            politique de confidentialité
+          </a>
+          .
+        </p>
+        <div className="flex gap-2">
+          <Button size="sm" onClick={accept}>
+            Accepter
+          </Button>
+          <Button size="sm" variant="tertiary" onClick={decline}>
+            Refuser
+          </Button>
+        </div>
+      </div>
+    </div>
   )
 }

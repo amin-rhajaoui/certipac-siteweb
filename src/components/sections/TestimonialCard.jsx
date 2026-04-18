@@ -1,40 +1,62 @@
-import { motion } from 'motion/react'
-import { Star, Quote } from 'lucide-react'
-import { fadeUp } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
-export default function TestimonialCard({ name, role, company, content, rating = 5, featured = false }) {
+/**
+ * TestimonialCard institutionnel — sobre, citation longue, signature en bas.
+ */
+
+export default function TestimonialCard({ name, role, company, content, rating, featured = false, reference }) {
   return (
-    <motion.div
-      variants={fadeUp}
+    <article
       className={cn(
-        'rounded-xl p-6 flex flex-col',
+        'flex flex-col p-6 sm:p-7 h-full rounded-[2px]',
         featured
           ? 'bg-[#194296] text-white'
-          : 'bg-surface-100/60'
+          : 'bg-[#F4F4F4] text-[#161616]',
       )}
+      style={{ borderLeft: featured ? '3px solid #43AA43' : '3px solid #194296' }}
     >
-      <Quote className={cn(
-        'h-6 w-6 mb-4',
-        featured ? 'text-[#43AA43]' : 'text-surface-300'
-      )} />
-      <p className={cn('leading-relaxed flex-1 text-sm', featured ? 'text-white/80' : 'text-surface-600')}>{content}</p>
-      <div className="flex gap-0.5 my-4">
-        {Array.from({ length: rating }).map((_, i) => (
-          <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-        ))}
-      </div>
-      <div className={cn('flex items-center gap-3 pt-4 border-t', featured ? 'border-white/15' : 'border-surface-200/50')}>
-        <div className="h-9 w-9 rounded-full bg-gradient-to-br from-[#194296] to-[#43AA43] flex items-center justify-center text-white font-semibold text-xs">
-          {name.charAt(0)}
-        </div>
+      {reference && (
+        <span
+          className={cn(
+            'font-mono text-[10px] uppercase tracking-[0.12em] mb-4',
+            featured ? 'text-[#75D593]' : 'text-[#525252]',
+          )}
+        >
+          {reference}
+        </span>
+      )}
+
+      <blockquote
+        className={cn(
+          'text-[15px] leading-[1.7] flex-1',
+          featured ? 'text-[#E0E0E0]' : 'text-[#393939]',
+        )}
+      >
+        <span aria-hidden className={cn('block text-[28px] leading-none mb-2 font-bold', featured ? 'text-[#43AA43]' : 'text-[#194296]')}>
+          «
+        </span>
+        {content}
+      </blockquote>
+
+      <footer
+        className={cn(
+          'mt-6 pt-5 border-t flex items-center justify-between gap-3',
+          featured ? 'border-white/15' : 'border-[#C6C6C6]',
+        )}
+      >
         <div>
-          <p className={cn('font-semibold text-sm', featured ? 'text-white' : 'text-surface-800')}>{name}</p>
-          <p className={cn('text-xs', featured ? 'text-white/50' : 'text-surface-400')}>
-            {role}{company && ` — ${company}`}
+          <p className="text-[14px] font-semibold">{name}</p>
+          <p
+            className={cn(
+              'text-[12px] mt-0.5',
+              featured ? 'text-[#A8A8A8]' : 'text-[#6F6F6F]',
+            )}
+          >
+            {role}
+            {company && ` · ${company}`}
           </p>
         </div>
-      </div>
-    </motion.div>
+      </footer>
+    </article>
   )
 }

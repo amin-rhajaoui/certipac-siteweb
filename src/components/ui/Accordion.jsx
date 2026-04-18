@@ -1,50 +1,57 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
+
+/**
+ * Accordion — Carbon style : lignes fines, pas de fond coloré, chevron rotatif.
+ */
 
 export default function Accordion({ items, className }) {
   const [openIndex, setOpenIndex] = useState(null)
 
-  const toggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+  const toggle = (index) => setOpenIndex(openIndex === index ? null : index)
 
   return (
-    <div className={cn('space-y-3', className)}>
-      {items.map((item, index) => (
-        <div
-          key={index}
-          className="rounded-lg bg-surface-100/60 overflow-hidden"
-        >
-          <button
-            onClick={() => toggle(index)}
-            className="flex w-full items-center justify-between p-5 text-left font-medium text-surface-800 hover:bg-surface-100 transition-colors cursor-pointer"
-          >
-            <span>{item.question}</span>
-            <motion.div
-              animate={{ rotate: openIndex === index ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
+    <div className={cn('border-t border-[#E0E0E0]', className)}>
+      {items.map((item, index) => {
+        const open = openIndex === index
+        return (
+          <div key={index} className="border-b border-[#E0E0E0]">
+            <button
+              onClick={() => toggle(index)}
+              className="flex w-full items-center justify-between gap-4 py-5 text-left cursor-pointer transition-colors hover:bg-[#F4F4F4] focus-visible:outline-2 focus-visible:outline-[#194296] focus-visible:outline-offset-[-2px] px-0 sm:px-2"
+              aria-expanded={open}
             >
-              <ChevronDown className="h-5 w-5 text-surface-500" />
-            </motion.div>
-          </button>
-          <AnimatePresence initial={false}>
-            {openIndex === index && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <div className="px-5 pb-5 text-surface-600 leading-relaxed">
+              <span className="flex items-center gap-4">
+                <span className="font-mono text-[11px] text-[#6F6F6F] tabular-nums">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="text-[15px] font-semibold text-[#161616]">
+                  {item.question}
+                </span>
+              </span>
+              <ChevronDown
+                className={cn(
+                  'h-5 w-5 shrink-0 text-[#194296] transition-transform duration-200',
+                  open && 'rotate-180',
+                )}
+              />
+            </button>
+            <div
+              className={cn(
+                'grid transition-all duration-300',
+                open ? 'grid-rows-[1fr] pb-5' : 'grid-rows-[0fr]',
+              )}
+            >
+              <div className="overflow-hidden">
+                <div className="text-[14px] leading-[1.6] text-[#525252] sm:pl-[3.125rem] pr-8">
                   {item.answer}
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      ))}
+              </div>
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }

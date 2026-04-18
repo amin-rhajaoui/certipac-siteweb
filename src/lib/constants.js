@@ -1,9 +1,9 @@
 export const NAV_LINKS = [
   {
-    label: 'Pour qui ?',
+    label: 'Pour qui',
     children: [
       {
-        label: 'Installateurs & poseurs',
+        label: 'Artisans RGE & installateurs',
         path: '/installateurs',
         description: 'Artisans RGE et équipes de pose sur le terrain',
       },
@@ -21,6 +21,7 @@ export const NAV_LINKS = [
   },
   { label: 'Fonctionnalités', path: '/fonctionnalites' },
   { label: 'Comment ça marche', path: '/comment-ca-marche' },
+  { label: 'Conformité', path: '/conformite' },
   { label: 'Tarifs', path: '/tarifs' },
   { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' },
@@ -28,22 +29,23 @@ export const NAV_LINKS = [
 
 export const FOOTER_LINKS = {
   produit: [
-    { label: 'Professionnels / entreprises', path: '/professionnels' },
+    { label: 'Professionnels & entreprises', path: '/professionnels' },
     { label: 'Installateurs & artisans', path: '/installateurs' },
     { label: 'Commerciaux PAC', path: '/commerciaux' },
     { label: 'Fonctionnalités', path: '/fonctionnalites' },
-    { label: 'Tarifs', path: '/tarifs' },
     { label: 'Comment ça marche', path: '/comment-ca-marche' },
-    { label: 'Conformité', path: '/conformite' },
-    { label: 'Financement', path: '/financement' },
+    { label: 'Tarifs', path: '/tarifs' },
   ],
   ressources: [
+    { label: 'Conformité réglementaire', path: '/conformite' },
+    { label: 'Financement & primes', path: '/financement' },
     { label: 'Blog', path: '/blog' },
-    { label: 'FAQ', path: '/faq' },
     { label: 'Témoignages', path: '/temoignages' },
+    { label: 'FAQ', path: '/faq' },
     { label: 'Contact', path: '/contact' },
   ],
   legal: [
+    { label: 'À propos', path: '/a-propos' },
     { label: 'Mentions légales', path: '/mentions-legales' },
     { label: 'CGV', path: '/cgv' },
     { label: 'Politique de confidentialité', path: '/politique-confidentialite' },
@@ -52,20 +54,32 @@ export const FOOTER_LINKS = {
 
 export const COMPANY_INFO = {
   name: 'Certipac',
-  tagline: 'Posez vos PAC en toute sérénité.',
+  legalName: 'Certipac SAS',
+  tagline: 'La conformité de vos dossiers, certifiée.',
   description:
-    'Certipac est le logiciel + app mobile qui guide les artisans RGE de A à Z : visite technique, dimensionnement, devis, signature électronique et dossiers conformes pour toucher les primes.',
+    "Certipac est la plateforme institutionnelle de conformité documentaire pour la rénovation énergétique. Elle guide les artisans RGE, les installateurs et les commerciaux PAC dans la constitution de dossiers conformes aux exigences ANAH, MaPrimeRénov' et CEE — de la visite technique au versement des primes.",
   email: 'contact@certipac.fr',
   phone: '01 23 45 67 89',
   address: 'Paris, France',
+  reference: 'CTP-BB-2026-FR-001',
+  edition: 'Édition 2026',
+  version: 'v2.0',
 }
+
+export const INSTITUTIONAL_BANNER = {
+  left: 'Transition énergétique · Conformité documentaire',
+  right: 'Édition 2026 · Document de référence',
+}
+
+export const REGULATORY_FRAMES = ['ANAH', "MaPrimeRénov'", 'CEE', 'RGE']
 
 export const APP_URL = 'https://app.certipac.fr'
 
 export const CTA_TEXT = {
-  primary: 'Essayer gratuitement',
-  secondary: 'Voir une démo',
-  pricing: 'Voir les tarifs',
+  primary: 'Accéder à la plateforme',
+  secondary: 'Demander une démonstration',
+  pricing: 'Consulter les tarifs',
   login: 'Se connecter',
-  signup: 'S\'inscrire',
+  signup: 'Créer un compte',
+  contact: 'Contacter Certipac',
 }

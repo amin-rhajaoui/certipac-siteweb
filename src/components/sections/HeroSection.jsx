@@ -1,139 +1,156 @@
-import { motion, useScroll, useTransform } from 'motion/react'
-import { useRef } from 'react'
 import Container from '@/components/ui/Container'
-import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
+import BrandBar from '@/components/shared/BrandBar'
 import { cn } from '@/lib/utils'
 
-const NAV_OFFSET_PX = 67
+/**
+ * Hero institutionnel — calé sur l'esprit brand book :
+ * filet tricolore, bloc-titre d'autorité, dateline/référence, deux colonnes sobres.
+ */
 
 export default function HeroSection({
-  badge,
+  eyebrow,
+  reference,
   title,
   highlight,
   description,
   primaryCTA,
   secondaryCTA,
-  children,
-  footer,
+  metadata,   // Array: [{ label, value }]
+  children,   // Colonne droite (visuel, mockup, liste…)
+  tone = 'light',
 }) {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  })
-  const y = useTransform(scrollYProgress, [0, 1], [0, 80])
-
-  const heroGrid = (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      {/* Left — Text content */}
-      <div>
-        {badge && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Badge className="mb-5">{badge}</Badge>
-          </motion.div>
-        )}
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl font-bold tracking-tight text-[#194296] sm:text-5xl lg:text-[3.5rem] lg:leading-[1.1]"
-        >
-          {title}{' '}
-          {highlight && (
-            <span className="text-[#43AA43]">
-              {highlight}
-            </span>
-          )}
-        </motion.h1>
-
-        {description && (
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-lg text-surface-600 max-w-lg leading-relaxed"
-          >
-            {description}
-          </motion.p>
-        )}
-
-        {(primaryCTA || secondaryCTA) && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8 flex flex-col sm:flex-row gap-3"
-          >
-            {primaryCTA && (
-              <Button size="lg" to={primaryCTA.to} href={primaryCTA.href}>
-                {primaryCTA.label}
-              </Button>
-            )}
-            {secondaryCTA && (
-              <Button variant="ghost" size="lg" to={secondaryCTA.to} href={secondaryCTA.href}>
-                {secondaryCTA.label}
-                <svg className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Button>
-            )}
-          </motion.div>
-        )}
-      </div>
-
-      {/* Right — Visual content */}
-      {children && (
-        <motion.div
-          initial={{ opacity: 0, x: 40, scale: 0.95 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {children}
-        </motion.div>
-      )}
-    </div>
-  )
+  const isDark = tone === 'dark'
 
   return (
     <section
-      ref={ref}
       className={cn(
-        'relative overflow-hidden bg-surface-50',
-        footer ? 'flex flex-col pt-20 pb-0 lg:pt-28' : 'py-20 lg:py-28',
+        'relative',
+        isDark ? 'bg-[#0A1A3C] text-white' : 'bg-white text-[#161616]',
       )}
-      style={footer ? { minHeight: `calc(100dvh - ${NAV_OFFSET_PX}px)` } : undefined}
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-grid pointer-events-none" />
-      <motion.div
-        style={{ y }}
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-      >
-        <div className="absolute top-20 right-1/4 h-[400px] w-[400px] rounded-full bg-[#194296]/5 blur-[100px]" />
-        <div className="absolute bottom-0 left-1/4 h-[300px] w-[300px] rounded-full bg-[#43AA43]/5 blur-[100px]" />
-      </motion.div>
+      <Container>
+        <div className="pt-10 pb-14 lg:pt-16 lg:pb-20">
+          {/* Dateline institutionnelle */}
+          {(eyebrow || reference) && (
+            <div
+              className={cn(
+                'flex flex-wrap items-center justify-between gap-2 mb-10 pb-3 border-b',
+                isDark ? 'border-[#1A2B4A]' : 'border-[#E0E0E0]',
+              )}
+            >
+              {eyebrow && (
+                <span
+                  className={cn(
+                    'font-mono text-[11px] uppercase tracking-[0.12em] font-semibold',
+                    isDark ? 'text-[#75D593]' : 'text-[#194296]',
+                  )}
+                >
+                  {eyebrow}
+                </span>
+              )}
+              {reference && (
+                <span
+                  className={cn(
+                    'font-mono text-[11px] uppercase tracking-[0.08em]',
+                    isDark ? 'text-[#8D8D8D]' : 'text-[#525252]',
+                  )}
+                >
+                  {reference}
+                </span>
+              )}
+            </div>
+          )}
 
-      {footer ? (
-        <>
-          <Container className="relative z-10 flex min-h-0 flex-1 flex-col justify-center">
-            {heroGrid}
-          </Container>
-          <div className="relative z-10 mt-auto w-full shrink-0">
-            <Container className="pt-10 lg:pt-12">
-              <div className="mx-auto w-full max-w-6xl">{footer}</div>
-            </Container>
-            <div className="brand-bar mt-6 lg:mt-8" aria-hidden />
+          <div className={cn('grid grid-cols-1 gap-10 items-start', children && 'lg:grid-cols-12 lg:gap-12')}>
+            <div className={cn(children ? 'lg:col-span-7' : 'max-w-4xl')}>
+              <h1
+                className={cn(
+                  'font-bold tracking-tight',
+                  'text-[clamp(2rem,5vw,3rem)] leading-[1.08]',
+                )}
+              >
+                {title}
+                {highlight && (
+                  <>
+                    {' '}
+                    <span className="text-[#43AA43]">{highlight}</span>
+                  </>
+                )}
+                <span className="text-[#43AA43]">.</span>
+              </h1>
+
+              {description && (
+                <p
+                  className={cn(
+                    'mt-6 text-[17px] leading-[1.55] max-w-xl',
+                    isDark ? 'text-[#C6C6C6]' : 'text-[#525252]',
+                  )}
+                >
+                  {description}
+                </p>
+              )}
+
+              {(primaryCTA || secondaryCTA) && (
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  {primaryCTA && (
+                    <Button
+                      size="lg"
+                      variant={isDark ? 'onDark' : 'primary'}
+                      to={primaryCTA.to}
+                      href={primaryCTA.href}
+                    >
+                      {primaryCTA.label}
+                    </Button>
+                  )}
+                  {secondaryCTA && (
+                    <Button
+                      size="lg"
+                      variant={isDark ? 'tertiary' : 'tertiary'}
+                      to={secondaryCTA.to}
+                      href={secondaryCTA.href}
+                    >
+                      {secondaryCTA.label}
+                    </Button>
+                  )}
+                </div>
+              )}
+
+              {metadata && metadata.length > 0 && (
+                <dl
+                  className={cn(
+                    'mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t',
+                    isDark ? 'border-[#1A2B4A]' : 'border-[#E0E0E0]',
+                  )}
+                >
+                  {metadata.map((item) => (
+                    <div key={item.label}>
+                      <dt
+                        className={cn(
+                          'font-mono text-[10px] uppercase tracking-[0.12em] mb-1.5',
+                          isDark ? 'text-[#8D8D8D]' : 'text-[#525252]',
+                        )}
+                      >
+                        {item.label}
+                      </dt>
+                      <dd
+                        className={cn(
+                          'text-[14px] font-semibold',
+                          isDark ? 'text-white' : 'text-[#161616]',
+                        )}
+                      >
+                        {item.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </div>
+
+            {children && <div className="lg:col-span-5">{children}</div>}
           </div>
-        </>
-      ) : (
-        <Container className="relative z-10">{heroGrid}</Container>
-      )}
+        </div>
+      </Container>
     </section>
   )
 }

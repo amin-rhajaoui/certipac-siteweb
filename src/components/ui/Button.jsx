@@ -1,22 +1,33 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
+
+/**
+ * Button — style Carbon institutionnel.
+ * Angles très faibles, poids semibold, transitions immédiates.
+ * Variantes : primary (bleu), accent (vert), secondary (ink), tertiary (outline bleu), ghost, danger.
+ */
 
 const variants = {
   primary:
-    'bg-[#194296] text-white hover:bg-[#143578]',
+    'bg-[#194296] text-white hover:bg-[#143578] active:bg-[#0F285A] disabled:bg-[#C6C6C6] disabled:text-white',
+  accent:
+    'bg-[#43AA43] text-white hover:bg-[#369236] active:bg-[#2A7A2A] disabled:bg-[#C6C6C6] disabled:text-white',
   secondary:
-    'bg-[#43AA43] text-white hover:bg-[#369236]',
-  outline:
-    'border border-surface-300 text-surface-700 hover:border-[#194296] hover:text-[#194296]',
+    'bg-[#161616] text-white hover:bg-[#393939] active:bg-[#262626] disabled:bg-[#C6C6C6] disabled:text-white',
+  tertiary:
+    'bg-transparent text-[#194296] border border-[#194296] hover:bg-[#194296] hover:text-white active:bg-[#143578]',
   ghost:
-    'text-surface-600 hover:text-[#194296]',
+    'bg-transparent text-[#194296] hover:bg-[#E6EBF5] active:bg-[#CDD8EB]',
+  danger:
+    'bg-[#DA1E28] text-white hover:bg-[#B81921] active:bg-[#750E13]',
+  onDark:
+    'bg-white text-[#194296] hover:bg-[#E6EBF5] active:bg-[#CDD8EB]',
 }
 
 const sizes = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-5 py-2.5 text-sm',
-  lg: 'px-6 py-3 text-base',
+  sm: 'h-9 px-4 text-[13px]',
+  md: 'h-11 px-5 text-[14px]',
+  lg: 'h-12 px-6 text-[15px]',
 }
 
 export default function Button({
@@ -26,48 +37,44 @@ export default function Button({
   to,
   href,
   className,
+  type = 'button',
+  disabled,
   ...props
 }) {
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors duration-200 cursor-pointer',
+    'inline-flex items-center justify-center gap-2 rounded-[2px] font-semibold',
+    'transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#194296]',
+    'disabled:cursor-not-allowed disabled:opacity-100',
     variants[variant],
     sizes[size],
-    className
+    className,
   )
-
-  const motionProps = {
-    whileHover: { scale: 1.02 },
-    whileTap: { scale: 0.98 },
-  }
 
   if (to) {
     return (
-      <motion.div {...motionProps} className="inline-block">
-        <Link to={to} className={classes} {...props}>
-          {children}
-        </Link>
-      </motion.div>
+      <Link to={to} className={classes} {...props}>
+        {children}
+      </Link>
     )
   }
 
   if (href) {
+    const external = /^https?:\/\//.test(href)
     return (
-      <motion.a
+      <a
         href={href}
         className={classes}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...motionProps}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         {...props}
       >
         {children}
-      </motion.a>
+      </a>
     )
   }
 
   return (
-    <motion.button className={classes} {...motionProps} {...props}>
+    <button type={type} className={classes} disabled={disabled} {...props}>
       {children}
-    </motion.button>
+    </button>
   )
 }

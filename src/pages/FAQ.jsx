@@ -1,51 +1,62 @@
-import { motion } from 'motion/react'
 import PageWrapper from '@/components/layout/PageWrapper'
 import SEOHead from '@/components/shared/SEOHead'
 import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
+import SectionHeader from '@/components/sections/SectionHeader'
 import CTASection from '@/components/sections/CTASection'
 import Accordion from '@/components/ui/Accordion'
-import Badge from '@/components/ui/Badge'
-import { fadeUp } from '@/lib/animations'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 import { faqCategories } from '@/data/faq'
 
 export default function FAQ() {
+  const totalQuestions = faqCategories.reduce((acc, c) => acc + c.items.length, 0)
+
   return (
     <PageWrapper>
       <SEOHead
-        title="FAQ"
-        description="Toutes les réponses à vos questions sur Certipac : app mobile, dimensionnement, signature électronique, dossiers conformes, tarifs et support."
+        title="FAQ — Questions fréquentes"
+        description="Réponses institutionnelles aux questions les plus fréquentes sur Certipac : périmètre produit, tarifs, conformité, signature électronique, support."
+      />
+
+      <Breadcrumb
+        items={[
+          { label: 'Accueil', path: '/' },
+          { label: 'FAQ' },
+        ]}
       />
 
       <HeroSection
-        badge="FAQ"
-        title="Questions"
-        highlight="fréquentes"
-        description="Retrouvez les réponses aux questions les plus courantes sur Certipac. Vous ne trouvez pas ce que vous cherchez ? Contactez-nous !"
-        secondaryCTA={{ label: 'Nous contacter', to: '/contact' }}
+        eyebrow="Ressources · FAQ"
+        reference="CTP-FAQ-2026"
+        title="Les questions fréquentes,"
+        highlight="les réponses officielles"
+        description="Les interrogations les plus récurrentes sur Certipac, organisées par thème. Pour toute question qui ne figure pas ici, l'équipe Certipac répond par écrit sous 2 heures en jours ouvrés."
+        primaryCTA={{ label: 'Contacter Certipac', to: '/contact' }}
+        metadata={[
+          { label: 'Thèmes', value: `${faqCategories.length} sections` },
+          { label: 'Questions', value: `${totalQuestions} traitées` },
+          { label: 'Édition', value: '2026' },
+          { label: 'Support', value: '< 2 h ouvrées' },
+        ]}
       />
 
       {faqCategories.map((category, i) => (
-        <SectionWrapper
-          key={i}
-          className={i % 2 === 0 ? 'bg-surface-100' : 'bg-surface-50'}
-        >
-          <motion.div variants={fadeUp} className="max-w-3xl mx-auto">
-            <Badge className="mb-4" variant={i % 2 === 0 ? 'primary' : 'accent'}>
-              {category.name}
-            </Badge>
-            <h2 className="text-2xl font-bold text-surface-900 mb-8">
-              {category.name}
-            </h2>
+        <SectionWrapper key={category.name} tone={i % 2 === 0 ? 'white' : 'gray'}>
+          <SectionHeader
+            number={`${String(i + 1).padStart(2, '0')} — ${category.name}`}
+            eyebrow={`Catégorie · ${String(i + 1).padStart(2, '0')}`}
+            title={`${category.name}.`}
+            lede={`${category.items.length} question${category.items.length > 1 ? 's' : ''} traitée${category.items.length > 1 ? 's' : ''}.`}
+          />
+          <div className="mt-10 max-w-3xl">
             <Accordion items={category.items} />
-          </motion.div>
+          </div>
         </SectionWrapper>
       ))}
 
       <CTASection
-        title="Vous avez d'autres questions ?"
-        description="Notre équipe est là pour vous répondre. N'hésitez pas à nous contacter."
-        secondaryCTA={{ label: 'Nous contacter', to: '/contact' }}
+        title="Votre question ne figure pas ici ?"
+        description="L'équipe Certipac répond par écrit en moins de 2 heures pendant les jours ouvrés."
       />
     </PageWrapper>
   )

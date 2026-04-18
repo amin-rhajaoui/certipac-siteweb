@@ -1,89 +1,103 @@
-import { motion } from 'motion/react'
+/**
+ * DashboardMockup — version institutionnelle claire.
+ * Fond blanc cassé, typo mono, données tabulaires compactes (type gouv.fr).
+ */
 
 const statCards = [
-  { value: '156', label: 'Chantiers en cours', accent: '#194296' },
-  { value: '94,7%', label: 'Dossiers conformes', accent: '#43AA43' },
-  { value: '89K€', label: 'Primes à encaisser', accent: '#D4A017' },
-  { value: '52', label: 'Artisans actifs', accent: '#1A8A7D' },
+  { value: '156', label: 'Dossiers actifs', rail: '#194296' },
+  { value: '94,7', suffix: '%', label: 'Conformes', rail: '#43AA43' },
+  { value: '89', suffix: 'K€', label: 'Primes à encaisser', rail: '#161616' },
+  { value: '52', label: 'Artisans RGE', rail: '#6F6F6F' },
 ]
 
 const tableRows = [
-  { ref: 'CTP-2026-0847', client: 'Martin Durand', type: 'Air/Eau — 12kW', etape: 'Primes versées', status: 'Terminé', statusColor: 'bg-[#43AA43]/15 text-[#43AA43]' },
-  { ref: 'CTP-2026-0846', client: 'Sophie Laurent', type: 'Air/Eau — 8kW', etape: 'Dossier déposé', status: 'En cours', statusColor: 'bg-[#D4A017]/15 text-[#D4A017]' },
-  { ref: 'CTP-2026-0845', client: 'Pierre Bernard', type: 'Air/Air — 6kW', etape: 'Devis signé', status: 'Chantier', statusColor: 'bg-[#194296]/15 text-[#7EB0E6]' },
+  { ref: 'CTP-2026-0847', client: 'M. Durand', type: 'PAC Air/Eau — 12 kW', status: 'Conforme', statusTone: 'bg-[#DEFBE6] text-[#0E6027]' },
+  { ref: 'CTP-2026-0846', client: 'Mme Laurent', type: 'PAC Air/Eau — 8 kW', status: 'En contrôle', statusTone: 'bg-[#FCF4D6] text-[#8E6A00]' },
+  { ref: 'CTP-2026-0845', client: 'M. Bernard', type: 'PAC Air/Air — 6 kW', status: 'Signé', statusTone: 'bg-[#E6EBF5] text-[#194296]' },
+  { ref: 'CTP-2026-0844', client: 'SCI Provence', type: 'PAC Air/Eau — 14 kW', status: 'Prime versée', statusTone: 'bg-[#DEFBE6] text-[#0E6027]' },
 ]
 
 export default function DashboardMockup() {
   return (
-    <div className="rounded-xl bg-[#0B1628] shadow-elevated overflow-hidden">
-      {/* Dashboard header bar */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/6">
-        <div className="flex items-center gap-3">
-          <img src="/CertiPac-icon-white.svg" alt="" className="h-6 w-auto" />
-          <span className="text-xs font-bold tracking-[0.1em] text-white/90 uppercase">Certipac</span>
+    <div className="bg-white border border-[#E0E0E0] shadow-elevated overflow-hidden rounded-[2px]">
+      {/* Window chrome */}
+      <div className="flex items-center justify-between border-b border-[#E0E0E0] px-4 py-2.5 bg-[#F4F4F4]">
+        <div className="flex items-center gap-2">
+          <img src="/CertiPac-icon.svg" alt="" className="h-5 w-auto" />
+          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#393939]">
+            certipac · console
+          </span>
         </div>
-        <div className="hidden sm:flex items-center gap-6 text-xs text-white/40">
-          <span className="text-white/80 font-medium">Tableau de bord</span>
-          <span>Chantiers</span>
-          <span>Dimensionnement</span>
-          <span>Clients</span>
-        </div>
-        <div className="h-7 w-7 rounded-full bg-gradient-to-br from-[#194296] to-[#43AA43]" />
+        <span className="font-mono text-[11px] text-[#6F6F6F] tabular-nums hidden sm:block">
+          /dashboard · 2026
+        </span>
       </div>
 
-      {/* Stat cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4">
-        {statCards.map((card, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 + i * 0.1 }}
-            className="rounded-lg bg-[#0F1D33] px-3 py-3"
-            style={{ borderLeft: `2px solid ${card.accent}` }}
+      {/* Stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#E0E0E0]">
+        {statCards.map((card) => (
+          <div
+            key={card.label}
+            className="bg-white px-4 py-4"
+            style={{ borderTop: `2px solid ${card.rail}` }}
           >
-            <div className="text-xl font-bold text-white">{card.value}</div>
-            <div className="text-[11px] text-white/40 mt-0.5">{card.label}</div>
-          </motion.div>
+            <div className="text-[20px] font-bold text-[#161616] tabular-nums leading-none">
+              {card.value}
+              {card.suffix && <span className="text-[#43AA43]">{card.suffix}</span>}
+            </div>
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.06em] text-[#525252]">
+              {card.label}
+            </div>
+          </div>
         ))}
       </div>
 
       {/* Table */}
-      <div className="px-4 pb-4">
-        <div className="rounded-lg bg-[#0F1D33] overflow-hidden">
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="border-b border-white/6 text-white/40">
-                <th className="text-left px-3 py-2 font-medium tracking-wider uppercase text-[10px]">Référence</th>
-                <th className="text-left px-3 py-2 font-medium tracking-wider uppercase text-[10px] hidden sm:table-cell">Client</th>
-                <th className="text-left px-3 py-2 font-medium tracking-wider uppercase text-[10px] hidden sm:table-cell">PAC</th>
-                <th className="text-left px-3 py-2 font-medium tracking-wider uppercase text-[10px] hidden md:table-cell">Étape</th>
-                <th className="text-left px-3 py-2 font-medium tracking-wider uppercase text-[10px]">Statut</th>
+      <div className="overflow-x-auto">
+        <table className="w-full text-[12.5px]">
+          <thead>
+            <tr className="bg-[#F4F4F4] border-y border-[#E0E0E0]">
+              <th className="text-left px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[#525252]">
+                Référence
+              </th>
+              <th className="text-left px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[#525252] hidden sm:table-cell">
+                Bénéficiaire
+              </th>
+              <th className="text-left px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[#525252] hidden md:table-cell">
+                Opération
+              </th>
+              <th className="text-left px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[#525252]">
+                Statut
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableRows.map((row, i) => (
+              <tr
+                key={row.ref}
+                className={i < tableRows.length - 1 ? 'border-b border-[#E0E0E0]' : ''}
+              >
+                <td className="px-4 py-3 font-mono text-[12px] text-[#194296] tabular-nums">
+                  {row.ref}
+                </td>
+                <td className="px-4 py-3 text-[#262626] hidden sm:table-cell">{row.client}</td>
+                <td className="px-4 py-3 text-[#525252] hidden md:table-cell">{row.type}</td>
+                <td className="px-4 py-3">
+                  <span
+                    className={`inline-flex px-2 py-0.5 rounded-[2px] text-[10.5px] font-mono uppercase tracking-wider ${row.statusTone}`}
+                  >
+                    {row.status}
+                  </span>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {tableRows.map((row, i) => (
-                <motion.tr
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8 + i * 0.15 }}
-                  className="border-b border-white/4 last:border-0"
-                >
-                  <td className="px-3 py-2.5 text-[#43AA43] font-medium">{row.ref}</td>
-                  <td className="px-3 py-2.5 text-white/80 hidden sm:table-cell">{row.client}</td>
-                  <td className="px-3 py-2.5 text-white/50 hidden sm:table-cell">{row.type}</td>
-                  <td className="px-3 py-2.5 text-white/50 hidden md:table-cell">{row.etape}</td>
-                  <td className="px-3 py-2.5">
-                    <span className={`inline-flex px-2 py-0.5 rounded text-[10px] font-semibold ${row.statusColor}`}>
-                      {row.status}
-                    </span>
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="border-t border-[#E0E0E0] bg-[#F4F4F4] px-4 py-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.08em] text-[#525252]">
+        <span>4 / 156 dossiers</span>
+        <span>Édition 2026</span>
       </div>
     </div>
   )

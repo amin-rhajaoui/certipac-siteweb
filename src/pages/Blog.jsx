@@ -1,88 +1,86 @@
-import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Calendar, Clock } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import PageWrapper from '@/components/layout/PageWrapper'
 import SEOHead from '@/components/shared/SEOHead'
 import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
-import Badge from '@/components/ui/Badge'
-import Card from '@/components/ui/Card'
-import { fadeUp, staggerContainer } from '@/lib/animations'
+import SectionHeader from '@/components/sections/SectionHeader'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 import { blogPosts } from '@/data/blog-posts'
 
-function BlogCard({ post }) {
-  return (
-    <motion.div variants={fadeUp}>
-      <Link to={`/blog/${post.slug}`}>
-        <Card className="h-full group">
-          {/* Thumbnail placeholder */}
-          <div className="rounded-lg bg-surface-50 h-44 mb-4 flex items-center justify-center">
-            <span className="text-4xl font-bold text-primary-200">
-              {post.category.charAt(0)}
-            </span>
-          </div>
-
-          <Badge variant="accent" className="mb-3">{post.category}</Badge>
-
-          <h3 className="text-lg font-semibold text-surface-900 mb-2 group-hover:text-primary-500 transition-colors line-clamp-2">
-            {post.title}
-          </h3>
-
-          <p className="text-surface-600 text-sm leading-relaxed mb-4 line-clamp-2">
-            {post.excerpt}
-          </p>
-
-          <div className="flex items-center gap-4 text-xs text-surface-500">
-            <span className="flex items-center gap-1">
-              <Calendar className="h-3.5 w-3.5" />
-              {new Date(post.date).toLocaleDateString('fr-FR', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              })}
-            </span>
-            <span className="flex items-center gap-1">
-              <Clock className="h-3.5 w-3.5" />
-              {post.readTime}
-            </span>
-          </div>
-
-          <div className="mt-4 flex items-center gap-1 text-primary-500 text-sm font-medium">
-            Lire l'article <ArrowRight className="h-4 w-4" />
-          </div>
-        </Card>
-      </Link>
-    </motion.div>
-  )
+function formatDate(d) {
+  return new Date(d).toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  })
 }
 
 export default function Blog() {
   return (
     <PageWrapper>
       <SEOHead
-        title="Blog"
-        description="Articles, guides et actualités sur les pompes à chaleur, MaPrimeRénov', CEE et le métier d'artisan RGE."
+        title="Blog & ressources"
+        description="Notes, guides et actualités Certipac sur la rénovation énergétique, les barèmes MaPrimeRénov', les fiches CEE et le métier d'installateur RGE."
+      />
+
+      <Breadcrumb
+        items={[
+          { label: 'Accueil', path: '/' },
+          { label: 'Blog' },
+        ]}
       />
 
       <HeroSection
-        badge="Blog"
-        title="Actualités et"
-        highlight="ressources"
-        description="Guides pratiques, actualités réglementaires et conseils pour les artisans RGE."
+        eyebrow="Ressources · Blog"
+        reference="CTP-BLOG-2026"
+        title="Notes, guides,"
+        highlight="et actualités"
+        description="Les publications Certipac documentent les évolutions réglementaires, les bonnes pratiques de dossier et les questions qui reviennent chez les artisans RGE et les commerciaux PAC."
+        metadata={[
+          { label: 'Publications', value: `${blogPosts.length} notes` },
+          { label: 'Dernière', value: formatDate(blogPosts[0].date) },
+          { label: 'Cadence', value: 'Mensuelle' },
+          { label: 'Édition', value: '2026' },
+        ]}
       />
 
-      <SectionWrapper>
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {blogPosts.map((post) => (
-            <BlogCard key={post.slug} post={post} />
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="01 — Publications"
+          eyebrow="Notes & guides"
+          title="Dernières publications."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E0E0E0]">
+          {blogPosts.map((post, i) => (
+            <Link
+              key={post.slug}
+              to={`/blog/${post.slug}`}
+              className="group bg-white p-6 flex flex-col border-t-[3px] border-[#194296] hover:bg-[#F4F4F4] transition-colors"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#194296]">
+                  Note · {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#6F6F6F]">
+                  {post.category}
+                </span>
+              </div>
+              <h3 className="text-[16px] font-semibold text-[#161616] mb-3 leading-[1.3] group-hover:text-[#194296]">
+                {post.title}
+              </h3>
+              <p className="text-[13px] leading-[1.55] text-[#525252] mb-5 flex-1">
+                {post.excerpt}
+              </p>
+              <div className="pt-4 border-t border-[#E0E0E0] flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#6F6F6F]">
+                  {formatDate(post.date)} · {post.readTime}
+                </span>
+                <ArrowRight className="h-3.5 w-3.5 text-[#194296] group-hover:translate-x-0.5 transition-transform" strokeWidth={2} />
+              </div>
+            </Link>
           ))}
-        </motion.div>
+        </div>
       </SectionWrapper>
     </PageWrapper>
   )

@@ -1,13 +1,12 @@
-import { motion } from 'motion/react'
 import { Target, Heart, Users, Lightbulb } from 'lucide-react'
 import PageWrapper from '@/components/layout/PageWrapper'
 import SEOHead from '@/components/shared/SEOHead'
 import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
+import SectionHeader from '@/components/sections/SectionHeader'
 import CTASection from '@/components/sections/CTASection'
-import Card from '@/components/ui/Card'
-import Badge from '@/components/ui/Badge'
-import { fadeUp, staggerContainer } from '@/lib/animations'
+import Breadcrumb from '@/components/ui/Breadcrumb'
+import Callout from '@/components/ui/Callout'
 import { team, values } from '@/data/team'
 
 const valueIcons = [Target, Heart, Users, Lightbulb]
@@ -17,94 +16,122 @@ export default function APropos() {
     <PageWrapper>
       <SEOHead
         title="À propos"
-        description="Découvrez l'équipe et la mission de Certipac : guider chaque artisan RGE de A à Z pour poser des PAC sereinement."
+        description="Certipac : la mission, les valeurs et l'équipe derrière la plateforme institutionnelle de conformité pour la rénovation énergétique en France."
+      />
+
+      <Breadcrumb
+        items={[
+          { label: 'Accueil', path: '/' },
+          { label: 'À propos' },
+        ]}
       />
 
       <HeroSection
-        badge="Notre histoire"
-        title="Guider les artisans,"
-        highlight="pas à pas."
-        description="Certipac est né d'un constat : les artisans RGE passent trop de temps à stresser sur la paperasse et pas assez sur le terrain. Notre mission : leur donner un outil qui les guide sereinement."
+        eyebrow="Institution · Certipac"
+        reference="CTP-ABOUT-2026"
+        title="Guider la filière PAC,"
+        highlight="cadrer chaque dossier"
+        description="Certipac est née du constat que les artisans RGE et les entreprises de la filière PAC perdent un temps considérable sur des exigences administratives mouvantes. Notre mission : structurer la conformité documentaire pour que le terrain reste concentré sur l'installation."
+        metadata={[
+          { label: 'Forme', value: 'SAS · France' },
+          { label: 'Siège', value: 'Paris' },
+          { label: 'Périmètre', value: 'National' },
+          { label: 'Édition', value: '2026' },
+        ]}
       />
 
-      {/* Mission */}
-      <SectionWrapper>
-        <motion.div variants={fadeUp} className="max-w-3xl mx-auto text-center">
-          <Badge className="mb-4">Notre mission</Badge>
-          <h2 className="text-3xl font-bold text-surface-900 sm:text-4xl mb-6">
-            Permettre à chaque artisan de poser sereinement
-          </h2>
-          <p className="text-lg text-surface-600 leading-relaxed">
-            Dimensionnement, paperasse, conformité des dossiers... tout ça ne devrait jamais être
-            une source de stress. Certipac guide l'artisan de la visite technique au versement des primes,
-            pour qu'il se concentre sur ce qu'il fait de mieux : installer des pompes à chaleur.
-          </p>
-        </motion.div>
+      <SectionWrapper tone="white">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-5">
+            <SectionHeader
+              number="01 — Mission"
+              eyebrow="Raison d'être"
+              title="Pourquoi Certipac."
+            />
+          </div>
+          <div className="lg:col-span-7">
+            <p className="text-[17px] leading-[1.65] text-[#393939] mb-6">
+              Les artisans et les entreprises qui installent des pompes à chaleur en France
+              opèrent dans un cadre réglementaire exigeant — MaPrimeRénov', CEE, ANAH, RGE —
+              qui évolue plusieurs fois par an. Sans outil dédié, la conformité devient une
+              charge cognitive qui entame la qualité de pose et le temps disponible pour le
+              client.
+            </p>
+            <p className="text-[17px] leading-[1.65] text-[#393939] mb-10">
+              Certipac traduit ces exigences en parcours concrets : pièces attendues, barèmes
+              en vigueur, pièces justificatives archivées. La plateforme cadre l'activité,
+              l'installateur reste l'expert de sa pose.
+            </p>
+            <Callout tone="info" title="Positionnement" reference="Art. 1">
+              Certipac n'est pas un outil d'agrément officiel mais une plateforme privée de
+              conformité documentaire. Nos parcours sont alignés sur les publications de
+              l'ANAH, de la DGEC et des obligés CEE, sans jamais s'y substituer.
+            </Callout>
+          </div>
+        </div>
       </SectionWrapper>
 
-      {/* Values */}
-      <SectionWrapper className="bg-surface-50" stagger>
-        <motion.div variants={fadeUp} className="text-center mb-12">
-          <Badge variant="accent" className="mb-4">Nos valeurs</Badge>
-          <h2 className="text-3xl font-bold text-surface-900 sm:text-4xl">
-            Ce qui nous guide
-          </h2>
-        </motion.div>
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
+      <SectionWrapper tone="gray">
+        <SectionHeader
+          number="02 — Valeurs"
+          eyebrow="Principes opérationnels"
+          title="Quatre repères."
+          lede="Les valeurs qui orientent les choix produit et la relation avec les utilisateurs."
+        />
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E0E0E0]">
           {values.map((value, i) => {
             const Icon = valueIcons[i]
             return (
-              <motion.div key={i} variants={fadeUp}>
-                <Card className="text-center h-full">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-500 mx-auto">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-surface-900 mb-2">{value.title}</h3>
-                  <p className="text-surface-600">{value.description}</p>
-                </Card>
-              </motion.div>
+              <article key={value.title} className="bg-white p-5 sm:p-6 border-t-[3px] border-[#194296]">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#194296]">
+                    Valeur · {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <Icon className="h-4 w-4 text-[#525252]" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-[15px] font-semibold text-[#161616] mb-2 leading-[1.3]">
+                  {value.title}
+                </h3>
+                <p className="text-[13px] leading-[1.55] text-[#525252]">{value.description}</p>
+              </article>
             )
           })}
-        </motion.div>
+        </div>
       </SectionWrapper>
 
-      {/* Team */}
-      <SectionWrapper stagger>
-        <motion.div variants={fadeUp} className="text-center mb-12">
-          <Badge className="mb-4">L'équipe</Badge>
-          <h2 className="text-3xl font-bold text-surface-900 sm:text-4xl">
-            Les personnes derrière Certipac
-          </h2>
-          <p className="mt-4 text-lg text-surface-600 max-w-2xl mx-auto">
-            Une équipe passionnée par la rénovation énergétique et le terrain.
-          </p>
-        </motion.div>
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="03 — Équipe"
+          eyebrow="Direction & responsables"
+          title="Les personnes derrière la plateforme."
+          lede="Une équipe mixant expertise terrain, conformité réglementaire et ingénierie logicielle."
+        />
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E0E0E0]">
           {team.map((member, i) => (
-            <motion.div key={i} variants={fadeUp}>
-              <Card className="text-center h-full">
-                <div className="mb-4 mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary-400 to-accent-400 text-white text-2xl font-bold">
-                  {member.initials}
-                </div>
-                <h3 className="text-lg font-semibold text-surface-900">{member.name}</h3>
-                <p className="text-primary-500 text-sm font-medium mb-3">{member.role}</p>
-                <p className="text-surface-600 text-sm leading-relaxed">{member.bio}</p>
-              </Card>
-            </motion.div>
+            <article key={member.name} className="bg-white p-6 border-t-[3px] border-[#161616]">
+              <div className="flex items-center justify-between mb-5">
+                <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252]">
+                  Référence · {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <div className="mb-5 flex h-14 w-14 items-center justify-center bg-[#161616] text-white text-[18px] font-bold tracking-tight">
+                {member.initials}
+              </div>
+              <h3 className="text-[15px] font-semibold text-[#161616] mb-1 leading-[1.3]">
+                {member.name}
+              </h3>
+              <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#194296] mb-3">
+                {member.role}
+              </p>
+              <p className="text-[13px] leading-[1.55] text-[#525252]">{member.bio}</p>
+            </article>
           ))}
-        </motion.div>
+        </div>
       </SectionWrapper>
 
       <CTASection
-        title="Envie de rejoindre l'aventure ?"
-        description="Nous recrutons ! Si vous êtes passionné par la rénovation énergétique et la tech, contactez-nous."
-        secondaryCTA={{ label: 'Nous contacter', to: '/contact' }}
+        title="Rejoindre Certipac ?"
+        description="Nous recherchons des profils passionnés par la rénovation énergétique et l'ingénierie produit. Écrivez-nous pour candidater."
       />
     </PageWrapper>
   )

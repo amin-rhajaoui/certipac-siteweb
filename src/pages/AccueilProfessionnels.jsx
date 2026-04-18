@@ -1,330 +1,257 @@
-import { motion } from 'motion/react'
-import {
-  CheckCircle,
-  UserCheck,
-  FileText,
-  Users,
-  Wrench,
-  FolderCheck,
-  Banknote,
-} from 'lucide-react'
+import { CheckCircle, UserCheck, FileText, Users, Wrench, FolderCheck, Banknote } from 'lucide-react'
 import PageWrapper from '@/components/layout/PageWrapper'
 import SEOHead from '@/components/shared/SEOHead'
 import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
+import SectionHeader from '@/components/sections/SectionHeader'
 import FeatureGrid from '@/components/sections/FeatureGrid'
 import StatCounter from '@/components/sections/StatCounter'
 import TestimonialCard from '@/components/sections/TestimonialCard'
 import PricingCard from '@/components/sections/PricingCard'
 import CTASection from '@/components/sections/CTASection'
 import DashboardMockup from '@/components/sections/DashboardMockup'
-import Badge from '@/components/ui/Badge'
-import { fadeUp, staggerContainer } from '@/lib/animations'
+import PartenairesStrip from '@/components/sections/PartenairesStrip'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 import { features } from '@/data/features'
 import { plans } from '@/data/pricing'
 import { testimonials } from '@/data/testimonials'
+import { CTA_TEXT, APP_URL } from '@/lib/constants'
 
 const stats = [
-  { value: 2500, suffix: '+', label: 'Entreprises accompagnées' },
-  { value: 50000, suffix: '+', label: 'PAC installées' },
-  { value: 98, suffix: '%', label: 'Dossiers conformes' },
-  { value: 5, suffix: 'x', label: 'Plus rapide' },
+  { value: 2500, suffix: '+', label: 'Entreprises industrialisées', reference: 'Indicateur · A' },
+  { value: 50000, suffix: '+', label: 'PAC installées conformes', reference: 'Indicateur · B' },
+  { value: 98, suffix: '%', label: 'Dossiers acceptés au dépôt', reference: 'Indicateur · C' },
+  { value: 5, suffix: 'x', label: 'Réduction du temps de traitement', reference: 'Indicateur · D' },
 ]
 
 const valueProps = [
-  'Dossiers PAC complets pour limiter les retours ANAH, CEE et MaPrimeRénov\'',
-  'Parcours guidés : vos commerciaux livrent des pièces structurées, sans champs libres piégeux',
-  'Commercial, pose, technique, SAV et mise en service : un même cadre pour toute l\'entreprise',
-  'Multi-partenaires sur la plateforme et pilotage jusqu\'à l\'encaissement des aides',
-]
-
-const partnerLogos = [
-  { src: '/logo-anah.svg', alt: 'ANAH' },
-  { src: '/logo-maprimerenov.svg', alt: 'MaPrimeRénov\'' },
-  { src: '/logo-cee.svg', alt: 'CEE' },
-  { src: '/logo-rge.svg', alt: 'RGE Qualibat' },
+  { title: "Dossiers limitant les retours ANAH, CEE, MPR", body: 'Pièces attendues imposées dès la collecte.' },
+  { title: 'Parcours guidés anti-champs libres', body: 'Structuration obligatoire des informations commerciales.' },
+  { title: 'Équipes alignées sur un cadre unique', body: 'Commercial, pose, technique, SAV, mise en service.' },
+  { title: "Pilotage multi-partenaires jusqu'aux aides", body: "Vision financière alignée sur les dossiers réels." },
 ]
 
 const enterpriseSteps = [
   {
-    number: 1,
-    icon: UserCheck,
-    title: 'Qualification & prospection',
-    description:
-      'Vos équipes capitalisent sur votre expertise produit tout en suivant un parcours imposant les bonnes informations au bon moment.',
-    result: 'Moins d\'opportunités perdues pour cause de dossier incomplet.',
+    number: 1, icon: UserCheck, title: 'Qualification & prospection',
+    description: 'Parcours imposant les bonnes informations au bon moment, tout en capitalisant sur votre expertise produit.',
+    result: "Moins d'opportunités perdues pour dossier incomplet.",
   },
   {
-    number: 2,
-    icon: FileText,
-    title: 'Dossier commercial & technique complet',
-    description:
-      'Devis, relevés et pièces attendues par les dispositifs : le commercial remplit un flux guidé, le poseur reçoit un dossier prêt à présenter.',
-    result: 'Fin des allers-retours pour pièces manquantes ou signatures oubliées.',
+    number: 2, icon: FileText, title: 'Dossier commercial & technique',
+    description: 'Flux guidé pour le commercial, dossier prêt à présenter pour le poseur. Les pièces sont déjà attachées.',
+    result: "Fin des allers-retours pour pièces manquantes.",
   },
   {
-    number: 3,
-    icon: Users,
-    title: 'Multi-partenaires & rôles',
-    description:
-      'Poseurs internes, sous-traitants RGE, partenaires financeurs : plusieurs acteurs peuvent intervenir avec des droits et des livrables clairs.',
-    result: 'Une vision partagée sans doublons ni zones grises.',
+    number: 3, icon: Users, title: 'Multi-partenaires & rôles',
+    description: 'Poseurs internes, sous-traitants RGE, partenaires financeurs — droits et livrables clairs pour chaque acteur.',
+    result: 'Vision partagée, sans doublons ni zones grises.',
   },
   {
-    number: 4,
-    icon: Wrench,
-    title: 'Pose, SAV & mise en service',
-    description:
-      'Les équipes terrain et SAV alimentent les étapes attendues pour la conformité et la clôture du chantier.',
-    result: 'Une traçabilité exploitable jusqu\'au dossier final.',
+    number: 4, icon: Wrench, title: 'Pose, SAV & mise en service',
+    description: 'Les équipes terrain et SAV alimentent les étapes attendues pour la conformité et la clôture du chantier.',
+    result: 'Traçabilité exploitable jusqu\'au dossier final.',
   },
   {
-    number: 5,
-    icon: FolderCheck,
-    title: 'Conformité administrative',
-    description:
-      'Les exigences ANAH, CEE et MaPrimeRénov\' sont intégrées dans les parcours : vous déposez des dossiers cohérents avec les fiches en vigueur.',
-    result: 'Moins de demandes de compléments côté organismes.',
+    number: 5, icon: FolderCheck, title: 'Conformité administrative',
+    description: "Les exigences ANAH, CEE et MaPrimeRénov' sont intégrées aux parcours — dossiers cohérents avec les fiches en vigueur.",
+    result: 'Moins de demandes de complément côté organismes.',
   },
   {
-    number: 6,
-    icon: Banknote,
-    title: 'Valorisation & encaissement des aides',
-    description:
-      'Suivez la valorisation des primes et l\'état des versements depuis le pilotage : votre expertise reste sur le terrain, le cadre administratif est cadré.',
-    result: 'Une vision financière alignée sur vos dossiers réels.',
+    number: 6, icon: Banknote, title: 'Valorisation & encaissement',
+    description: 'Suivi des primes et des versements depuis le pilotage. Cadre administratif stabilisé, expertise sur le terrain.',
+    result: 'Vision financière alignée sur les dossiers réels.',
   },
 ]
 
-const journeyBenefits = [
-  'Conformité multi-dispositifs',
-  'Équipes alignées sur un seul outil',
-  'Parcours mis à jour avec les évolutions réglementaires',
-]
-
-const enterpriseFeatures = [
-  features[5],
-  features[6],
-  features[3],
-  features[4],
-  features[9],
-  features[7],
-]
-
-const enterpriseTestimonials = [
-  testimonials[3],
-  testimonials[6],
-  testimonials[5],
-]
+const enterpriseFeatures = [features[5], features[6], features[3], features[4], features[9], features[7]]
+const enterpriseTestimonials = [testimonials[3], testimonials[6], testimonials[5]]
 
 export default function AccueilProfessionnels() {
   return (
     <PageWrapper>
       <SEOHead
-        title="Professionnels"
-        description="Certipac pour les entreprises PAC : commercial, pose, technique, SAV et mise en service sur une même plateforme. Dossiers conformes ANAH, CEE et MaPrimeRénov\', multi-partenaires, parcours guidés jusqu\'à l\'encaissement des aides."
+        title="Entreprises & professionnels"
+        description="Certipac pour les entreprises PAC : commercial, pose, technique, SAV et mise en service sur une même plateforme. Dossiers conformes ANAH, CEE et MaPrimeRénov', multi-partenaires."
+      />
+
+      <Breadcrumb
+        items={[
+          { label: 'Accueil', path: '/' },
+          { label: 'Pour qui', path: '/' },
+          { label: 'Entreprises & professionnels' },
+        ]}
       />
 
       <HeroSection
-        badge="Essai gratuit 1 mois — sans engagement"
+        eyebrow="Persona · 03 — Entreprises & professionnels"
+        reference="CTP-PERSONA-03"
         title="Votre expertise métier,"
-        highlight="notre cadre conforme."
-        description="Vous maîtrisez la rénovation énergétique ou la plomberie-chauffage, vos produits et vos matériaux. Certipac structure toute l'entreprise — commercial, poseurs, technique, SAV, mise en service — pour livrer des dossiers PAC complets, limiter les retours auprès de l'ANAH, des délégataires CEE et de MaPrimeRénov', et faire gagner du temps sur la conformité. De la prospection à la signature client, jusqu'à la valorisation et l'encaissement des aides : un partenaire logiciel pour vous concentrer sur votre savoir-faire."
-        primaryCTA={{ label: 'Essayer gratuitement', href: 'https://app.certipac.fr' }}
-        secondaryCTA={{ label: 'Comment ça marche', to: '/comment-ca-marche' }}
-        footer={
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center"
-          >
-            {valueProps.map((prop, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                className="flex max-w-sm items-center justify-center gap-3 text-center sm:max-w-md"
-              >
-                <CheckCircle className="h-5 w-5 text-[#43AA43] shrink-0" />
-                <span className="text-surface-700 font-medium text-sm">{prop}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        }
+        highlight="notre cadre conforme"
+        description="Essai gratuit 1 mois. Certipac structure toute l'entreprise — commercial, pose, technique, SAV, mise en service — pour livrer des dossiers PAC complets, limiter les retours ANAH / CEE / MaPrimeRénov' et gagner du temps sur la conformité. De la prospection à l'encaissement des aides, un partenaire logiciel pour vous concentrer sur votre savoir-faire."
+        primaryCTA={{ label: CTA_TEXT.primary, href: APP_URL }}
+        secondaryCTA={{ label: 'Consulter la conformité', to: '/conformite' }}
+        metadata={[
+          { label: 'Audience', value: 'Entreprise · Multi-équipes' },
+          { label: 'Périmètre', value: 'Commercial → SAV' },
+          { label: 'Intégrations', value: 'API · SSO · Exports' },
+          { label: 'Support', value: 'Dédié · SLA' },
+        ]}
       >
         <DashboardMockup />
       </HeroSection>
 
-      <section className="py-10 bg-surface-50">
-        <div className="mx-auto max-w-5xl px-6">
-          <p className="text-center text-sm text-surface-400 mb-6 font-medium tracking-wide uppercase">
-            Dossiers alignés sur les exigences ANAH, CEE et MaPrimeRénov&apos;
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {partnerLogos.map((logo) => (
-              <img
-                key={logo.alt}
-                src={logo.src}
-                alt={logo.alt}
-                className="h-10 w-auto opacity-70 hover:opacity-100 transition-opacity"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <PartenairesStrip />
 
-      <SectionWrapper id="features">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-          <motion.div variants={fadeUp}>
-            <Badge className="mb-4">Fonctionnalités</Badge>
-            <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">
-              Un socle unique
-              <br className="hidden sm:block" /> pour toutes vos équipes
-            </h2>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Conformité, pilotage et financement des dossiers PAC : les briques dont les structures multi-salariés ont besoin pour industrialiser la qualité.
-          </motion.p>
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="01 — Garanties structurelles"
+          eyebrow="Engagements opposables"
+          title="Quatre garanties pour l'entreprise."
+        />
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E0E0E0]">
+          {valueProps.map((p, i) => (
+            <div key={p.title} className="bg-white p-5 sm:p-6 flex items-start gap-4">
+              <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252] pt-0.5">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <CheckCircle className="h-4 w-4 text-[#43AA43] shrink-0" strokeWidth={2.5} />
+                  <h3 className="text-[15px] font-semibold text-[#161616]">{p.title}</h3>
+                </div>
+                <p className="text-[13.5px] leading-[1.6] text-[#525252]">{p.body}</p>
+              </div>
+            </div>
+          ))}
         </div>
-        <FeatureGrid features={enterpriseFeatures} />
       </SectionWrapper>
 
-      <SectionWrapper className="bg-surface-100/50" stagger>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-          <motion.div variants={fadeUp}>
-            <Badge variant="accent" className="mb-4">Parcours entreprise</Badge>
-            <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">
-              De la prospection à l&apos;encaissement des aides
-            </h2>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Six étapes pour cadrer le métier administratif et financier tout en laissant vos équipes se concentrer sur l&apos;installation et le service client.
-          </motion.p>
+      <SectionWrapper tone="gray">
+        <SectionHeader
+          number="02 — Fonctionnalités entreprise"
+          eyebrow="Socle unique multi-équipes"
+          title="Les briques pour industrialiser la qualité."
+          lede="Conformité, pilotage et financement des dossiers PAC : les capacités dont les structures multi-salariés ont besoin."
+        />
+        <div className="mt-12">
+          <FeatureGrid features={enterpriseFeatures} />
         </div>
-        <motion.div variants={fadeUp} className="mb-8 flex flex-wrap items-center gap-2">
-          {journeyBenefits.map((benefit) => (
-            <span
-              key={benefit}
-              className="rounded-full border border-[#194296]/20 bg-white/80 px-3 py-1 text-xs font-semibold text-[#194296]"
-            >
-              {benefit}
-            </span>
-          ))}
-        </motion.div>
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+      </SectionWrapper>
+
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="03 — Parcours entreprise"
+          eyebrow="De la prospection à l'encaissement"
+          title="Six étapes pour cadrer l'activité."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E0E0E0]">
           {enterpriseSteps.map((step) => {
             const Icon = step.icon
             return (
-              <motion.div
-                key={step.number}
-                variants={fadeUp}
-                className="h-full rounded-2xl border border-[#194296]/10 bg-white p-5 shadow-soft"
-              >
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#194296]/10 text-[#194296]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <span className="text-xs font-bold tracking-wide text-[#194296]">ETAPE {step.number}</span>
+              <article key={step.number} className="bg-white p-5 sm:p-6 border-t-[3px] border-[#161616]">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#161616]">
+                    Étape {String(step.number).padStart(2, '0')}
+                  </span>
+                  <Icon className="h-4 w-4 text-[#525252]" strokeWidth={1.75} />
                 </div>
-                <h3 className="mb-2 text-base font-semibold text-surface-800">{step.title}</h3>
-                <p className="text-sm text-surface-500 leading-relaxed">{step.description}</p>
-                <p className="mt-4 border-t border-surface-100 pt-3 text-xs font-semibold text-[#43AA43]">
-                  Résultat: {step.result}
+                <h3 className="text-[15px] font-semibold text-[#161616] mb-2 leading-[1.3]">
+                  {step.title}
+                </h3>
+                <p className="text-[13px] leading-[1.55] text-[#525252]">{step.description}</p>
+                <p className="mt-4 pt-3 border-t border-[#E0E0E0] font-mono text-[11px] uppercase tracking-[0.06em] text-[#2A7A2A]">
+                  → {step.result}
                 </p>
-              </motion.div>
+              </article>
             )
           })}
-        </motion.div>
-      </SectionWrapper>
-
-      <SectionWrapper>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <motion.div
-            variants={fadeUp}
-            className="rounded-2xl border border-[#194296]/10 bg-white p-6 shadow-soft"
-          >
-            <Badge className="mb-4">Multi-partenaires</Badge>
-            <h3 className="text-2xl font-bold text-[#194296]">
-              Plusieurs poseurs et partenaires sur la même plateforme
-            </h3>
-            <p className="mt-4 text-surface-600 leading-relaxed">
-              Déclarez vos équipes internes, vos sous-traitants RGE et vos partenaires : chacun accède aux bonnes informations au bon moment, sans refaire la saisie ni multiplier les versions de dossier.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="rounded-2xl border border-[#194296]/10 bg-white p-6 shadow-soft"
-          >
-            <Badge variant="accent" className="mb-4">Évolutions & exigences</Badge>
-            <h3 className="text-2xl font-bold text-[#194296]">
-              Parcours mis à jour avec les fiches et aides
-            </h3>
-            <p className="mt-4 text-surface-600 leading-relaxed">
-              Les évolutions des exigences administratives et des dispositifs sont prises en compte dans les parcours Certipac : vos équipes suivent l&apos;application pour rester alignées sur les attentes des organismes, sans monter une veille documentaire en interne.
-            </p>
-          </motion.div>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper>
-        <motion.div variants={fadeUp} className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">Des chiffres qui parlent</h2>
-        </motion.div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, i) => (
-            <StatCounter key={i} {...stat} />
+      <SectionWrapper tone="gray">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-[#E0E0E0]">
+          <div className="bg-white p-6 sm:p-8 border-l-[3px] border-[#194296]">
+            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#194296] mb-3">
+              Multi-partenaires
+            </p>
+            <h3 className="text-[20px] font-bold text-[#161616] mb-3 leading-[1.25]">
+              Plusieurs poseurs et partenaires sur la même plateforme.
+            </h3>
+            <p className="text-[14px] leading-[1.65] text-[#525252]">
+              Déclarez vos équipes internes, vos sous-traitants RGE et vos partenaires : chacun
+              accède aux bonnes informations au bon moment, sans refaire la saisie ni multiplier
+              les versions de dossier.
+            </p>
+          </div>
+          <div className="bg-white p-6 sm:p-8 border-l-[3px] border-[#43AA43]">
+            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#2A7A2A] mb-3">
+              Évolutions & exigences
+            </p>
+            <h3 className="text-[20px] font-bold text-[#161616] mb-3 leading-[1.25]">
+              Parcours mis à jour avec les fiches et aides.
+            </h3>
+            <p className="text-[14px] leading-[1.65] text-[#525252]">
+              Les évolutions des exigences administratives et des dispositifs sont prises en compte
+              dans les parcours Certipac : vos équipes suivent l'application pour rester alignées
+              sur les attentes des organismes.
+            </p>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="04 — Indicateurs"
+          eyebrow="Performance entreprise"
+          title="Des chiffres opposables."
+        />
+        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((s) => (
+            <StatCounter key={s.label} {...s} />
           ))}
         </div>
       </SectionWrapper>
 
-      <SectionWrapper className="bg-surface-100/50" stagger>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-          <motion.div variants={fadeUp}>
-            <Badge className="mb-4">Témoignages</Badge>
-            <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">Ils structurent leur activité</h2>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Dirigeants, responsables techniques et équipes support : retours sur standardisation, conformité et pilotage.
-          </motion.p>
-        </div>
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+      <SectionWrapper tone="gray">
+        <SectionHeader
+          number="05 — Témoignages"
+          eyebrow="Retours dirigeants"
+          title="Ils structurent leur activité."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {enterpriseTestimonials.map((t, i) => (
-            <TestimonialCard key={t.name} {...t} featured={i === 0} />
+            <TestimonialCard
+              key={t.name}
+              {...t}
+              featured={i === 0}
+              reference={`TÉMOIGNAGE · ${String(i + 1).padStart(2, '0')}`}
+            />
           ))}
-        </motion.div>
+        </div>
       </SectionWrapper>
 
-      <SectionWrapper stagger>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-4">
-          <motion.div variants={fadeUp}>
-            <Badge variant="amber" className="mb-4">Tarifs</Badge>
-            <h2 className="text-3xl font-bold text-[#194296] sm:text-4xl">Un prix adapté à vos équipes</h2>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-surface-500 max-w-md lg:text-right">
-            Essai gratuit 1 mois. Sans engagement, sans carte bancaire.
-          </motion.p>
-        </div>
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
-        >
+      <SectionWrapper tone="white">
+        <SectionHeader
+          number="06 — Tarification"
+          eyebrow="Engagement commercial"
+          title="Un prix adapté à vos équipes."
+          lede="Essai gratuit 1 mois, sans engagement, sans carte bancaire."
+        />
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
           {plans.map((plan, i) => (
-            <PricingCard key={i} {...plan} />
+            <PricingCard
+              key={plan.name}
+              {...plan}
+              reference={`Formule · ${String(i + 1).padStart(2, '0')}`}
+            />
           ))}
-        </motion.div>
+        </div>
       </SectionWrapper>
 
       <CTASection
         title="Prêt à industrialiser vos dossiers PAC ?"
-        description="Essai gratuit 1 mois. Conformité ANAH, CEE et MaPrimeRénov', équipes alignées, multi-partenaires et suivi jusqu'aux aides — tout depuis Certipac."
+        description="Essai gratuit 1 mois. Conformité ANAH, CEE et MaPrimeRénov', équipes alignées, multi-partenaires et suivi jusqu'aux aides."
       />
     </PageWrapper>
   )
