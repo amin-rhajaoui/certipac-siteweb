@@ -42,9 +42,11 @@ export default function Button({
   ...props
 }) {
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 rounded-[2px] font-semibold',
-    'transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#194296]',
-    'disabled:cursor-not-allowed disabled:opacity-100',
+    'group/btn relative inline-flex items-center justify-center gap-2 rounded-[2px] font-semibold whitespace-nowrap select-none',
+    'transition-[background-color,border-color,color,transform] duration-150 ease-out',
+    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#194296]',
+    'active:translate-y-px',
+    'disabled:cursor-not-allowed disabled:opacity-100 disabled:active:translate-y-0',
     variants[variant],
     sizes[size],
     className,

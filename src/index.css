@@ -111,6 +111,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -119,12 +120,39 @@ body {
   background-color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "ss01", "cv05", "cv11";
+  font-feature-settings: "ss01", "cv05", "cv11", "kern";
+  font-variant-ligatures: common-ligatures contextual;
   font-size: 15px;
   line-height: 1.5;
 }
 
+/* Monospace : forcer chiffres tabulaires & interlettrage régulier */
+code,
+kbd,
+pre,
+samp,
+.font-mono {
+  font-feature-settings: "tnum", "zero";
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+
+/* Titres : tracking-tight naturel, ligatures typographiques actives */
+h1, h2, h3, h4 {
+  font-feature-settings: "ss01", "cv05", "cv11", "kern", "calt", "liga";
+  text-wrap: balance;
+}
+
+/* Paragraphes : éviter les veuves / orphelins sur colonnes étroites */
+p {
+  text-wrap: pretty;
+}
+
 ::selection {
+  background-color: #194296;
+  color: #FFFFFF;
+}
+
+::-moz-selection {
   background-color: #194296;
   color: #FFFFFF;
 }
@@ -137,6 +165,20 @@ body {
 
 button {
   font-family: inherit;
+}
+
+/* -----------------------------------------------------------
+ * Respect du "prefers-reduced-motion"
+ * ---------------------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* -----------------------------------------------------------
@@ -224,4 +266,134 @@ button {
 .focus-ring:focus-visible {
   outline: 2px solid #194296;
   outline-offset: 2px;
+}
+
+/* -----------------------------------------------------------
+ * Motion — révélations sobres, institutionnelles
+ * ---------------------------------------------------------*/
+
+@keyframes ctp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ctp-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ctp-rail-extend {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes ctp-shimmer-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+
+.animate-fade-up {
+  animation: ctp-fade-up 0.5s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.animate-fade-in {
+  animation: ctp-fade-in 0.4s ease-out both;
+}
+
+/* Utilitaires d'étapes (delays harmonisés avec la cadence Carbon) */
+.animate-delay-1 { animation-delay: 60ms; }
+.animate-delay-2 { animation-delay: 120ms; }
+.animate-delay-3 { animation-delay: 180ms; }
+.animate-delay-4 { animation-delay: 240ms; }
+.animate-delay-5 { animation-delay: 300ms; }
+.animate-delay-6 { animation-delay: 360ms; }
+
+/* Pulse discret pour statuts "en contrôle" (DashboardMockup) */
+.pulse-soft {
+  animation: ctp-shimmer-pulse 2.4s ease-in-out infinite;
+}
+
+/* -----------------------------------------------------------
+ * Liens institutionnels : underline offset calibré
+ * ---------------------------------------------------------*/
+
+.link-underline {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(25, 66, 150, 0.35);
+  transition: text-decoration-color 150ms ease-out;
+}
+.link-underline:hover {
+  text-decoration-color: #194296;
+}
+
+/* -----------------------------------------------------------
+ * Carte avec rail : transition subtile sur l'épaisseur du filet
+ * Respecte la règle "pas de shadow" mais renforce la lecture au hover.
+ * ---------------------------------------------------------*/
+
+.card-rail-hover {
+  transition:
+    background-color 180ms ease-out,
+    border-color 180ms ease-out,
+    box-shadow 180ms ease-out;
+}
+
+/* Mini sparkline / chevron décoratif au hover des cartes cliquables */
+.chevron-slide {
+  transition: transform 200ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.group:hover .chevron-slide,
+.group:focus-visible .chevron-slide {
+  transform: translateX(3px);
+}
+
+/* -----------------------------------------------------------
+ * Lien de navigation : sur-ligne animée sous le libellé
+ * (plus fin que Tailwind `border-b-2` + plus Carbon)
+ * ---------------------------------------------------------*/
+
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: -1px;
+  height: 2px;
+  background: #194296;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.nav-link-underline[data-active="true"]::after,
+.nav-link-underline:hover::after,
+.nav-link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* -----------------------------------------------------------
+ * Scrollbar subtile (Webkit) — ne modifie pas le ton général
+ * ---------------------------------------------------------*/
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #C6C6C6;
+  border: 2px solid #F4F4F4;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8D8D8D;
 }

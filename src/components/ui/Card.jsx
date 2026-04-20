@@ -35,7 +35,7 @@ export default function Card({
     <Tag
       style={style}
       className={cn(
-        'rounded-[2px]',
+        'rounded-[2px] transition-colors duration-200 ease-out',
         toneClasses[tone] || toneClasses.gray,
         padded && 'p-5 sm:p-6',
         className,

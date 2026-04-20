@@ -20,6 +20,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState(null)
   const [mobileExpanded, setMobileExpanded] = useState(null)
+  const [scrolled, setScrolled] = useState(false)
   const dropdownRef = useRef(null)
   const location = useLocation()
 
@@ -44,11 +45,24 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 4)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const isChildActive = (children) =>
     children?.some((c) => c.path === location.pathname)
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-[#E0E0E0]">
+    <header
+      className={cn(
+        'sticky top-0 z-50 bg-white border-b border-[#E0E0E0]',
+        'transition-shadow duration-200',
+        scrolled && 'shadow-[0_1px_0_0_#E0E0E0,0_8px_24px_-12px_rgba(22,22,22,0.12)]',
+      )}
+    >
       <InstitutionalBanner />
 
       <Container>
@@ -70,49 +84,65 @@ export default function Navbar() {
                       onClick={() => setOpenDropdown(isOpen ? null : link.label)}
                       onMouseEnter={() => setOpenDropdown(link.label)}
                       className={cn(
-                        'flex items-center gap-1.5 px-4 h-full text-[14px] font-medium cursor-pointer transition-colors',
-                        'border-b-2 -mb-px',
+                        'nav-link-underline flex items-center gap-1.5 px-4 h-full text-[14px] font-medium cursor-pointer transition-colors',
                         active || isOpen
-                          ? 'text-[#194296] border-[#194296]'
-                          : 'text-[#393939] border-transparent hover:text-[#194296]',
+                          ? 'text-[#194296]'
+                          : 'text-[#393939] hover:text-[#194296]',
                       )}
+                      data-active={active || isOpen ? 'true' : undefined}
                       aria-expanded={isOpen}
                       aria-haspopup="true"
                     >
                       {link.label}
                       <ChevronDown
-                        className={cn('h-3.5 w-3.5 transition-transform', isOpen && 'rotate-180')}
+                        className={cn(
+                          'h-3.5 w-3.5 transition-transform duration-200',
+                          isOpen && 'rotate-180',
+                        )}
+                        strokeWidth={2}
                       />
                     </button>
                     {isOpen && (
                       <div
-                        className="absolute left-0 top-full w-[22rem] bg-white border border-[#E0E0E0] shadow-[0_8px_24px_-8px_rgba(22,22,22,0.16)]"
+                        className={cn(
+                          'absolute left-0 top-full w-[24rem] bg-white border border-[#E0E0E0]',
+                          'shadow-[0_12px_28px_-12px_rgba(22,22,22,0.18)]',
+                          'animate-fade-up',
+                        )}
                         onMouseLeave={() => setOpenDropdown(null)}
                       >
                         <div className="brand-bar-thin" />
-                        <div className="p-2">
+                        <div className="px-2 py-2">
+                          <div className="px-3 pt-3 pb-2 mb-1 border-b border-[#E0E0E0] flex items-center justify-between">
+                            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#194296]">
+                              {link.label}
+                            </span>
+                            <span className="font-mono text-[10px] tabular-nums text-[#8D8D8D]">
+                              {String(link.children.length).padStart(2, '0')} parcours
+                            </span>
+                          </div>
                           {link.children.map((child, i) => (
                             <Link
                               key={child.path}
                               to={child.path}
                               onClick={() => setOpenDropdown(null)}
                               className={cn(
-                                'flex items-start gap-3 p-3 transition-colors',
+                                'group/dropitem flex items-start gap-3 p-3 transition-colors',
                                 location.pathname === child.path
                                   ? 'bg-[#E6EBF5]'
                                   : 'hover:bg-[#F4F4F4]',
                               )}
                             >
-                              <span className="font-mono text-[10px] text-[#6F6F6F] pt-1 tabular-nums">
+                              <span className="font-mono text-[10px] text-[#6F6F6F] pt-1 tabular-nums tracking-[0.08em]">
                                 {String(i + 1).padStart(2, '0')}
                               </span>
                               <span className="flex-1">
                                 <span
                                   className={cn(
-                                    'block text-[14px] font-semibold',
+                                    'block text-[14px] font-semibold tracking-tight',
                                     location.pathname === child.path
                                       ? 'text-[#194296]'
-                                      : 'text-[#161616]',
+                                      : 'text-[#161616] group-hover/dropitem:text-[#194296]',
                                   )}
                                 >
                                   {child.label}
@@ -122,6 +152,12 @@ export default function Navbar() {
                                     {child.description}
                                   </span>
                                 )}
+                              </span>
+                              <span
+                                aria-hidden
+                                className="font-mono text-[14px] text-[#C6C6C6] pt-1 chevron-slide group-hover/dropitem:text-[#194296]"
+                              >
+                                →
                               </span>
                             </Link>
                           ))}
@@ -138,11 +174,10 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   className={cn(
-                    'px-4 h-full flex items-center text-[14px] font-medium border-b-2 -mb-px transition-colors',
-                    active
-                      ? 'text-[#194296] border-[#194296]'
-                      : 'text-[#393939] border-transparent hover:text-[#194296]',
+                    'nav-link-underline px-4 h-full flex items-center text-[14px] font-medium transition-colors',
+                    active ? 'text-[#194296]' : 'text-[#393939] hover:text-[#194296]',
                   )}
+                  data-active={active ? 'true' : undefined}
                 >
                   {link.label}
                 </Link>
@@ -162,7 +197,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 -mr-2 text-[#161616] hover:bg-[#F4F4F4] cursor-pointer focus-visible:outline-2 focus-visible:outline-[#194296]"
+            className="lg:hidden p-2 -mr-2 text-[#161616] hover:bg-[#F4F4F4] cursor-pointer focus-visible:outline-2 focus-visible:outline-[#194296] transition-colors"
             aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             aria-expanded={mobileOpen}
           >
@@ -175,7 +210,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 top-[calc(theme(spacing.16)+4px)] bg-white overflow-y-auto z-40">
+        <div className="lg:hidden fixed inset-0 top-[calc(theme(spacing.16)+4px)] bg-white overflow-y-auto z-40 animate-fade-in">
           <Container className="py-4">
             <div className="divide-y divide-[#E0E0E0]">
               {NAV_LINKS.map((link) => {
@@ -194,11 +229,15 @@ export default function Navbar() {
                       >
                         {link.label}
                         <ChevronDown
-                          className={cn('h-5 w-5 transition-transform', expanded && 'rotate-180')}
+                          className={cn(
+                            'h-5 w-5 transition-transform duration-200',
+                            expanded && 'rotate-180',
+                          )}
+                          strokeWidth={2}
                         />
                       </button>
                       {expanded && (
-                        <div className="pb-4 space-y-1">
+                        <div className="pb-4 space-y-1 animate-fade-up">
                           {link.children.map((child, i) => (
                             <Link
                               key={child.path}
@@ -210,7 +249,7 @@ export default function Navbar() {
                                   : 'hover:bg-[#F4F4F4]',
                               )}
                             >
-                              <span className="font-mono text-[10px] text-[#6F6F6F] pt-1">
+                              <span className="font-mono text-[10px] text-[#6F6F6F] pt-1 tabular-nums">
                                 {String(i + 1).padStart(2, '0')}
                               </span>
                               <span>

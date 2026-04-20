@@ -9,7 +9,13 @@ export default function FeatureGrid({ features, columns = 3, className, withNumb
   }
 
   return (
-    <div className={cn(`grid grid-cols-1 ${gridCols[columns] || gridCols[3]} gap-4 sm:gap-5`, className)}>
+    <div
+      className={cn(
+        'grid grid-cols-1 gap-4 sm:gap-5',
+        gridCols[columns] || gridCols[3],
+        className,
+      )}
+    >
       {features.map((feature, i) => (
         <FeatureCard key={i} {...feature} index={i} number={withNumbers ? i + 1 : feature.number} />
       ))}

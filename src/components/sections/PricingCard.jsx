@@ -3,8 +3,9 @@ import Button from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
 /**
- * PricingCard — style institutionnel, carte rectangulaire.
- * Variante `highlighted` : fond bleu Certipac, texte blanc.
+ * PricingCard — carte tarifaire institutionnelle.
+ * Variante `highlighted` : fond bleu Certipac, texte blanc, check marks vert clair.
+ * Variante normale       : blanc, bordure #E0E0E0.
  */
 
 export default function PricingCard({
@@ -21,18 +22,34 @@ export default function PricingCard({
   return (
     <article
       className={cn(
-        'relative flex flex-col p-6 sm:p-7 h-full rounded-[2px]',
+        'relative flex flex-col p-6 sm:p-7 h-full rounded-[2px] transition-[background-color,border-color] duration-200',
         highlighted
           ? 'bg-[#194296] text-white'
-          : 'bg-white border border-[#E0E0E0]',
+          : 'bg-white border border-[#E0E0E0] hover:border-[#8D8D8D]',
       )}
     >
-      <header className="mb-5 pb-5 border-b border-current/15">
-        <div className="flex items-center justify-between mb-3">
+      {highlighted && (
+        <span
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-[3px]"
+          style={{
+            background:
+              'linear-gradient(to right, #43AA43 0%, #43AA43 50%, #75D593 50%, #75D593 100%)',
+          }}
+        />
+      )}
+
+      <header
+        className={cn(
+          'mb-5 pb-5 border-b',
+          highlighted ? 'border-white/15' : 'border-[#E0E0E0]',
+        )}
+      >
+        <div className="flex items-center justify-between gap-3 mb-3">
           <span
             className={cn(
-              'font-mono text-[11px] uppercase tracking-[0.08em]',
-              highlighted ? 'text-[#75D593]' : 'text-[#525252]',
+              'font-mono text-[11px] uppercase tracking-[0.08em] tabular-nums',
+              highlighted ? 'text-[#A3E3B7]' : 'text-[#525252]',
             )}
           >
             {reference || 'Formule'}
@@ -40,7 +57,7 @@ export default function PricingCard({
           {badge && (
             <span
               className={cn(
-                'font-mono text-[10px] uppercase tracking-[0.08em] px-2 py-0.5',
+                'font-mono text-[10px] uppercase tracking-[0.08em] px-2 py-1 leading-none rounded-[2px]',
                 highlighted ? 'bg-[#43AA43] text-white' : 'bg-[#161616] text-white',
               )}
             >
@@ -51,7 +68,7 @@ export default function PricingCard({
 
         <h3
           className={cn(
-            'text-[22px] font-bold leading-[1.2]',
+            'text-[22px] font-bold leading-[1.2] tracking-tight',
             highlighted ? 'text-white' : 'text-[#161616]',
           )}
         >
@@ -60,8 +77,8 @@ export default function PricingCard({
         {description && (
           <p
             className={cn(
-              'mt-2 text-[13px] leading-[1.5]',
-              highlighted ? 'text-[#C6C6C6]' : 'text-[#525252]',
+              'mt-2 text-[13px] leading-[1.55]',
+              highlighted ? 'text-[#CDD8EB]' : 'text-[#525252]',
             )}
           >
             {description}
@@ -74,7 +91,7 @@ export default function PricingCard({
           <div className="flex items-baseline gap-1">
             <span
               className={cn(
-                'text-[44px] font-bold leading-none tabular-nums',
+                'text-[48px] font-bold leading-none tabular-nums tracking-tight',
                 highlighted ? 'text-white' : 'text-[#161616]',
               )}
             >
@@ -82,7 +99,7 @@ export default function PricingCard({
             </span>
             <span
               className={cn(
-                'text-[20px] font-semibold',
+                'text-[22px] font-semibold',
                 highlighted ? 'text-white' : 'text-[#161616]',
               )}
             >
@@ -90,8 +107,8 @@ export default function PricingCard({
             </span>
             <span
               className={cn(
-                'text-[13px] ml-1',
-                highlighted ? 'text-[#C6C6C6]' : 'text-[#6F6F6F]',
+                'font-mono text-[12px] uppercase tracking-[0.08em] ml-1.5',
+                highlighted ? 'text-[#CDD8EB]' : 'text-[#6F6F6F]',
               )}
             >
               {period}
@@ -100,7 +117,7 @@ export default function PricingCard({
         ) : (
           <span
             className={cn(
-              'text-[28px] font-bold leading-tight',
+              'text-[28px] font-bold leading-tight tracking-tight',
               highlighted ? 'text-white' : 'text-[#161616]',
             )}
           >
@@ -119,7 +136,7 @@ export default function PricingCard({
               )}
               strokeWidth={2.5}
             />
-            <span className={cn(highlighted ? 'text-[#E0E0E0]' : 'text-[#393939]')}>
+            <span className={cn(highlighted ? 'text-[#E6EBF5]' : 'text-[#393939]')}>
               {feature}
             </span>
           </li>
