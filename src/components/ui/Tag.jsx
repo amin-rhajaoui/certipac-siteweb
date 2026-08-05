@@ -1,22 +1,20 @@
 import { cn } from '@/lib/utils'
 
 /**
- * Tag — pill Carbon compacte pour listes de critères (artisans RGE, installateurs PAC…).
- * Mode "active" : fond ink + texte blanc, comme dans le brand book "Artisans RGE" (page 3).
+ * Tag — style fr-tag DSFR (pill, gras 14px).
+ * Exception contrôlée au rayon 0 : les tags DSFR sont arrondis.
  */
 
-export default function Tag({ children, active = false, className, as: Tag = 'span' }) {
+export default function Tag({ children, active = false, className, as: Comp = 'span' }) {
   return (
-    <Tag
+    <Comp
       className={cn(
-        'inline-flex items-center rounded-[2px] px-2.5 py-1 text-[12px] font-medium',
-        active
-          ? 'bg-[#161616] text-white'
-          : 'bg-white text-[#393939] border border-[#C6C6C6]',
+        'ctp-tag',
+        active && 'ctp-tag--active',
         className,
       )}
     >
       {children}
-    </Tag>
+    </Comp>
   )
 }

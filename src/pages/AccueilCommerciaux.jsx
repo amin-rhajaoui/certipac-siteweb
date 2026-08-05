@@ -5,7 +5,6 @@ import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
 import SectionHeader from '@/components/sections/SectionHeader'
 import FeatureGrid from '@/components/sections/FeatureGrid'
-import StatCounter from '@/components/sections/StatCounter'
 import TestimonialCard from '@/components/sections/TestimonialCard'
 import PricingCard from '@/components/sections/PricingCard'
 import CTASection from '@/components/sections/CTASection'
@@ -16,13 +15,6 @@ import { features } from '@/data/features'
 import { plans } from '@/data/pricing'
 import { testimonials } from '@/data/testimonials'
 import { CTA_TEXT, APP_URL } from '@/lib/constants'
-
-const stats = [
-  { value: 2500, suffix: '+', label: 'Entreprises accompagnées', reference: 'Indicateur · A' },
-  { value: 50000, suffix: '+', label: 'Dossiers transmis aux poseurs', reference: 'Indicateur · B' },
-  { value: 98, suffix: '%', label: 'Dossiers acceptés', reference: 'Indicateur · C' },
-  { value: 5, suffix: 'x', label: 'Signatures au 1er rendez-vous', reference: 'Indicateur · D' },
-]
 
 const valueProps = [
   { title: "Éligibilité client qualifiée", body: "Logement, foyer, dispositifs d'État et aides locales vérifiés en amont." },
@@ -195,22 +187,9 @@ export default function AccueilCommerciaux() {
 
       <SectionWrapper tone="white">
         <SectionHeader
-          number="04 — Indicateurs"
-          eyebrow="Performance commerciale"
-          title="Des chiffres opposables."
-        />
-        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <StatCounter key={s.label} {...s} />
-          ))}
-        </div>
-      </SectionWrapper>
-
-      <SectionWrapper tone="gray">
-        <SectionHeader
-          number="05 — Témoignages"
+          number="04 — Témoignages"
           eyebrow="Retours force de vente"
-          title="Ils accélèrent la signature."
+          title="Retours d'équipes commerciales."
         />
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {commercialTestimonials.map((t, i) => (
@@ -224,9 +203,9 @@ export default function AccueilCommerciaux() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper tone="white">
+      <SectionWrapper tone="gray">
         <SectionHeader
-          number="06 — Tarification"
+          number="05 — Tarification"
           eyebrow="Engagement commercial"
           title="Un prix adapté à votre force de vente."
           lede="Essai gratuit 1 mois, sans engagement, sans carte bancaire."
@@ -243,8 +222,8 @@ export default function AccueilCommerciaux() {
       </SectionWrapper>
 
       <CTASection
-        title="Prêt à signer plus d'affaires PAC ?"
-        description="Éligibilité, dimensionnement, devis, transmission au poseur RGE et CERFA de conformité — tout depuis Certipac."
+        title="Structurer le parcours commercial PAC"
+        description="Éligibilité, dimensionnement, devis, transmission au poseur RGE et récupération des CERFA — depuis Certipac."
       />
     </PageWrapper>
   )

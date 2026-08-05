@@ -21,7 +21,7 @@ const piliers = [
     icon: Shield,
     title: 'Conformité',
     description:
-      "Vérification automatique de chaque pièce selon les référentiels ANAH, MaPrimeRénov' et CEE. Zéro rejet, zéro surprise.",
+      "Contrôles de complétude et de cohérence sur chaque pièce, selon les référentiels ANAH, MaPrimeRénov' et CEE. Dossier traçable avant dépôt.",
     tone: '#194296',
     number: 1,
   },
@@ -37,7 +37,7 @@ const piliers = [
     icon: Clock,
     title: 'Simplicité',
     description:
-      "Interface pensée pour les professionnels du terrain. Aucune expertise administrative requise.",
+      "Interface conçue pour les professionnels du terrain : le parcours guide les pièces et contrôles attendus.",
     tone: '#161616',
     number: 3,
   },
@@ -115,27 +115,27 @@ export default function Accueil() {
           title="Trois piliers opposables."
           lede="Le nom Certipac articule deux promesses : Certi pour la conformité réglementaire (CEE · ANAH · MPR · RGE) et PAC pour la pompe à chaleur, cœur de métier de la transition énergétique."
         />
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-          {piliers.map((p, i) => (
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {piliers.map((p) => (
             <article
               key={p.title}
-              className="bg-[#F4F4F4] p-5 sm:p-6 rounded-[2px]"
-              style={{ borderLeft: `3px solid ${p.tone}` }}
+              className="bg-[#F6F6F6] p-5 sm:p-6"
+              style={{ borderLeft: `4px solid ${p.tone}` }}
             >
               <div className="flex items-center justify-between mb-4">
-                <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252]">
+                <span className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#666666]">
                   Pilier {String(p.number).padStart(2, '0')}
                 </span>
                 <p.icon className="h-5 w-5" style={{ color: p.tone }} strokeWidth={1.75} />
               </div>
-              <h3 className="text-[18px] font-semibold text-[#161616] mb-2">{p.title}</h3>
-              <p className="text-[14px] leading-[1.6] text-[#525252]">{p.description}</p>
+              <h3 className="text-[1.125rem] font-bold text-[#161616] mb-2">{p.title}</h3>
+              <p className="text-[1rem] leading-[1.5] text-[#3A3A3A]">{p.description}</p>
             </article>
           ))}
         </div>
 
-        <div className="mt-12">
-          <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#194296] mb-4">
+        <div className="mt-10">
+          <p className="text-[0.875rem] font-bold uppercase tracking-[0.04em] text-[#194296] mb-3">
             Écosystème utilisateurs
           </p>
           <ul className="flex flex-wrap gap-2">
@@ -156,26 +156,26 @@ export default function Accueil() {
           title="Un cadre commun, trois parcours métier."
           lede="Certipac sert trois populations professionnelles avec un noyau réglementaire partagé et des interfaces adaptées à leur usage terrain."
         />
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
           {audiences.map((a) => (
             <Link
               key={a.title}
               to={a.to}
-              className="group block h-full bg-white border border-[#E0E0E0] p-6 transition-colors hover:border-[#194296] rounded-[2px]"
+              className="group block h-full bg-white border border-[#DDDDDD] p-6 transition-colors hover:border-[#194296]"
             >
               <div className="flex items-center justify-between mb-5">
-                <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252]">
+                <span className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#666666]">
                   {a.reference}
                 </span>
                 <a.icon className="h-5 w-5 text-[#194296]" strokeWidth={1.75} />
               </div>
-              <h3 className="text-[18px] font-semibold text-[#161616] mb-2 leading-[1.3]">
+              <h3 className="text-[1.125rem] font-bold text-[#161616] mb-2 leading-snug">
                 {a.title}
               </h3>
-              <p className="text-[14px] leading-[1.6] text-[#525252] mb-6">
+              <p className="text-[1rem] leading-[1.5] text-[#3A3A3A] mb-6">
                 {a.description}
               </p>
-              <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#194296] group-hover:gap-3 transition-all">
+              <span className="inline-flex items-center gap-2 text-[1rem] font-medium text-[#194296] underline-offset-2 group-hover:underline">
                 Consulter le parcours
                 <ArrowRight className="h-4 w-4" strokeWidth={2} />
               </span>
@@ -186,7 +186,7 @@ export default function Accueil() {
 
       {/* Fonctionnalités */}
       <SectionWrapper tone="white">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
           <div className="lg:col-span-7">
             <SectionHeader
               number="03 — Fonctionnalités"
@@ -195,8 +195,8 @@ export default function Accueil() {
             />
           </div>
           <div className="lg:col-span-5 lg:pt-2">
-            <p className="text-[15px] leading-[1.65] text-[#525252]">
-              De la visite technique au dépôt du dossier d'aides, chaque étape est guidée
+            <p className="text-[1.125rem] leading-[1.5] text-[#3A3A3A]">
+              De la visite technique au dépôt du dossier d&apos;aides, chaque étape est guidée
               sur mobile et sur le web. Les pièces attendues par les organismes sont intégrées
               au parcours, les contrôles de cohérence sont exécutés en temps réel.
             </p>
@@ -213,17 +213,17 @@ export default function Accueil() {
           title="Cinq étapes, du terrain au versement."
           lede="Le processus Certipac matérialise la chaîne documentaire attendue par les organismes — chaque étape est horodatée, chaque contrôle est tracé."
         />
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {steps.map((step) => (
             <StepCard key={step.number} {...step} />
           ))}
         </div>
 
-        <div className="mt-12">
+        <div className="mt-10">
           <Callout title="Article 1 · Engagement de conformité" reference="CTP-ART-001" tone="info">
             Les règles documentaires de la plateforme sont opposables aux organismes de financement.
-            Chaque contrôle est tracé et horodaté ; l'historique d'audit est accessible à tout moment
-            depuis l'interface.
+            Chaque contrôle est tracé et horodaté ; l&apos;historique d&apos;audit est accessible à tout moment
+            depuis l&apos;interface.
           </Callout>
         </div>
       </SectionWrapper>
@@ -236,64 +236,64 @@ export default function Accueil() {
           title="Opposable aux dispositifs officiels."
           lede="Les parcours Certipac sont alignés sur les arrêtés et décrets en vigueur. Les mises à jour sont déployées dès leur publication."
         />
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#E0E0E0]">
-          <div className="bg-white p-6 border-l-[3px] border-[#194296]">
-            <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252] mb-2">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#DDDDDD]">
+          <div className="bg-white p-6 border-l-4 border-[#194296]">
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#666666] mb-2">
               Référence · A
             </p>
-            <h3 className="text-[16px] font-semibold text-[#161616] mb-2">
-              ANAH — Agence Nationale de l'Habitat
+            <h3 className="text-[1.125rem] font-bold text-[#161616] mb-2">
+              ANAH — Agence Nationale de l&apos;Habitat
             </h3>
-            <p className="text-[13.5px] leading-[1.6] text-[#525252]">
-              Conformité aux critères d'éligibilité des aides à la rénovation énergétique.
+            <p className="text-[1rem] leading-[1.5] text-[#3A3A3A]">
+              Conformité aux critères d&apos;éligibilité des aides à la rénovation énergétique.
               Vérification des plafonds de ressources, conditions de logement et travaux éligibles.
             </p>
-            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.06em] text-[#194296]">
+            <p className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.04em] text-[#194296]">
               Décret n°2020–26 du 14 janvier 2020
             </p>
           </div>
-          <div className="bg-white p-6 border-l-[3px] border-[#43AA43]">
-            <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252] mb-2">
+          <div className="bg-white p-6 border-l-4 border-[#43AA43]">
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#666666] mb-2">
               Référence · M
             </p>
-            <h3 className="text-[16px] font-semibold text-[#161616] mb-2">
-              MaPrimeRénov'
+            <h3 className="text-[1.125rem] font-bold text-[#161616] mb-2">
+              MaPrimeRénov&apos;
             </h3>
-            <p className="text-[13.5px] leading-[1.6] text-[#525252]">
+            <p className="text-[1rem] leading-[1.5] text-[#3A3A3A]">
               Constitution automatisée des dossiers selon le barème en vigueur. Contrôle des devis,
-              attestations sur l'honneur et qualification RGE de l'installateur.
+              attestations sur l&apos;honneur et qualification RGE de l&apos;installateur.
             </p>
-            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.06em] text-[#43AA43]">
+            <p className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.04em] text-[#43AA43]">
               Arrêté du 14 janvier 2020 modifié
             </p>
           </div>
-          <div className="bg-white p-6 border-l-[3px] border-[#161616]">
-            <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252] mb-2">
+          <div className="bg-white p-6 border-l-4 border-[#161616]">
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#666666] mb-2">
               Référence · C
             </p>
-            <h3 className="text-[16px] font-semibold text-[#161616] mb-2">
-              CEE — Certificats d'Économies d'Énergie
+            <h3 className="text-[1.125rem] font-bold text-[#161616] mb-2">
+              CEE — Certificats d&apos;Économies d&apos;Énergie
             </h3>
-            <p className="text-[13.5px] leading-[1.6] text-[#525252]">
-              Génération des fiches d'opérations standardisées (BAR-TH-159, BAR-TH-171).
+            <p className="text-[1rem] leading-[1.5] text-[#3A3A3A]">
+              Génération des fiches d&apos;opérations standardisées (BAR-TH-159, BAR-TH-171).
               Contrôle de la complétude documentaire et de la cohérence technique.
             </p>
-            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.06em] text-[#161616]">
+            <p className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.04em] text-[#161616]">
               Fiches CEE BAR-TH en vigueur
             </p>
           </div>
-          <div className="bg-white p-6 border-l-[3px] border-[#DA1E28]">
-            <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252] mb-2">
+          <div className="bg-white p-6 border-l-4 border-[#CE0500]">
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#666666] mb-2">
               Référence · R
             </p>
-            <h3 className="text-[16px] font-semibold text-[#161616] mb-2">
+            <h3 className="text-[1.125rem] font-bold text-[#161616] mb-2">
               Qualification RGE
             </h3>
-            <p className="text-[13.5px] leading-[1.6] text-[#525252]">
+            <p className="text-[1rem] leading-[1.5] text-[#3A3A3A]">
               Vérification en temps réel de la validité de la qualification RGE de chaque artisan
-              partenaire. Alerte automatique en cas d'expiration imminente.
+              partenaire. Alerte automatique en cas d&apos;expiration imminente.
             </p>
-            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.06em] text-[#DA1E28]">
+            <p className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.04em] text-[#CE0500]">
               Label RGE · Qualibat / QualiPAC
             </p>
           </div>

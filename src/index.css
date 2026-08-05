@@ -1,111 +1,116 @@
 @import "tailwindcss";
 
+/*
+ * Certipac Design System — édition DSFR-inspired (v3)
+ * ------------------------------------------------------------
+ * Cadre institutionnel français (densités, filets, focus, boutons,
+ * neutres) inspiré du Système de Design de l'État — sans package
+ * @gouvfr/dsfr ni fontes Marianne (réservés à la sphère État /
+ * .gouv.fr). Voir DESIGN.md §0.
+ *
+ * Structure  : neutres DSFR-like + rythme institutionnel
+ * Accents    : bleu Certipac #194296 · vert Certipac #43AA43
+ */
+
 @theme {
-  /* -----------------------------------------------------------
-   * Certipac 2026 — Design Tokens (Carbon-inspired institutional)
-   * Réf : Brand Book v2.0 — CTP-BB-2026-FR-001
-   * ---------------------------------------------------------*/
+  --font-sans: "Source Sans 3", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --font-sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-
-  /* Bleu Certipac — $brand-primary · #194296 */
-  --color-primary-10: #E6EBF5;
-  --color-primary-20: #CDD8EB;
-  --color-primary-30: #9BB1D7;
-  --color-primary-40: #6989C3;
-  --color-primary-50: #3D62AE;
-  --color-primary-60: #194296; /* Token officiel */
+  /* Bleu Certipac — action / marque (pas le bleu France État #000091) */
+  --color-primary-10: #F0F0FE;
+  --color-primary-20: #E3E3FD;
+  --color-primary-30: #C1C1FB;
+  --color-primary-40: #8B8BF5;
+  --color-primary-50: #4A4AD4;
+  --color-primary-60: #194296;
   --color-primary-70: #143578;
   --color-primary-80: #0F285A;
   --color-primary-90: #0A1A3C;
   --color-primary-100: #050D1E;
-
-  /* Alias compat rétro (ancien nommage Tailwind) */
   --color-primary-500: #194296;
   --color-primary-600: #143578;
   --color-primary-700: #0F285A;
   --color-primary-800: #0A1A3C;
 
-  /* Vert Certipac — $brand-accent · #43AA43 */
+  /* Vert Certipac — validation / accent marque */
   --color-accent-10: #E8F8ED;
   --color-accent-20: #D1F1DB;
   --color-accent-30: #A3E3B7;
   --color-accent-40: #75D593;
-  --color-accent-50: #43AA43; /* Token officiel */
+  --color-accent-50: #43AA43;
   --color-accent-60: #369236;
   --color-accent-70: #2A7A2A;
   --color-accent-80: #1E5B1E;
   --color-accent-90: #123D12;
   --color-accent-100: #091E09;
-
   --color-accent-500: #43AA43;
   --color-accent-600: #369236;
 
-  /* Gray Carbon — échelle neutre institutionnelle */
-  --color-gray-10: #F4F4F4;
-  --color-gray-20: #E0E0E0;
-  --color-gray-30: #C6C6C6;
-  --color-gray-40: #A8A8A8;
-  --color-gray-50: #8D8D8D;
-  --color-gray-60: #6F6F6F;
-  --color-gray-70: #525252;
-  --color-gray-80: #393939;
-  --color-gray-90: #262626;
-  --color-gray-100: #161616; /* Noir institutionnel · Ink */
+  /* Neutres DSFR-like (grey-* officiels approximés) */
+  --color-gray-10: #F6F6F6;   /* grey-975 */
+  --color-gray-20: #EEEEEE;   /* grey-950 */
+  --color-gray-30: #E5E5E5;
+  --color-gray-40: #DDDDDD;
+  --color-gray-50: #CECECE;
+  --color-gray-60: #929292;   /* grey-625 approx */
+  --color-gray-70: #666666;   /* grey-425 */
+  --color-gray-80: #3A3A3A;   /* grey-200 */
+  --color-gray-90: #242424;
+  --color-gray-100: #161616;  /* ink */
 
-  /* Surface — alias mappés sur Gray Carbon pour fond clair */
   --color-surface-50: #FFFFFF;
-  --color-surface-100: #F4F4F4;
-  --color-surface-200: #E0E0E0;
-  --color-surface-300: #C6C6C6;
-  --color-surface-400: #A8A8A8;
-  --color-surface-500: #6F6F6F;
-  --color-surface-600: #525252;
-  --color-surface-700: #393939;
-  --color-surface-800: #262626;
+  --color-surface-100: #F6F6F6;
+  --color-surface-200: #EEEEEE;
+  --color-surface-300: #E5E5E5;
+  --color-surface-400: #CECECE;
+  --color-surface-500: #929292;
+  --color-surface-600: #666666;
+  --color-surface-700: #3A3A3A;
+  --color-surface-800: #242424;
   --color-surface-900: #161616;
 
-  /* Support — rouge erreur, ambre warning (Carbon support palette) */
-  --color-support-error: #DA1E28;
-  --color-support-error-bg: #FFF1F1;
-  --color-support-warning: #F1C21B;
-  --color-support-warning-bg: #FCF4D6;
-  --color-support-success: #24A148;
-  --color-support-success-bg: #DEFBE6;
-  --color-support-info: #0043CE;
-  --color-support-info-bg: #EDF5FF;
+  /* Support — alignés DSFR (error / warning / success / info) */
+  --color-support-error: #CE0500;
+  --color-support-error-bg: #FFE9E6;
+  --color-support-warning: #B34000;
+  --color-support-warning-bg: #FFE9E6;
+  --color-support-success: #18753C;
+  --color-support-success-bg: #B8FEC9;
+  --color-support-info: #194296;
+  --color-support-info-bg: #E3E3FD;
 
-  /* Radius — Carbon utilise des angles francs, très faibles arrondis */
+  /* Focus DSFR-like */
+  --color-focus: #0A76F6;
+  --color-focus-ring: #0A76F6;
+
+  /* Angles francs — DSFR = 0 */
   --radius-none: 0;
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 4px;
-  --radius-xl: 4px;
-  --radius-2xl: 6px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
 
-  /* Shadows — plats, institutionnels, peu dramatiques */
-  --shadow-soft: 0 1px 2px 0 rgba(22, 22, 22, 0.05), 0 1px 3px 0 rgba(22, 22, 22, 0.04);
-  --shadow-card: 0 2px 6px 0 rgba(22, 22, 22, 0.06), 0 1px 2px 0 rgba(22, 22, 22, 0.04);
-  --shadow-elevated: 0 8px 24px -8px rgba(22, 22, 22, 0.12), 0 2px 6px 0 rgba(22, 22, 22, 0.04);
+  --shadow-soft: none;
+  --shadow-card: none;
+  --shadow-elevated: 0 4px 12px rgba(22, 22, 22, 0.08);
 
-  /* Type scale — brand book hiérarchie */
-  --text-display: 3rem;         /* 48 / 52 */
-  --text-display--line-height: 1.08;
-  --text-h1: 1.75rem;            /* 28 / 34 */
-  --text-h1--line-height: 1.21;
-  --text-h2: 1.125rem;           /* 18 / 24 */
-  --text-h2--line-height: 1.33;
-  --text-h3: 0.875rem;           /* 14 / 20 */
-  --text-h3--line-height: 1.42;
-  --text-body: 0.875rem;         /* 14 / 22 */
-  --text-body--line-height: 1.57;
-  --text-caption: 0.75rem;       /* 12 / 16 */
-  --text-caption--line-height: 1.33;
+  --text-display: 2.5rem;
+  --text-display--line-height: 1.2;
+  --text-h1: 2rem;
+  --text-h1--line-height: 1.25;
+  --text-h2: 1.375rem;
+  --text-h2--line-height: 1.27;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.4;
+  --text-body: 1rem;
+  --text-body--line-height: 1.5;
+  --text-caption: 0.875rem;
+  --text-caption--line-height: 1.5;
 }
 
 /* -----------------------------------------------------------
- * Base
+ * Base — rythme institutionnel FR
  * ---------------------------------------------------------*/
 
 html {
@@ -116,33 +121,30 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: #262626;
+  color: #161616;
   background-color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "ss01", "cv05", "cv11", "kern";
-  font-variant-ligatures: common-ligatures contextual;
-  font-size: 15px;
+  font-size: 1rem; /* 16px — DSFR body */
   line-height: 1.5;
+  font-weight: 400;
 }
 
-/* Monospace : forcer chiffres tabulaires & interlettrage régulier */
 code,
 kbd,
 pre,
 samp,
 .font-mono {
-  font-feature-settings: "tnum", "zero";
-  font-variant-numeric: tabular-nums slashed-zero;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
 }
 
-/* Titres : tracking-tight naturel, ligatures typographiques actives */
 h1, h2, h3, h4 {
-  font-feature-settings: "ss01", "cv05", "cv11", "kern", "calt", "liga";
+  color: #161616;
+  font-weight: 700;
   text-wrap: balance;
 }
 
-/* Paragraphes : éviter les veuves / orphelins sur colonnes étroites */
 p {
   text-wrap: pretty;
 }
@@ -157,19 +159,20 @@ p {
   color: #FFFFFF;
 }
 
+/* Focus ring DSFR-like — bleu focus accessible, offset 2px */
 :focus-visible {
-  outline: 2px solid #194296;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
-  border-radius: 2px;
 }
 
 button {
   font-family: inherit;
 }
 
-/* -----------------------------------------------------------
- * Respect du "prefers-reduced-motion"
- * ---------------------------------------------------------*/
+a {
+  color: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -182,12 +185,12 @@ button {
 }
 
 /* -----------------------------------------------------------
- * Signature institutionnelle — Barre tricolore
- * Bleu Certipac · Vert Certipac · Noir institutionnel
+ * Signature Certipac — barre tricolore (marque, pas Marianne)
+ * Bleu Certipac · Vert Certipac · Ink
  * ---------------------------------------------------------*/
 
 .brand-bar {
-  height: 4px;
+  height: 3px;
   background: linear-gradient(
     to right,
     #194296 0%,
@@ -212,64 +215,244 @@ button {
   );
 }
 
-/* Cartes "pilier" — filet vertical de couleur à gauche */
+/* Filet vertical type callout DSFR (0.25rem) */
 .card-rail {
   position: relative;
-  border-left: 3px solid var(--card-rail-color, #194296);
+  border-left: 4px solid var(--card-rail-color, #194296);
 }
 
-/* Références monospace type brand book (RÉFÉRENCE · A / CTP-XX-001) */
 .mono-label {
   font-family: var(--font-mono);
-  font-size: 0.6875rem; /* 11px */
-  line-height: 1;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: #525252;
-}
-
-/* Eyebrow — libellé sur-titre institutionnel */
-.eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  line-height: 1;
-  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   font-weight: 600;
+  color: #666666;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
   color: #194296;
 }
 
-/* Numérotation de section — 01, 02, 03… */
 .section-number {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 400;
-  color: #525252;
-  letter-spacing: 0.04em;
+  color: #666666;
+  letter-spacing: 0.02em;
 }
 
-/* Bandeau institutionnel — emprunté à l'entête du brand book */
 .bandeau-republique {
-  background: #FFFFFF;
-  border-bottom: 1px solid #E0E0E0;
+  background: #161616;
+  color: #FFFFFF;
   font-family: var(--font-sans);
 }
 
-/* Filet horizontal institutionnel (séparateur sobre) */
 .filet {
   height: 1px;
-  background: #E0E0E0;
+  background: #DDDDDD;
 }
 
-/* Focus ring institutionnel Carbon */
 .focus-ring:focus-visible {
-  outline: 2px solid #194296;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
 /* -----------------------------------------------------------
- * Motion — révélations sobres, institutionnelles
+ * Boutons DSFR-like — angles 0, poids 500, filet bas inset
+ * ---------------------------------------------------------*/
+
+.ctp-btn {
+  --btn-bg: #194296;
+  --btn-fg: #FFFFFF;
+  --btn-hover: #143578;
+  --btn-active: #0F285A;
+  --btn-edge: #0F285A;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+  user-select: none;
+  border: 0;
+  border-radius: 0;
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  box-shadow: inset 0 -2px 0 0 var(--btn-edge);
+  transition: background-color 0.1s ease-out, color 0.1s ease-out;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ctp-btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.ctp-btn:active {
+  background-color: var(--btn-active);
+}
+
+.ctp-btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.ctp-btn:disabled,
+.ctp-btn[aria-disabled="true"] {
+  background-color: #E5E5E5;
+  color: #929292;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.ctp-btn--sm {
+  min-height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+}
+
+.ctp-btn--lg {
+  min-height: 3rem;
+  padding: 0 1.5rem;
+  font-size: 1.125rem;
+}
+
+.ctp-btn--primary {
+  --btn-bg: #194296;
+  --btn-fg: #FFFFFF;
+  --btn-hover: #143578;
+  --btn-active: #0F285A;
+  --btn-edge: #0F285A;
+}
+
+.ctp-btn--accent {
+  --btn-bg: #43AA43;
+  --btn-fg: #FFFFFF;
+  --btn-hover: #369236;
+  --btn-active: #2A7A2A;
+  --btn-edge: #2A7A2A;
+}
+
+.ctp-btn--secondary {
+  --btn-bg: #161616;
+  --btn-fg: #FFFFFF;
+  --btn-hover: #3A3A3A;
+  --btn-active: #242424;
+  --btn-edge: #000000;
+}
+
+.ctp-btn--tertiary {
+  --btn-bg: transparent;
+  --btn-fg: #194296;
+  --btn-hover: #F0F0FE;
+  --btn-active: #E3E3FD;
+  --btn-edge: transparent;
+  box-shadow: inset 0 0 0 1px #194296;
+}
+
+.ctp-btn--tertiary:hover {
+  box-shadow: inset 0 0 0 1px #194296;
+}
+
+.ctp-btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: #194296;
+  --btn-hover: #F0F0FE;
+  --btn-active: #E3E3FD;
+  --btn-edge: transparent;
+  box-shadow: none;
+}
+
+.ctp-btn--on-dark {
+  --btn-bg: #FFFFFF;
+  --btn-fg: #161616;
+  --btn-hover: #F6F6F6;
+  --btn-active: #EEEEEE;
+  --btn-edge: #DDDDDD;
+}
+
+.ctp-btn--danger {
+  --btn-bg: #CE0500;
+  --btn-fg: #FFFFFF;
+  --btn-hover: #A40400;
+  --btn-active: #7A0300;
+  --btn-edge: #7A0300;
+}
+
+/* -----------------------------------------------------------
+ * Callout DSFR-like — bandeau 4px + fond contrast
+ * ---------------------------------------------------------*/
+
+.ctp-callout {
+  position: relative;
+  padding: 1.25rem 1.5rem;
+  background-color: #EEEEEE;
+  background-image: linear-gradient(0deg, #194296, #194296);
+  background-size: 4px 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+.ctp-callout--info {
+  background-color: #E3E3FD;
+  background-image: linear-gradient(0deg, #194296, #194296);
+}
+
+.ctp-callout--success {
+  background-color: #B8FEC9;
+  background-image: linear-gradient(0deg, #18753C, #18753C);
+}
+
+.ctp-callout--warning {
+  background-color: #FEE7C9;
+  background-image: linear-gradient(0deg, #B34000, #B34000);
+}
+
+.ctp-callout--error {
+  background-color: #FFE9E6;
+  background-image: linear-gradient(0deg, #CE0500, #CE0500);
+}
+
+.ctp-callout--neutral {
+  background-color: #EEEEEE;
+  background-image: linear-gradient(0deg, #161616, #161616);
+}
+
+/* Tag DSFR-like */
+.ctp-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  border-radius: 1rem; /* DSFR tags sont pill — exception contrôlée */
+  background: #EEEEEE;
+  color: #161616;
+  border: 0;
+}
+
+.ctp-tag--active {
+  background: #194296;
+  color: #FFFFFF;
+}
+
+/* -----------------------------------------------------------
+ * Motion sobre
  * ---------------------------------------------------------*/
 
 @keyframes ctp-fade-up {
@@ -288,25 +471,14 @@ button {
   to   { opacity: 1; }
 }
 
-@keyframes ctp-rail-extend {
-  from { transform: scaleY(0); }
-  to   { transform: scaleY(1); }
-}
-
-@keyframes ctp-shimmer-pulse {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.55; }
-}
-
 .animate-fade-up {
-  animation: ctp-fade-up 0.5s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  animation: ctp-fade-up 0.4s cubic-bezier(0.2, 0.6, 0.2, 1) both;
 }
 
 .animate-fade-in {
-  animation: ctp-fade-in 0.4s ease-out both;
+  animation: ctp-fade-in 0.3s ease-out both;
 }
 
-/* Utilitaires d'étapes (delays harmonisés avec la cadence Carbon) */
 .animate-delay-1 { animation-delay: 60ms; }
 .animate-delay-2 { animation-delay: 120ms; }
 .animate-delay-3 { animation-delay: 180ms; }
@@ -314,65 +486,44 @@ button {
 .animate-delay-5 { animation-delay: 300ms; }
 .animate-delay-6 { animation-delay: 360ms; }
 
-/* Pulse discret pour statuts "en contrôle" (DashboardMockup) */
 .pulse-soft {
-  animation: ctp-shimmer-pulse 2.4s ease-in-out infinite;
+  animation: none;
 }
 
-/* -----------------------------------------------------------
- * Liens institutionnels : underline offset calibré
- * ---------------------------------------------------------*/
-
+/* Liens soulignés institutionnels */
 .link-underline {
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  text-decoration-color: rgba(25, 66, 150, 0.35);
-  transition: text-decoration-color 150ms ease-out;
+  text-decoration-color: currentColor;
 }
-.link-underline:hover {
-  text-decoration-color: #194296;
-}
-
-/* -----------------------------------------------------------
- * Carte avec rail : transition subtile sur l'épaisseur du filet
- * Respecte la règle "pas de shadow" mais renforce la lecture au hover.
- * ---------------------------------------------------------*/
 
 .card-rail-hover {
-  transition:
-    background-color 180ms ease-out,
-    border-color 180ms ease-out,
-    box-shadow 180ms ease-out;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out;
 }
 
-/* Mini sparkline / chevron décoratif au hover des cartes cliquables */
 .chevron-slide {
-  transition: transform 200ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform 180ms cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 .group:hover .chevron-slide,
 .group:focus-visible .chevron-slide {
-  transform: translateX(3px);
+  transform: translateX(2px);
 }
 
-/* -----------------------------------------------------------
- * Lien de navigation : sur-ligne animée sous le libellé
- * (plus fin que Tailwind `border-b-2` + plus Carbon)
- * ---------------------------------------------------------*/
-
+/* Nav underline — filet bas actif (type fr-nav) */
 .nav-link-underline {
   position: relative;
 }
 .nav-link-underline::after {
   content: "";
   position: absolute;
-  left: 1rem;
-  right: 1rem;
-  bottom: -1px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 2px;
   background: #194296;
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 220ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition: transform 160ms ease-out;
 }
 .nav-link-underline[data-active="true"]::after,
 .nav-link-underline:hover::after,
@@ -380,20 +531,17 @@ button {
   transform: scaleX(1);
 }
 
-/* -----------------------------------------------------------
- * Scrollbar subtile (Webkit) — ne modifie pas le ton général
- * ---------------------------------------------------------*/
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F4F4F4;
+  background: #F6F6F6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C6C6C6;
-  border: 2px solid #F4F4F4;
+  background: #CECECE;
+  border: 2px solid #F6F6F6;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8D8D8D;
+  background: #929292;
 }

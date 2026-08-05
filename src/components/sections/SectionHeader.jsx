@@ -2,13 +2,8 @@ import Reveal from '@/components/shared/Reveal'
 import { cn } from '@/lib/utils'
 
 /**
- * SectionHeader — titre de section institutionnel (brand book §3).
- *   - `number` + `eyebrow`  : ligne mono type "01 — Identité"
- *   - `title`               : H2 principal (point vert final optionnel)
- *   - filet bleu 2px de 48px sous le titre
- *   - `lede`                : description (gris 525252)
- *
- * Motion : fadeUp sobre à l'entrée dans le viewport (Reveal).
+ * SectionHeader — titre de section institutionnel (esprit DSFR).
+ * Eyebrow / numéro, H2 gras, filet bleu court, lede 18px.
  */
 
 export default function SectionHeader({
@@ -16,7 +11,7 @@ export default function SectionHeader({
   number,
   title,
   lede,
-  dot = false,      // point vert final sur H2 (optionnel)
+  dot = false,
   align = 'left',
   tone = 'light',
   className,
@@ -29,16 +24,15 @@ export default function SectionHeader({
       {(number || eyebrow) && (
         <div
           className={cn(
-            'flex items-center gap-3 mb-4 pb-2 border-b',
-            centered && 'justify-center max-w-fit mx-auto',
-            isDark ? 'border-[#1A2B4A]' : 'border-[#E0E0E0]',
+            'flex flex-wrap items-center gap-3 mb-3',
+            centered && 'justify-center',
           )}
         >
           {number && (
             <span
               className={cn(
-                'font-mono text-[12px] tabular-nums tracking-[0.04em]',
-                isDark ? 'text-[#A8A8A8]' : 'text-[#525252]',
+                'font-mono text-[0.875rem] tabular-nums',
+                isDark ? 'text-[#CECECE]' : 'text-[#666666]',
               )}
             >
               {number}
@@ -47,14 +41,14 @@ export default function SectionHeader({
           {number && eyebrow && (
             <span
               aria-hidden
-              className={cn('h-3 w-px', isDark ? 'bg-[#1A2B4A]' : 'bg-[#C6C6C6]')}
+              className={cn('h-3 w-px', isDark ? 'bg-[#3A3A3A]' : 'bg-[#CECECE]')}
             />
           )}
           {eyebrow && (
             <span
               className={cn(
-                'font-mono text-[11px] uppercase tracking-[0.12em] font-semibold',
-                isDark ? 'text-[#6989C3]' : 'text-[#194296]',
+                'text-[0.875rem] font-bold uppercase tracking-[0.04em]',
+                isDark ? 'text-[#8B8BF5]' : 'text-[#194296]',
               )}
             >
               {eyebrow}
@@ -66,7 +60,7 @@ export default function SectionHeader({
       {title && (
         <h2
           className={cn(
-            'text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.1] font-bold tracking-tight',
+            'text-[clamp(1.5rem,3.2vw,2rem)] leading-[1.25] font-bold tracking-tight',
             isDark ? 'text-white' : 'text-[#161616]',
           )}
         >
@@ -75,13 +69,19 @@ export default function SectionHeader({
         </h2>
       )}
 
-      <div className={cn('mt-4 h-[2px] w-12 bg-[#194296]', centered && 'mx-auto')} />
+      <div
+        className={cn(
+          'mt-3 h-1 w-14 bg-[#194296]',
+          centered && 'mx-auto',
+          isDark && 'bg-[#8B8BF5]',
+        )}
+      />
 
       {lede && (
         <p
           className={cn(
-            'mt-6 text-[15px] leading-[1.7] max-w-2xl',
-            isDark ? 'text-[#C6C6C6]' : 'text-[#525252]',
+            'mt-5 text-[1.125rem] leading-[1.5] max-w-2xl',
+            isDark ? 'text-[#CECECE]' : 'text-[#3A3A3A]',
             centered && 'mx-auto',
           )}
         >

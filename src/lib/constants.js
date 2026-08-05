@@ -59,7 +59,9 @@ export const COMPANY_INFO = {
   description:
     "Certipac est la plateforme institutionnelle de conformité documentaire pour la rénovation énergétique. Elle guide les artisans RGE, les installateurs et les commerciaux PAC dans la constitution de dossiers conformes aux exigences ANAH, MaPrimeRénov' et CEE — de la visite technique au versement des primes.",
   email: 'contact@certipac.fr',
-  phone: '01 23 45 67 89',
+  /** Numéro public non publié — ne pas inventer de ligne. Afficher « Sur demande ». */
+  phone: null,
+  phoneLabel: 'Sur demande',
   address: 'Paris, France',
   reference: 'CTP-BB-2026-FR-001',
   edition: 'Édition 2026',

@@ -5,7 +5,6 @@ import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
 import SectionHeader from '@/components/sections/SectionHeader'
 import FeatureGrid from '@/components/sections/FeatureGrid'
-import StatCounter from '@/components/sections/StatCounter'
 import CTASection from '@/components/sections/CTASection'
 import PartenairesStrip from '@/components/sections/PartenairesStrip'
 import ComparisonRow from '@/components/sections/ComparisonRow'
@@ -40,9 +39,10 @@ const conformiteFeatures = [
   },
   {
     icon: CheckCircle,
-    title: 'Dossiers acceptés',
-    description: "Objectif maintenu : 98 % des dossiers générés par Certipac sont acceptés au premier dépôt.",
-    category: 'Performance',
+    title: 'Dépôt préparé',
+    description:
+      "Contrôles de complétude avant envoi : pièces attendues, cohérence technique et justificatifs joints. L'acceptation finale reste celle de l'organisme.",
+    category: 'Contrôle',
   },
   {
     icon: Lock,
@@ -102,19 +102,12 @@ const regulatoryRefs = [
   },
 ]
 
-const stats = [
-  { value: 98, suffix: '%', label: 'Dossiers acceptés au dépôt', reference: 'Indicateur · A' },
-  { value: 50000, suffix: '+', label: 'PAC installées conformes', reference: 'Indicateur · B' },
-  { value: 100, suffix: '%', label: 'Dossiers horodatés', reference: 'Indicateur · C' },
-  { value: 0, suffix: '', label: 'Fichier hors piste d\'audit', reference: 'Indicateur · D' },
-]
-
 export default function Conformite() {
   return (
     <PageWrapper>
       <SEOHead
         title="Conformité réglementaire"
-        description="La conformité documentaire chez Certipac : exigences ANAH, CEE et MaPrimeRénov' intégrées au parcours, dossiers traçables et dépôts acceptés du premier coup."
+        description="La conformité documentaire chez Certipac : exigences ANAH, CEE et MaPrimeRénov' intégrées au parcours, dossiers traçables et contrôles de complétude avant dépôt."
       />
 
       <Breadcrumb
@@ -210,13 +203,41 @@ export default function Conformite() {
 
       <SectionWrapper tone="gray">
         <SectionHeader
-          number="04 — Indicateurs"
-          eyebrow="Performance conformité"
-          title="Chiffres opposables."
+          number="04 — Engagements documentaires"
+          eyebrow="Ce que nous pouvons affirmer"
+          title="Traçabilité, pas magie."
+          lede="Pas de taux d'acceptation inventé. Ce que Certipac engage : préparer le dossier, tracer les contrôles, conserver la piste d'audit."
         />
-        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <StatCounter key={s.label} {...s} />
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E0E0E0]">
+          {[
+            {
+              reference: 'Engagement · A',
+              title: 'Pièces attendues',
+              body: 'Liste des justificatifs imposée par le parcours avant dépôt.',
+            },
+            {
+              reference: 'Engagement · B',
+              title: 'Horodatage',
+              body: 'Chaque étape et chaque contrôle sont horodatés.',
+            },
+            {
+              reference: 'Engagement · C',
+              title: 'Piste d\'audit',
+              body: 'Historique consultable pour le dossier et le chantier.',
+            },
+            {
+              reference: 'Engagement · D',
+              title: 'Décision organisme',
+              body: "L'acceptation finale relève de l'ANAH, du délégataire CEE ou de l'opérateur concerné.",
+            },
+          ].map((item) => (
+            <article key={item.reference} className="bg-white p-5 sm:p-6 border-t-[3px] border-[#194296]">
+              <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252] mb-3">
+                {item.reference}
+              </p>
+              <h3 className="text-[15px] font-semibold text-[#161616] mb-2">{item.title}</h3>
+              <p className="text-[13px] leading-[1.55] text-[#525252]">{item.body}</p>
+            </article>
           ))}
         </div>
       </SectionWrapper>
@@ -237,7 +258,7 @@ export default function Conformite() {
       </SectionWrapper>
 
       <CTASection
-        title="Prêt à déposer sans retour ?"
+        title="Préparer un dépôt traçable"
         description="Essai gratuit 1 mois. Exigences ANAH, CEE et MaPrimeRénov' intégrées au parcours."
       />
     </PageWrapper>

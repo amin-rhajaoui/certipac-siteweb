@@ -2,25 +2,27 @@ import Container from '@/components/ui/Container'
 import { INSTITUTIONAL_BANNER } from '@/lib/constants'
 
 /**
- * Bandeau institutionnel haut de page — type document de référence.
- * Inspiré du header du brand book : "RÉPUBLIQUE — TRANSITION ÉNERGÉTIQUE · DOCUMENT DE RÉFÉRENCE".
+ * Bandeau haut — type service public (fond ink, texte clair).
+ * Remplace le bandeau Carbon clair ; plus proche fr-header top bar.
  */
 
 export default function InstitutionalBanner() {
   return (
     <div className="bandeau-republique hidden md:block">
       <Container>
-        <div className="flex h-8 items-center justify-between font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252]">
-          <span className="inline-flex items-center gap-2">
-            <span aria-hidden className="inline-block h-1.5 w-1.5 bg-[#43AA43] rounded-full" />
+        <div className="flex h-9 items-center justify-between text-[0.8125rem] font-medium tracking-wide">
+          <span className="inline-flex items-center gap-2 text-white">
+            <span aria-hidden className="inline-block h-2 w-2 bg-[#43AA43]" />
             {INSTITUTIONAL_BANNER.left}
           </span>
-          <span className="inline-flex items-center gap-3">
-            <span className="hidden lg:inline tabular-nums text-[#8D8D8D]">
+          <span className="inline-flex items-center gap-3 text-[#CECECE]">
+            <span className="hidden lg:inline tabular-nums font-mono text-[0.75rem] uppercase tracking-[0.06em]">
               {new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase()}
             </span>
-            <span aria-hidden className="hidden lg:inline h-3 w-px bg-[#C6C6C6]" />
-            <span>{INSTITUTIONAL_BANNER.right}</span>
+            <span aria-hidden className="hidden lg:inline h-3 w-px bg-[#3A3A3A]" />
+            <span className="font-mono text-[0.75rem] uppercase tracking-[0.06em]">
+              {INSTITUTIONAL_BANNER.right}
+            </span>
           </span>
         </div>
       </Container>

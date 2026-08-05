@@ -5,7 +5,6 @@ import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
 import SectionHeader from '@/components/sections/SectionHeader'
 import FeatureGrid from '@/components/sections/FeatureGrid'
-import StatCounter from '@/components/sections/StatCounter'
 import TestimonialCard from '@/components/sections/TestimonialCard'
 import PricingCard from '@/components/sections/PricingCard'
 import CTASection from '@/components/sections/CTASection'
@@ -16,13 +15,6 @@ import { features } from '@/data/features'
 import { plans } from '@/data/pricing'
 import { testimonials } from '@/data/testimonials'
 import { CTA_TEXT, APP_URL } from '@/lib/constants'
-
-const stats = [
-  { value: 2500, suffix: '+', label: 'Artisans RGE accompagnés', reference: 'Indicateur · A' },
-  { value: 50000, suffix: '+', label: 'PAC installées conformes', reference: 'Indicateur · B' },
-  { value: 98, suffix: '%', label: 'Dossiers acceptés au dépôt', reference: 'Indicateur · C' },
-  { value: 5, suffix: 'x', label: 'Gain de temps administratif', reference: 'Indicateur · D' },
-]
 
 const valueProps = [
   { title: 'Aucun bureau administratif requis', body: "Devis, signatures et relances sont cadrés dans l'application." },
@@ -200,24 +192,10 @@ export default function AccueilInstallateurs() {
         </div>
       </SectionWrapper>
 
-      {/* Stats */}
+      {/* Testimonials */}
       <SectionWrapper tone="white">
         <SectionHeader
-          number="04 — Indicateurs"
-          eyebrow="Mesure de performance"
-          title="Des chiffres opposables."
-        />
-        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <StatCounter key={s.label} {...s} />
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* Testimonials */}
-      <SectionWrapper tone="gray">
-        <SectionHeader
-          number="05 — Témoignages"
+          number="04 — Témoignages"
           eyebrow="Retours terrain"
           title="Ils posent, Certipac cadre."
         />
@@ -234,9 +212,9 @@ export default function AccueilInstallateurs() {
       </SectionWrapper>
 
       {/* Tarifs */}
-      <SectionWrapper tone="white">
+      <SectionWrapper tone="gray">
         <SectionHeader
-          number="06 — Tarification"
+          number="05 — Tarification"
           eyebrow="Engagement commercial"
           title="Un prix adapté à l'artisan."
           lede="Essai gratuit 1 mois. Sans engagement, sans carte bancaire."

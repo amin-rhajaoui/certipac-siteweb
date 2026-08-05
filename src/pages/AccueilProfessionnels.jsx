@@ -5,7 +5,6 @@ import HeroSection from '@/components/sections/HeroSection'
 import SectionWrapper from '@/components/sections/SectionWrapper'
 import SectionHeader from '@/components/sections/SectionHeader'
 import FeatureGrid from '@/components/sections/FeatureGrid'
-import StatCounter from '@/components/sections/StatCounter'
 import TestimonialCard from '@/components/sections/TestimonialCard'
 import PricingCard from '@/components/sections/PricingCard'
 import CTASection from '@/components/sections/CTASection'
@@ -16,13 +15,6 @@ import { features } from '@/data/features'
 import { plans } from '@/data/pricing'
 import { testimonials } from '@/data/testimonials'
 import { CTA_TEXT, APP_URL } from '@/lib/constants'
-
-const stats = [
-  { value: 2500, suffix: '+', label: 'Entreprises industrialisées', reference: 'Indicateur · A' },
-  { value: 50000, suffix: '+', label: 'PAC installées conformes', reference: 'Indicateur · B' },
-  { value: 98, suffix: '%', label: 'Dossiers acceptés au dépôt', reference: 'Indicateur · C' },
-  { value: 5, suffix: 'x', label: 'Réduction du temps de traitement', reference: 'Indicateur · D' },
-]
 
 const valueProps = [
   { title: "Dossiers limitant les retours ANAH, CEE, MPR", body: 'Pièces attendues imposées dès la collecte.' },
@@ -131,8 +123,8 @@ export default function AccueilProfessionnels() {
         <SectionHeader
           number="02 — Fonctionnalités entreprise"
           eyebrow="Socle unique multi-équipes"
-          title="Les briques pour industrialiser la qualité."
-          lede="Conformité, pilotage et financement des dossiers PAC : les capacités dont les structures multi-salariés ont besoin."
+          title="Les briques pour cadrer la qualité documentaire."
+          lede="Conformité, pilotage et suivi des aides : les capacités dont les structures multi-équipes ont besoin."
         />
         <div className="mt-12">
           <FeatureGrid features={enterpriseFeatures} />
@@ -202,20 +194,7 @@ export default function AccueilProfessionnels() {
 
       <SectionWrapper tone="white">
         <SectionHeader
-          number="04 — Indicateurs"
-          eyebrow="Performance entreprise"
-          title="Des chiffres opposables."
-        />
-        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <StatCounter key={s.label} {...s} />
-          ))}
-        </div>
-      </SectionWrapper>
-
-      <SectionWrapper tone="gray">
-        <SectionHeader
-          number="05 — Témoignages"
+          number="04 — Témoignages"
           eyebrow="Retours dirigeants"
           title="Ils structurent leur activité."
         />
@@ -231,9 +210,9 @@ export default function AccueilProfessionnels() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper tone="white">
+      <SectionWrapper tone="gray">
         <SectionHeader
-          number="06 — Tarification"
+          number="05 — Tarification"
           eyebrow="Engagement commercial"
           title="Un prix adapté à vos équipes."
           lede="Essai gratuit 1 mois, sans engagement, sans carte bancaire."
@@ -250,8 +229,8 @@ export default function AccueilProfessionnels() {
       </SectionWrapper>
 
       <CTASection
-        title="Prêt à industrialiser vos dossiers PAC ?"
-        description="Essai gratuit 1 mois. Conformité ANAH, CEE et MaPrimeRénov', équipes alignées, multi-partenaires et suivi jusqu'aux aides."
+        title="Aligner vos équipes sur un cadre documentaire"
+        description="Essai gratuit 1 mois. Parcours ANAH, CEE et MaPrimeRénov', multi-partenaires et suivi jusqu'aux aides."
       />
     </PageWrapper>
   )

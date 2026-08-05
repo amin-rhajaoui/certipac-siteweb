@@ -1,9 +1,8 @@
 import { cn } from '@/lib/utils'
 
 /**
- * FeatureCard institutionnel — "pilier" style brand book.
- * Filet vertical coloré + label mono + titre + description.
- * Hover : rail qui s'étend légèrement, bg qui s'affirme.
+ * FeatureCard — tuile institutionnelle (filet gauche 4px, fond alt-grey).
+ * Pas de shadow, pas de hover gadget.
  */
 
 const railPalette = ['#194296', '#43AA43', '#161616']
@@ -22,38 +21,31 @@ export default function FeatureCard({
   return (
     <article
       className={cn(
-        'group/feature relative h-full bg-[#F4F4F4] p-5 sm:p-6 rounded-[2px]',
-        'transition-[background-color,border-color] duration-200 ease-out',
-        'hover:bg-white hover:shadow-[0_0_0_1px_#E0E0E0_inset]',
+        'relative h-full bg-[#F6F6F6] p-5 sm:p-6',
+        'transition-colors duration-150',
+        'hover:bg-[#EEEEEE]',
       )}
-      style={{ borderLeft: `3px solid ${rail}` }}
+      style={{ borderLeft: `4px solid ${rail}` }}
     >
-      {/* Mini barre supérieure qui apparaît au hover — souligne l'appartenance au rail */}
-      <span
-        aria-hidden
-        className="absolute left-0 top-0 h-px w-0 group-hover/feature:w-8 transition-[width] duration-300 ease-out"
-        style={{ backgroundColor: rail }}
-      />
-
       <div className="flex items-center justify-between mb-4">
         {(number || reference) && (
-          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#525252] tabular-nums">
+          <span className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#666666] tabular-nums">
             {number ? `Pilier ${String(number).padStart(2, '0')}` : reference}
           </span>
         )}
         {Icon && (
           <Icon
-            className="h-5 w-5 shrink-0 transition-transform duration-200 ease-out group-hover/feature:-translate-y-px"
+            className="h-5 w-5 shrink-0"
             style={{ color: rail }}
             strokeWidth={1.75}
           />
         )}
       </div>
 
-      <h3 className="text-[17px] font-semibold text-[#161616] mb-2 leading-[1.3] tracking-tight">
+      <h3 className="text-[1.125rem] font-bold text-[#161616] mb-2 leading-snug">
         {title}
       </h3>
-      <p className="text-[14px] leading-[1.65] text-[#525252]">{description}</p>
+      <p className="text-[1rem] leading-[1.5] text-[#3A3A3A]">{description}</p>
     </article>
   )
 }

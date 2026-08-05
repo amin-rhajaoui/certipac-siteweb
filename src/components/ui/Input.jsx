@@ -1,7 +1,8 @@
 import { cn } from '@/lib/utils'
 
 /**
- * Input — style Carbon : fond gris-10, ligne basse de focus, pas d'arrondis marqués.
+ * Input — style institutionnel DSFR-like.
+ * Fond alt-grey, bordure bas, focus bleu Certipac + ring focus accessible.
  */
 export default function Input({ label, id, helper, error, required, className, ...props }) {
   return (
@@ -9,10 +10,10 @@ export default function Input({ label, id, helper, error, required, className, .
       {label && (
         <label
           htmlFor={id}
-          className="block font-mono text-[11px] uppercase tracking-[0.08em] font-medium text-[#525252]"
+          className="block text-[0.875rem] font-bold text-[#161616]"
         >
           {label}
-          {required && <span className="text-[#DA1E28] ml-0.5" aria-hidden>*</span>}
+          {required && <span className="text-[#CE0500] ml-0.5" aria-hidden>*</span>}
         </label>
       )}
       <input
@@ -20,23 +21,21 @@ export default function Input({ label, id, helper, error, required, className, .
         required={required}
         aria-invalid={Boolean(error) || undefined}
         className={cn(
-          'block w-full bg-[#F4F4F4] px-4 h-11 text-[14px] text-[#161616] placeholder:text-[#8D8D8D]',
-          'border-0 border-b border-[#8D8D8D] rounded-none',
-          'transition-[border-color,background-color,box-shadow] duration-150 ease-out',
-          'hover:bg-[#ECECEC]',
-          'focus:outline-none focus:bg-white focus:border-[#194296] focus:shadow-[inset_0_-1px_0_0_#194296]',
-          error && 'border-[#DA1E28] focus:border-[#DA1E28] focus:shadow-[inset_0_-1px_0_0_#DA1E28]',
+          'block w-full bg-[#EEEEEE] px-4 min-h-10 text-[1rem] text-[#161616] placeholder:text-[#929292]',
+          'border-0 border-b-2 border-[#666666] rounded-none',
+          'transition-[border-color,background-color] duration-100',
+          'hover:bg-[#E5E5E5]',
+          'focus:outline-none focus:bg-white focus:border-[#194296]',
+          'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A76F6]',
+          error && 'border-[#CE0500] focus:border-[#CE0500]',
           className,
         )}
         {...props}
       />
       {error ? (
-        <p className="text-[12px] text-[#DA1E28] flex items-center gap-1">
-          <span aria-hidden className="inline-block h-1 w-1 bg-[#DA1E28] rounded-full" />
-          {error}
-        </p>
+        <p className="text-[0.875rem] text-[#CE0500]">{error}</p>
       ) : helper ? (
-        <p className="text-[12px] text-[#6F6F6F]">{helper}</p>
+        <p className="text-[0.875rem] text-[#666666]">{helper}</p>
       ) : null}
     </div>
   )

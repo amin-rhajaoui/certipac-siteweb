@@ -2,13 +2,13 @@ import Container from '@/components/ui/Container'
 import { cn } from '@/lib/utils'
 
 /**
- * SectionWrapper institutionnel — espacement généreux, sans effet parallax.
- * `tone` : bg-white (default) | bg-gray-10 (surface-100 alterné) | bg-ink (ink/dark)
+ * SectionWrapper — rythme vertical institutionnel (64–96px).
+ * `tone` : white | gray (alt DSFR #F6F6F6) | ink | primary
  */
 
 const tones = {
   white: 'bg-white',
-  gray: 'bg-[#F4F4F4]',
+  gray: 'bg-[#F6F6F6]',
   ink: 'bg-[#161616] text-white',
   primary: 'bg-[#194296] text-white',
 }
@@ -27,7 +27,7 @@ export default function SectionWrapper({
     <Tag
       id={id}
       className={cn(
-        tighter ? 'py-12 lg:py-16' : 'py-16 lg:py-24',
+        tighter ? 'py-10 lg:py-14' : 'py-14 lg:py-20',
         tones[tone],
         className,
       )}

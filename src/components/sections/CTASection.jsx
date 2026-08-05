@@ -4,8 +4,8 @@ import BrandBar from '@/components/shared/BrandBar'
 import { APP_URL, CTA_TEXT } from '@/lib/constants'
 
 /**
- * CTA institutionnel — bloc ink avec filet tricolore au-dessus.
- * Deux colonnes : titre à gauche, description + CTA à droite.
+ * CTA final — fond ink, BrandBar, typo DSFR-like, boutons francs.
+ * Pas de grille décorative.
  */
 
 export default function CTASection({
@@ -17,43 +17,30 @@ export default function CTASection({
   reference = 'CTP-CTA · 01',
 }) {
   return (
-    <section className="relative bg-[#161616] text-white overflow-hidden">
+    <section className="relative bg-[#161616] text-white">
       <BrandBar />
 
-      {/* Quadrillage discret — cohérent avec le hero */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.55]"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px)',
-          backgroundSize: '80px 100%',
-        }}
-      />
-
       <Container>
-        <div className="relative py-16 lg:py-24">
-          {/* Dateline reprise du hero */}
-          <div className="flex flex-wrap items-center justify-between gap-2 mb-10 pb-3 border-b border-[#393939]">
-            <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] font-semibold text-[#75D593]">
-              <span aria-hidden className="inline-block h-1.5 w-1.5 bg-[#43AA43]" />
+        <div className="py-14 lg:py-20">
+          <div className="flex flex-wrap items-end justify-between gap-3 mb-8 pb-3 border-b border-[#3A3A3A]">
+            <p className="text-[0.875rem] font-bold uppercase tracking-[0.04em] text-[#75D593]">
               {eyebrow}
-            </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#8D8D8D] tabular-nums">
+            </p>
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#929292] tabular-nums">
               {reference}
-            </span>
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             <div className="lg:col-span-7">
-              <h2 className="text-[clamp(1.75rem,3.8vw,2.75rem)] font-bold leading-[1.1] tracking-tight">
+              <h2 className="text-[clamp(1.5rem,3.2vw,2.25rem)] font-bold leading-[1.25] tracking-tight">
                 {title}
                 <span className="text-[#43AA43]">.</span>
               </h2>
             </div>
 
-            <div className="lg:col-span-5 lg:pt-3">
-              <p className="text-[15px] leading-[1.65] text-[#C6C6C6] mb-7 max-w-md">
+            <div className="lg:col-span-5">
+              <p className="text-[1.125rem] leading-[1.5] text-[#CECECE] mb-6 max-w-md">
                 {description}
               </p>
               <div className="flex flex-col sm:flex-row gap-3">

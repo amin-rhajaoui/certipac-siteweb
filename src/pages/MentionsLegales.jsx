@@ -31,7 +31,9 @@ const sections = [
           </div>
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#525252] mb-1">Téléphone</dt>
-            <dd className="text-[14px] text-[#161616] font-medium">{COMPANY_INFO.phone}</dd>
+            <dd className="text-[14px] text-[#161616] font-medium">
+              {COMPANY_INFO.phone ?? COMPANY_INFO.phoneLabel}
+            </dd>
           </div>
         </dl>
       </>

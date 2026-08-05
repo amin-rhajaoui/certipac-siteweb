@@ -1,49 +1,41 @@
 import { cn } from '@/lib/utils'
 
 /**
- * Callout — bandeau d'information institutionnel (Article 1 du brand book).
- * Filet vertical coloré, fond légèrement teinté, texte dense.
+ * Callout — bandeau d'information type fr-callout DSFR.
+ * Filet vertical 4px (background-image), fond contrasté, titre dense.
  */
 
 const tones = {
-  info:    'bg-[#EDF5FF] border-[#194296]',
-  success: 'bg-[#DEFBE6] border-[#24A148]',
-  warning: 'bg-[#FCF4D6] border-[#F1C21B]',
-  error:   'bg-[#FFF1F1] border-[#DA1E28]',
-  neutral: 'bg-[#F4F4F4] border-[#161616]',
-}
-
-const titleTones = {
-  info:    'text-[#0F285A]',
-  success: 'text-[#0E6027]',
-  warning: 'text-[#6C4B00]',
-  error:   'text-[#8D0910]',
-  neutral: 'text-[#161616]',
+  info: 'ctp-callout--info',
+  success: 'ctp-callout--success',
+  warning: 'ctp-callout--warning',
+  error: 'ctp-callout--error',
+  neutral: 'ctp-callout--neutral',
 }
 
 export default function Callout({ children, title, tone = 'info', reference, icon: Icon, className }) {
   return (
     <aside
       className={cn(
-        'relative border-l-[3px] pl-5 pr-5 py-4 text-[14px] leading-[1.65]',
+        'ctp-callout text-[1rem] leading-[1.5]',
         tones[tone] || tones.info,
         className,
       )}
     >
       {(title || reference) && (
-        <div className="flex items-baseline justify-between gap-4 mb-1.5">
-          <span className={cn('inline-flex items-center gap-2 font-semibold', titleTones[tone] || titleTones.info)}>
-            {Icon && <Icon className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />}
+        <div className="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+          <p className="inline-flex items-center gap-2 text-[1.125rem] font-bold leading-snug text-[#161616]">
+            {Icon && <Icon className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />}
             {title}
-          </span>
+          </p>
           {reference && (
-            <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#6F6F6F] shrink-0 tabular-nums">
+            <span className="font-mono text-[0.75rem] uppercase tracking-[0.06em] text-[#666666] shrink-0 tabular-nums">
               {reference}
             </span>
           )}
         </div>
       )}
-      <div className="text-[#393939]">{children}</div>
+      <div className="text-[#3A3A3A] text-[1rem] leading-[1.5]">{children}</div>
     </aside>
   )
 }

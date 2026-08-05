@@ -49,10 +49,10 @@ export default function Contact() {
         reference="CTP-CONTACT-2026"
         title="Contacter Certipac,"
         highlight="recevoir une réponse"
-        description="L'équipe Certipac traite les demandes entrantes par email, téléphone et formulaire. Les réponses sont apportées par écrit en moins de 2 heures pendant les jours ouvrés, avec une traçabilité pour chaque échange."
+        description="L'équipe Certipac traite les demandes entrantes par email et formulaire. Une réponse écrite est apportée pendant les jours ouvrés, avec une traçabilité pour chaque échange."
         metadata={[
-          { label: 'Délai', value: '< 2 h ouvrées' },
-          { label: 'Canaux', value: 'Email · Téléphone · Formulaire' },
+          { label: 'Canal principal', value: 'Email · Formulaire' },
+          { label: 'Téléphone', value: COMPANY_INFO.phoneLabel },
           { label: 'Siège', value: COMPANY_INFO.address },
           { label: 'Langue', value: 'Français' },
         ]}
@@ -94,12 +94,18 @@ export default function Contact() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#525252] mb-1">
                     Téléphone
                   </p>
-                  <a
-                    href={`tel:${COMPANY_INFO.phone.replace(/\s/g, '')}`}
-                    className="text-[15px] font-semibold text-[#161616] hover:text-[#194296]"
-                  >
-                    {COMPANY_INFO.phone}
-                  </a>
+                  {COMPANY_INFO.phone ? (
+                    <a
+                      href={`tel:${COMPANY_INFO.phone.replace(/\s/g, '')}`}
+                      className="text-[15px] font-semibold text-[#161616] hover:text-[#194296]"
+                    >
+                      {COMPANY_INFO.phone}
+                    </a>
+                  ) : (
+                    <p className="text-[15px] font-semibold text-[#161616]">
+                      {COMPANY_INFO.phoneLabel}
+                    </p>
+                  )}
                 </div>
               </div>
 
